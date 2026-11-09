@@ -16,7 +16,7 @@ This diagnosis distinguishes **observed defects** from **likely business consequ
 
 **Viewport inspection:** Original website viewed in Chrome DevTools at mobile (412 × 924 px in the initial inspection; a separate mobile full-page capture was saved), tablet (768 × 1024 px), and desktop (1440 px wide). The original page was not changed for these screenshots. Because the page lacks a viewport meta declaration, browser emulation can scale the desktop layout down on smaller screens; screenshot appearance should not be mistaken for genuine responsiveness.
 
-**Behaviour inspection:** Original navigation links, FAQ triggers, booking request button and contact message button were clicked. The tester reported that the intended interactions did not work. Source inspection explains why.
+**Behaviour inspection:** Original navigation links, FAQ triggers, booking request button and contact message button were clicked. Observatoions confirmed that the intended interactions did not work. Source inspection explains why.
 
 **Screenshot files:**
 
@@ -35,7 +35,7 @@ The screenshots show visual behaviour; source references below support the techn
 
 **Root cause:** The page was built for one fixed desktop width rather than a responsive range of viewports. The missing viewport declaration compounds the issue on phones.
 
-**Why it matters:** The brief says customers often compare repair shops on their phones while in a hurry. A scaled-down desktop page makes it harder to read and act quickly, weakening confidence before a customer even evaluates the workshop.
+**Why it matters:** The brief says customers often compare repair shops on their phones while in a hurry therefore, a scaled-down desktop page makes it harder to read and act quickly, weakening confidence before a customer even evaluates the workshop.
 
 **Recommended fix:** Add the viewport meta declaration; use a fluid container with a maximum width, mobile-first styles, responsive card grids and navigation that adapts at narrower widths.
 
@@ -86,7 +86,7 @@ The screenshots show visual behaviour; source references below support the techn
 ### F06 — Forms offer no functioning request pathway
 
 **Priority: High**  
-**Evidence:** The booking and contact forms end with `<input type="button">` controls in `index.html`, and there are no form submission handlers in the original `js/script.js`. The tester could not successfully submit either form. There are no visible instructions about what happens to the submitted information.
+**Evidence:** The booking and contact forms end with `<input type="button">` controls in `index.html`, and there are no form submission handlers in the original `js/script.js`. Form submission failed during testing and review. There are no visible instructions about what happens to the submitted information.
 
 **Root cause:** The interface contains form controls, but no implemented submission workflow or confirmation mechanism.
 
