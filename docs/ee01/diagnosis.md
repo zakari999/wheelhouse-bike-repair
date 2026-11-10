@@ -16,7 +16,7 @@ This diagnosis distinguishes **observed defects** from **likely business consequ
 
 **Viewport inspection:** Original website viewed in Chrome DevTools at mobile (412 × 924 px in the initial inspection; a separate mobile full-page capture was saved), tablet (768 × 1024 px), and desktop (1440 px wide). The original page was not changed for these screenshots. Because the page lacks a viewport meta declaration, browser emulation can scale the desktop layout down on smaller screens; screenshot appearance should not be mistaken for genuine responsiveness.
 
-**Behaviour inspection:** Original navigation links, FAQ triggers, booking request button and contact message button were clicked. Observatoions confirmed that the intended interactions did not work. Source inspection explains why.
+**Behaviour inspection:** Original navigation links, FAQ triggers, booking request button and contact message button were clicked. Observations confirmed that the intended interactions did not work. Source inspection explains why.
 
 **Screenshot files:**
 
