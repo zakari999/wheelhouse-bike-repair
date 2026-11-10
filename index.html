@@ -311,29 +311,11 @@
         <p>Need to arrange a repair or drop off your bicycle? Contact the workshop directly to arrange a convenient time with Kwame.</p>
 
         <div class="booking-actions">
-          <a href="tel:0322000000" class="btn btn-primary">Call Workshop</a>
+          <a href="tel:0322000000" class="btn btn-primary">Call Workshop: 0322 000 000</a>
           <a href="https://wa.me/233244000001" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">WhatsApp Workshop</a>
         </div>
 
         <p class="booking-note">Walk-ins are also welcome during opening hours. We inspect every bicycle and confirm an upfront quote before starting any work.</p>
-
-        <!-- Preserved booking form template for future Applied JavaScript modules -->
-        <template id="booking-form-template">
-          <form class="booking-form">
-            <div class="form-group">
-              <label for="booking-name" class="form-label">Your Name</label>
-              <input type="text" id="booking-name" name="name" class="form-field" placeholder="e.g. Kwame Mensah">
-            </div>
-
-            <div class="form-group">
-              <label for="booking-need" class="form-label">What does your bike need?</label>
-              <input type="text" id="booking-need" name="need" class="form-field" placeholder="e.g. Brake adjustment or tube replacement">
-            </div>
-
-            <button type="submit" class="form-submit">Submit Request</button>
-          </form>
-          <div id="booking-list" aria-live="polite"></div>
-        </template>
       </section>
 
     </div>
@@ -399,32 +381,45 @@
 
             <p class="contact-hours-note">We answer calls and messages during workshop hours: Mon to Sat, 8am to 5:30pm.</p>
 
-            <!-- Preserved contact form template for future Applied JavaScript modules -->
-            <template id="contact-form-template">
-              <form class="contact-form">
+            <!-- Documented Limitation Notice -->
+            <div class="service-notice-box" role="status">
+              <h4 class="service-notice-heading">Notice: Contact Form Inactive</h4>
+              <p class="service-notice-text">
+                The booking and contact forms are reserved for future development and are not currently active.
+              </p>
+              <p class="service-notice-subtext">
+                Please contact Kwame directly via telephone, WhatsApp, or visit the workshop in Adum.
+              </p>
+            </div>
+
+            <!-- Visible form with disabled fields matching the documented limitation -->
+            <form class="contact-form" aria-label="Contact form (currently inactive)">
+              <fieldset disabled class="form-fieldset">
+                <legend class="form-legend">Direct Message Form &mdash; Inactive</legend>
+
                 <div class="form-group">
                   <label for="contact-name" class="form-label">Your Name</label>
-                  <input type="text" id="contact-name" name="name" class="form-field" placeholder="Your full name">
+                  <input type="text" id="contact-name" name="name" class="form-field" placeholder="Your full name" disabled>
                 </div>
 
                 <div class="form-group">
                   <label for="contact-email" class="form-label">Email Address</label>
-                  <input type="email" id="contact-email" name="email" class="form-field" placeholder="name@example.com">
+                  <input type="email" id="contact-email" name="email" class="form-field" placeholder="name@example.com" disabled>
                 </div>
 
                 <div class="form-group">
                   <label for="contact-phone" class="form-label">Phone Number</label>
-                  <input type="tel" id="contact-phone" name="phone" class="form-field" placeholder="e.g. 0244 000 000">
+                  <input type="tel" id="contact-phone" name="phone" class="form-field" placeholder="e.g. 0244 000 000" disabled>
                 </div>
 
                 <div class="form-group">
                   <label for="contact-message" class="form-label">Your Message</label>
-                  <textarea id="contact-message" name="message" class="form-field" rows="4" placeholder="How can we help you?"></textarea>
+                  <textarea id="contact-message" name="message" class="form-field" rows="4" placeholder="How can we help you?" disabled></textarea>
                 </div>
 
-                <button type="submit" class="form-submit">Send Message</button>
-              </form>
-            </template>
+                <button type="button" class="form-submit" disabled aria-disabled="true">Send Message (Form Inactive)</button>
+              </fieldset>
+            </form>
           </div>
 
         </div>
