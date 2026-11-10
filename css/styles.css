@@ -851,6 +851,13 @@ a.service-price:hover {
 .service-notice-text {
   font-size: var(--font-size-sm);
   color: var(--color-charcoal-muted);
+  margin-bottom: var(--space-xs);
+  line-height: 1.5;
+}
+
+.service-notice-subtext {
+  font-size: var(--font-size-xs);
+  color: var(--color-charcoal-dark);
   margin-bottom: var(--space-sm);
   line-height: 1.5;
 }
@@ -901,13 +908,22 @@ a.service-price:hover {
 
 /* Forms */
 .form-fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
+  border: 1px dashed var(--color-border-dark);
+  border-radius: var(--border-radius-sm);
+  padding: var(--space-md);
+  margin: var(--space-md) 0 0 0;
+  background-color: #fafbfc;
+}
+
+.form-legend {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--color-charcoal-muted);
+  padding: 0 var(--space-xs);
 }
 
 .form-group {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .form-label {
@@ -976,8 +992,12 @@ textarea.form-field {
 .form-submit:disabled,
 .form-submit[aria-disabled="true"],
 fieldset[disabled] .form-submit {
-  background-color: #64748b;
-  color: #f1f5f9;
+  background-color: #94a3b8;
+  color: #ffffff;
+  cursor: not-allowed;
+  opacity: 0.85;
+  box-shadow: none;
+}
   cursor: not-allowed;
   opacity: 0.8;
   box-shadow: none;
