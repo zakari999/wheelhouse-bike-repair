@@ -60,7 +60,7 @@ The original website was refactored using HTML5 and CSS3, with limited JavaScrip
 - Accessible FAQ interactions using native HTML5 `<details>` and `<summary>`.
 - Prominent contact and workshop information with direct `tel:`, WhatsApp, and email links.
 - Keyboard accessibility, visible `:focus-visible` indicators, and skip-to-content bypass link.
-- Inactive form states transparently communicated to visitors via semantic `<fieldset disabled>` and accessible notice banners.
+- Functional service booking tracker and contact message forms with accessible inline validation, live screen reader announcements, and keyboard focus management.
 
 ### Implemented Design System
 
@@ -200,7 +200,7 @@ The rebuild was engineered with baseline accessibility embedded into the markup 
    - Single `<h1>`: `Wheelhouse Bike Repair` (`.hero-title`)
    - `<h2>` level for major sections (`Workshop Services & Pricing`, `Why Choose Wheelhouse?`, `About Wheelhouse`, `Common Questions`, `Book a Service`, `Find Our Workshop & Get In Touch`)
    - `<h3>` level for sub-sections and cards (`What does your bike need?`, individual service card titles, `Workshop Information`, `Contact the Workshop`)
-   - `<h4>` level for minor policy and notice titles (`Drop Off Policy`, `Notice: Contact Form Inactive`)
+   - `<h4>` level for minor policy titles (`Drop Off Policy`)
    - No skipped heading levels throughout the entire document.
 
 3. **Skip-to-Content Bypass Link:**
@@ -297,7 +297,7 @@ No build process or package installation is required.
 
 ## 10. Known Limitations
 
-- The booking and contact forms are reserved for future development and are not currently active.
+- The booking and contact forms provide functional client-side submission and queue tracking; persistence to a live backend database is reserved for subsequent server-side modules.
 - The workshop's contact details are preserved from the provided starter files and require verification before real-world deployment.
 - The service finder is a discovery tool rather than an automated repair diagnosis system.
 - Further accessibility testing across physical assistive technologies would be necessary before a production release.

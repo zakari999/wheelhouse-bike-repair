@@ -26,12 +26,12 @@ The rebuild in [`index.html`](../../index.html) introduces:
   - Single `<h1>` for page identity: `Wheelhouse Bike Repair` (`.hero-title`).
   - `<h2>` for primary section titles (`Workshop Services & Pricing`, `Why Choose Wheelhouse?`, `About Wheelhouse`, `Common Questions`, `Book a Service`, `Find Our Workshop & Get In Touch`).
   - `<h3>` for component titles and card names (`What does your bike need?`, `.service-title`, `Workshop Information`, `Contact the Workshop`).
-  - `<h4>` for minor sub-policy headings (`Drop Off Policy`, `Notice: Contact Form Inactive`).
+  - `<h4>` for minor sub-policy headings (`Drop Off Policy`).
   - No skipped heading levels occur throughout the document.
 - **Native Disclosure Controls:**
   - Frequently asked questions use native `<details class="faq-item">` and `<summary class="faq-trigger">` elements.
 - **Semantic Forms & States:**
-  - Inactive contact form uses `<fieldset disabled class="form-fieldset">`, `<legend class="form-legend">`, explicitly associated `<label>` controls with `for` and `id` pairs, proper `type` attributes (`email`, `tel`), and `<button disabled aria-disabled="true">`.
+  - Functional booking and contact forms use semantic `<form>`, `<fieldset class="form-fieldset">`, `<legend class="form-legend">`, explicitly associated `<label>` controls with `for` and `id` pairs, proper `type` attributes (`text`, `email`, `tel`), required indicators, inline error alerts with `aria-invalid` and `aria-describedby`, and polite `aria-live` feedback regions.
 
 **Evaluation:** These changes make the page structure meaningful for users and assistive technologies, improving accessibility and maintainability without introducing external framework dependencies.
 
@@ -173,7 +173,7 @@ Plain HTML, CSS, and limited JavaScript were preferred over additional framework
 ## 7. Known Limitations
 
 - The original business contact details require verification before real-world deployment.
-- The booking and contact forms are reserved for future development and are not currently active.
+- The booking and contact forms provide functional client-side submission and queue tracking; persistent backend database integration is reserved for subsequent server-side modules.
 - The Find Your Repair feature suggests relevant services but cannot diagnose bicycle problems.
 - More extensive accessibility testing would be beneficial before production deployment.
 
