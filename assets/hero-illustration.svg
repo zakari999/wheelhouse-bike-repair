@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%" fill="none">
+  <rect width="100%" height="100%" fill="#1d3f30" />
+  <g stroke="#def58c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <!-- Rear Wheel -->
+    <circle cx="260" cy="380" r="110" />
+    <circle cx="260" cy="380" r="16" fill="#def58c" />
+    <line x1="260" y1="270" x2="260" y2="490" stroke-width="2" opacity="0.4" />
+    <line x1="150" y1="380" x2="370" y2="380" stroke-width="2" opacity="0.4" />
+    <!-- Front Wheel -->
+    <circle cx="560" cy="380" r="110" />
+    <circle cx="560" cy="380" r="16" fill="#def58c" />
+    <line x1="560" y1="270" x2="560" y2="490" stroke-width="2" opacity="0.4" />
+    <line x1="450" y1="380" x2="670" y2="380" stroke-width="2" opacity="0.4" />
+    <!-- Frame -->
+    <polygon points="260,380 390,380 490,260 350,260" fill="none" stroke-width="8" />
+    <line x1="260" y1="380" x2="350" y2="260" stroke-width="8" />
+    <!-- Seat post and saddle -->
+    <line x1="390" y1="380" x2="330" y2="215" stroke-width="8" />
+    <path d="M 305 215 Q 330 205 365 215" stroke-width="12" stroke-linecap="round" />
+    <!-- Fork and handlebar -->
+    <line x1="560" y1="380" x2="480" y2="210" stroke-width="8" />
+    <path d="M 455 210 L 485 210 Q 515 210 515 235" stroke-width="8" />
+    <!-- Pedals / Chainring -->
+    <circle cx="390" cy="380" r="30" fill="#1d3f30" stroke-width="6" />
+    <line x1="390" y1="380" x2="415" y2="420" stroke-width="6" />
+    <line x1="405" y1="420" x2="425" y2="420" stroke-width="10" />
+  </g>
+</svg>
