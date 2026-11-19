@@ -1,376 +1,391 @@
-// Wheelhouse Bike Repair — script.js
+// ==========================================================================
+// Wheelhouse Bike Repair — Interactive Behaviour & Lead Generation
+// Kumasi, Ghana | Accessible, Mobile-First JavaScript
+// ==========================================================================
 
-// Skip link keyboard focus management
-function initSkipLink() {
-  const skipLink = document.querySelector('.skip-link');
-  const mainContent = document.getElementById('main-content');
-  if (skipLink && mainContent) {
-    skipLink.addEventListener('click', function () {
-      mainContent.focus();
-    });
-  }
-}
+const CONTACT = {
+  whatsappInternational: '233244000001', // Displayed on site as 0244 000 001.
+  phoneDisplay: '0322 000 000',
+  email: 'wheelhouse@email.com'
+};
 
-// Mobile navigation toggle
-function initMobileMenu() {
-  const menuToggle = document.getElementById('menu-toggle');
-  const primaryNav = document.getElementById('primary-nav');
+// --------------------------------------------------------------------------
+// 1. Mobile Navigation Menu
+// --------------------------------------------------------------------------
+function initNavigation() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mainNav = document.querySelector('#main-nav');
+  const header = document.querySelector('.site-header');
 
-  if (!menuToggle || !primaryNav) return;
+  if (!menuToggle || !mainNav) return;
 
   function setMenuState(open) {
-    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    primaryNav.classList.toggle('nav-open', open);
+    mainNav.classList.toggle('is-open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute(
+      'aria-label',
+      open ? 'Close navigation menu' : 'Open navigation menu'
+    );
   }
 
-  // Toggle on button click (also triggered by Enter / Space on button)
-  menuToggle.addEventListener('click', function () {
+  menuToggle.addEventListener('click', () => {
     const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
     setMenuState(!isOpen);
   });
 
-  // Close with Escape key and return focus
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && primaryNav.classList.contains('nav-open')) {
+  // Close when selecting any nav link
+  mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setMenuState(false));
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mainNav.classList.contains('is-open')) {
       setMenuState(false);
       menuToggle.focus();
     }
   });
 
-  // Close when selecting any navigation link
-  primaryNav.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      setMenuState(false);
-    });
-  });
-
-  // Close when clicking outside of the header
-  document.addEventListener('click', function (e) {
+  // Close on outside click
+  document.addEventListener('click', (e) => {
     if (
-      primaryNav.classList.contains('nav-open') &&
-      !menuToggle.contains(e.target) &&
-      !primaryNav.contains(e.target)
+      mainNav.classList.contains('is-open') &&
+      header &&
+      !header.contains(e.target)
     ) {
       setMenuState(false);
     }
   });
 }
 
-// Service Problem Filter (EE01 Create Criterion)
+// --------------------------------------------------------------------------
+// 2. Problem Selector & Service Filter (EE01 Create Criterion)
+// --------------------------------------------------------------------------
 function initServiceFilter() {
-  const filterButtons = document.querySelectorAll('.repair-finder-card');
-  const serviceCards = document.querySelectorAll('.services-grid .service-card');
-  const servicesGrid = document.getElementById('services-grid');
-  const filterStatus = document.getElementById('service-filter-status');
-  const filterStatusCount = document.getElementById('filter-status-count');
-  const resetBtn = document.getElementById('reset-service-filter');
+  const problemButtons = document.querySelectorAll('.problem-card');
+  const serviceCards = [...document.querySelectorAll('.service-card')];
+  const filterNote = document.querySelector('#filter-note');
+  const resetBtn = document.querySelector('#reset-services');
 
-  if (!filterButtons.length || !serviceCards.length) return;
+  if (!problemButtons.length || !serviceCards.length) return;
 
-  function showAllServices(shouldFocusFirstBtn) {
-    serviceCards.forEach(function (card) {
-      card.hidden = false;
-    });
+  const categoryNames = {
+    tyre: 'Flat tyre (Tyre & tube replacement)',
+    brakes: 'Brake trouble (Brake overhaul)',
+    gears: 'Slipping gears (Gear system overhaul)',
+    tuneup: 'General maintenance (Basic tune-up)'
+  };
 
-    filterButtons.forEach(function (btn) {
-      const isAllBtn = btn.getAttribute('data-service-target') === 'all';
-      btn.setAttribute('aria-pressed', isAllBtn ? 'true' : 'false');
-    });
+  function applyFilter(category, clickedButton) {
+    const isCurrentlyActive = clickedButton && clickedButton.getAttribute('aria-pressed') === 'true';
 
-    if (servicesGrid) {
-      servicesGrid.classList.remove('is-filtered');
-    }
-
-    if (filterStatus) {
-      filterStatus.hidden = true;
-    }
-
-    if (filterStatusCount) {
-      filterStatusCount.textContent = 'Showing all 6 services';
-    }
-
-    if (shouldFocusFirstBtn && filterButtons.length > 0) {
-      filterButtons[0].focus();
-    }
-  }
-
-  function filterToService(targetId, activeBtn) {
-    let matchedServiceName = '';
-
-    serviceCards.forEach(function (card) {
-      if (card.id === targetId) {
+    // Toggle off if clicking the already active button
+    if (isCurrentlyActive || category === 'all') {
+      serviceCards.forEach(card => {
         card.hidden = false;
-        const titleEl = card.querySelector('.service-title');
-        if (titleEl) {
-          matchedServiceName = titleEl.textContent.trim();
-        }
-      } else {
-        card.hidden = true;
+        card.classList.remove('filter-highlight');
+      });
+
+      problemButtons.forEach(btn => {
+        btn.setAttribute('aria-pressed', 'false');
+      });
+
+      if (filterNote) {
+        filterNote.hidden = false;
+        filterNote.textContent = 'Showing all 6 services.';
+        // Hide after short duration or keep clear
+        setTimeout(() => {
+          if (!document.querySelector('.problem-card[aria-pressed="true"]')) {
+            filterNote.hidden = true;
+          }
+        }, 3000);
+      }
+      return;
+    }
+
+    // Filter to selected category
+    let matchedCard = null;
+    serviceCards.forEach(card => {
+      const isMatch = card.dataset.category === category;
+      card.hidden = !isMatch;
+      card.classList.remove('filter-highlight');
+      if (isMatch) {
+        matchedCard = card;
       }
     });
 
-    filterButtons.forEach(function (btn) {
-      btn.setAttribute('aria-pressed', btn === activeBtn ? 'true' : 'false');
+    problemButtons.forEach(btn => {
+      btn.setAttribute('aria-pressed', btn === clickedButton ? 'true' : 'false');
     });
 
-    if (servicesGrid) {
-      servicesGrid.classList.add('is-filtered');
+    if (filterNote) {
+      filterNote.hidden = false;
+      const label = categoryNames[category] || category;
+      filterNote.textContent = `Showing 1 matching service for ${label}. Select “View all services” to see every option.`;
     }
 
-    if (filterStatus) {
-      filterStatus.hidden = false;
-    }
+    // Scroll smoothly to results section so user sees the matching service immediately
+    const servicesSection = document.querySelector('#services');
+    if (servicesSection) {
+      const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      setTimeout(() => {
+        servicesSection.scrollIntoView({
+          behavior: isReduced ? 'auto' : 'smooth',
+          block: 'start'
+        });
 
-    if (filterStatusCount) {
-      filterStatusCount.textContent = matchedServiceName
-        ? `Showing matching repair: ${matchedServiceName}`
-        : 'Showing 1 matching service';
+        if (matchedCard && !isReduced) {
+          matchedCard.classList.remove('filter-highlight');
+          void matchedCard.offsetWidth;
+          matchedCard.classList.add('filter-highlight');
+        }
+      }, 60);
     }
   }
 
-  filterButtons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      const targetId = btn.getAttribute('data-service-target');
-      const isCurrentlyActive = btn.getAttribute('aria-pressed') === 'true';
-
-      if (targetId === 'all') {
-        showAllServices(false);
-      } else if (isCurrentlyActive) {
-        showAllServices(false);
-      } else {
-        filterToService(targetId, btn);
-      }
+  problemButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      applyFilter(button.dataset.filter, button);
     });
   });
 
   if (resetBtn) {
-    resetBtn.addEventListener('click', function () {
-      showAllServices(true);
+    resetBtn.addEventListener('click', () => {
+      applyFilter('all', null);
+      if (problemButtons.length > 0) {
+        problemButtons[0].focus();
+      }
     });
   }
 }
 
-// Helper: Escape text for safe HTML insertion
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
+// --------------------------------------------------------------------------
+// 3. Service Card to Booking Pre-selection
+// --------------------------------------------------------------------------
+function initServicePreselection() {
+  const serviceSelect = document.querySelector('#service-select');
+  const serviceLinks = document.querySelectorAll('.service-link');
+
+  if (!serviceSelect || !serviceLinks.length) return;
+
+  serviceLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const targetService = link.dataset.service;
+      if (targetService) {
+        serviceSelect.value = targetService;
+        serviceSelect.classList.remove('has-error');
+        serviceSelect.removeAttribute('aria-invalid');
+        const serviceError = document.querySelector('#service-error');
+        if (serviceError) serviceError.textContent = '';
+      }
+    });
+  });
 }
 
-// Helper: Clear field error states
-function clearFieldError(input, errorEl) {
-  input.classList.remove('is-invalid');
-  input.removeAttribute('aria-invalid');
-  input.removeAttribute('aria-describedby');
-  if (errorEl) {
-    errorEl.textContent = '';
-    errorEl.hidden = true;
-  }
-}
+// --------------------------------------------------------------------------
+// 4. Repair Request Form (Accessible Validation & WhatsApp Generator)
+// --------------------------------------------------------------------------
+function initRepairForm() {
+  const repairForm = document.querySelector('#repair-form');
+  const nameInput = document.querySelector('#customer-name');
+  const phoneInput = document.querySelector('#customer-phone');
+  const serviceSelect = document.querySelector('#service-select');
+  const notesInput = document.querySelector('#repair-notes');
+  const nameError = document.querySelector('#name-error');
+  const phoneError = document.querySelector('#phone-error');
+  const serviceError = document.querySelector('#service-error');
+  const formStatus = document.querySelector('#form-status');
 
-// Helper: Set accessible field error states
-function setFieldError(input, errorEl, message) {
-  input.classList.add('is-invalid');
-  input.setAttribute('aria-invalid', 'true');
-  if (errorEl) {
-    input.setAttribute('aria-describedby', errorEl.id);
+  if (!repairForm) return;
+
+  function setFieldError(input, errorEl, message) {
+    if (!input || !errorEl) return;
+    input.classList.add('has-error');
+    input.setAttribute('aria-invalid', 'true');
     errorEl.textContent = message;
-    errorEl.hidden = false;
+  }
+
+  function clearFieldError(input, errorEl) {
+    if (!input || !errorEl) return;
+    input.classList.remove('has-error');
+    input.removeAttribute('aria-invalid');
+    errorEl.textContent = '';
+  }
+
+  function checkFormStatus() {
+    if (!formStatus) return;
+    const hasAnyError = repairForm.querySelector('.has-error');
+    if (!hasAnyError && formStatus.classList.contains('error')) {
+      formStatus.textContent = '';
+      formStatus.className = 'form-status';
+    }
+  }
+
+  // Clear errors dynamically on user input
+  if (nameInput) {
+    nameInput.addEventListener('input', () => {
+      if (nameInput.value.trim()) {
+        clearFieldError(nameInput, nameError);
+        checkFormStatus();
+      }
+    });
+  }
+
+  if (phoneInput) {
+    phoneInput.addEventListener('input', () => {
+      if (phoneInput.value.trim()) {
+        clearFieldError(phoneInput, phoneError);
+        checkFormStatus();
+      }
+    });
+  }
+
+  if (serviceSelect) {
+    serviceSelect.addEventListener('change', () => {
+      if (serviceSelect.value) {
+        clearFieldError(serviceSelect, serviceError);
+        checkFormStatus();
+      }
+    });
+  }
+
+  repairForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const name = String(nameInput ? nameInput.value : '').trim();
+    const phone = String(phoneInput ? phoneInput.value : '').trim();
+    const service = String(serviceSelect ? serviceSelect.value : '').trim();
+    const notes = String(notesInput ? notesInput.value : '').trim();
+
+    let hasErrors = false;
+    let firstInvalidField = null;
+
+    if (!name) {
+      setFieldError(nameInput, nameError, 'Please enter your name.');
+      hasErrors = true;
+      if (!firstInvalidField) firstInvalidField = nameInput;
+    } else {
+      clearFieldError(nameInput, nameError);
+    }
+
+    if (!phone) {
+      setFieldError(phoneInput, phoneError, 'Please enter your phone number.');
+      hasErrors = true;
+      if (!firstInvalidField) firstInvalidField = phoneInput;
+    } else {
+      clearFieldError(phoneInput, phoneError);
+    }
+
+    if (!service) {
+      setFieldError(serviceSelect, serviceError, 'Please select a service.');
+      hasErrors = true;
+      if (!firstInvalidField) firstInvalidField = serviceSelect;
+    } else {
+      clearFieldError(serviceSelect, serviceError);
+    }
+
+    if (hasErrors) {
+      if (formStatus) {
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Please fill out all required fields marked below.';
+      }
+      if (firstInvalidField) {
+        firstInvalidField.focus();
+      }
+      return;
+    }
+
+    // All fields are valid
+    if (formStatus) {
+      formStatus.className = 'form-status success';
+      formStatus.textContent = 'Your message is ready in WhatsApp. Please tap Send there to contact the workshop.';
+    }
+
+    const messageLines = [
+      'Hello Wheelhouse! I would like to enquire about a bike repair.',
+      '',
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Service: ${service}`,
+      notes ? `Description: ${notes}` : '',
+      '',
+      'Please let me know the next steps. Thank you!'
+    ].filter((line, idx, arr) => line || (idx > 0 && arr[idx - 1] !== ''));
+
+    const message = messageLines.join('\n');
+    const url = `https://wa.me/${CONTACT.whatsappInternational}?text=${encodeURIComponent(message)}`;
+
+    const popup = window.open(url, '_blank', 'noopener,noreferrer');
+    if (!popup) {
+      window.location.href = url;
+    }
+  });
+}
+
+// --------------------------------------------------------------------------
+// 5. Hero Image Offline Fallback Handler
+// --------------------------------------------------------------------------
+function initHeroFallback() {
+  const heroPhoto = document.querySelector('.hero-photo');
+  if (!heroPhoto) return;
+
+  heroPhoto.addEventListener('error', () => {
+    heroPhoto.style.display = 'none';
+  });
+}
+
+// --------------------------------------------------------------------------
+// 6. Dynamic Year
+// --------------------------------------------------------------------------
+function initYear() {
+  const yearEl = document.querySelector('#year');
+  if (yearEl) {
+    yearEl.textContent = String(new Date().getFullYear());
   }
 }
 
-// === SECTION 2: Service request tracker (Booking Form) ===
-// When the booking form is submitted, add the customer's name and request
-// to the list below the form. Prevent the page from refreshing on submit.
-function initBookingForm() {
-  const form = document.getElementById('booking-form');
-  const nameInput = document.getElementById('booking-name');
-  const needInput = document.getElementById('booking-need');
-  const nameError = document.getElementById('booking-name-error');
-  const needError = document.getElementById('booking-need-error');
-  const feedback = document.getElementById('booking-feedback');
-  const bookingList = document.getElementById('booking-list');
-  const emptyPlaceholder = document.getElementById('booking-empty-placeholder');
+// --------------------------------------------------------------------------
+// 7. Floating Back to Top Button (Accessible Keyboard Navigation & Scroll)
+// --------------------------------------------------------------------------
+function initBackToTop() {
+  const backToTopBtn = document.querySelector('#back-to-top');
+  if (!backToTopBtn) return;
 
-  if (!form || !nameInput || !needInput) return;
+  function toggleButton() {
+    const shouldShow = window.scrollY > 350;
+    backToTopBtn.classList.toggle('is-visible', shouldShow);
+  }
 
-  nameInput.addEventListener('input', function () {
-    clearFieldError(nameInput, nameError);
-  });
-  needInput.addEventListener('input', function () {
-    clearFieldError(needInput, needError);
-  });
+  window.addEventListener('scroll', toggleButton, { passive: true });
+  toggleButton();
 
-  form.addEventListener('submit', function (e) {
+  backToTopBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({
+      top: 0,
+      behavior: isReduced ? 'auto' : 'smooth'
+    });
 
-    const name = nameInput.value.trim();
-    const need = needInput.value.trim();
-
-    let hasError = false;
-    let firstInvalidField = null;
-
-    if (!name) {
-      setFieldError(nameInput, nameError, 'Please enter your name.');
-      hasError = true;
-      firstInvalidField = nameInput;
-    } else {
-      clearFieldError(nameInput, nameError);
+    const topTarget = document.querySelector('#top') || document.body;
+    if (topTarget) {
+      topTarget.setAttribute('tabindex', '-1');
+      topTarget.focus({ preventScroll: true });
     }
-
-    if (!need) {
-      setFieldError(needInput, needError, 'Please describe what your bike needs.');
-      hasError = true;
-      if (!firstInvalidField) firstInvalidField = needInput;
-    } else {
-      clearFieldError(needInput, needError);
-    }
-
-    if (hasError) {
-      if (firstInvalidField) {
-        firstInvalidField.focus();
-      }
-      return;
-    }
-
-    // Remove empty placeholder when first entry is added
-    if (emptyPlaceholder) {
-      emptyPlaceholder.remove();
-    }
-
-    // Build tracker item with semantic elements
-    const item = document.createElement('div');
-    item.className = 'booking-item';
-
-    const header = document.createElement('div');
-    header.className = 'booking-item-header';
-
-    const nameEl = document.createElement('strong');
-    nameEl.className = 'booking-item-name';
-    nameEl.textContent = name;
-
-    const badge = document.createElement('span');
-    badge.className = 'booking-badge';
-    badge.textContent = 'Received \u2022 Drop-Off Pending';
-
-    header.appendChild(nameEl);
-    header.appendChild(badge);
-
-    const needEl = document.createElement('p');
-    needEl.className = 'booking-item-need';
-    needEl.textContent = need;
-
-    const timeEl = document.createElement('span');
-    timeEl.className = 'booking-item-time';
-    timeEl.textContent = 'Logged just now';
-
-    item.appendChild(header);
-    item.appendChild(needEl);
-    item.appendChild(timeEl);
-
-    if (bookingList) {
-      bookingList.insertBefore(item, bookingList.firstChild);
-    }
-
-    if (feedback) {
-      feedback.innerHTML = `<div class="alert-success" role="status"><strong>Request Logged:</strong> Thank you, ${escapeHtml(name)}! Your repair request has been added to our queue below. Drop off your bicycle at Shop 4, Adum during workshop hours.</div>`;
-    }
-
-    form.reset();
   });
 }
 
-// === SECTION 3: Contact form ===
-// Validate the contact form before submission.
-// Show a success message when all fields are correctly filled in.
-// If a required field is missing, tell the user what needs to be fixed.
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  const nameInput = document.getElementById('contact-name');
-  const emailInput = document.getElementById('contact-email');
-  const messageInput = document.getElementById('contact-message');
-  const nameError = document.getElementById('contact-name-error');
-  const emailError = document.getElementById('contact-email-error');
-  const messageError = document.getElementById('contact-message-error');
-  const feedback = document.getElementById('contact-feedback');
-
-  if (!form || !nameInput || !emailInput || !messageInput) return;
-
-  nameInput.addEventListener('input', function () {
-    clearFieldError(nameInput, nameError);
-  });
-  emailInput.addEventListener('input', function () {
-    clearFieldError(emailInput, emailError);
-  });
-  messageInput.addEventListener('input', function () {
-    clearFieldError(messageInput, messageError);
-  });
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const message = messageInput.value.trim();
-
-    let hasError = false;
-    let firstInvalidField = null;
-
-    if (!name) {
-      setFieldError(nameInput, nameError, 'Please enter your name.');
-      hasError = true;
-      firstInvalidField = nameInput;
-    } else {
-      clearFieldError(nameInput, nameError);
-    }
-
-    if (!email) {
-      setFieldError(emailInput, emailError, 'Please enter your email address.');
-      hasError = true;
-      if (!firstInvalidField) firstInvalidField = emailInput;
-    } else if (!emailRegex.test(email)) {
-      setFieldError(emailInput, emailError, 'Please enter a valid email address (e.g. name@example.com).');
-      hasError = true;
-      if (!firstInvalidField) firstInvalidField = emailInput;
-    } else {
-      clearFieldError(emailInput, emailError);
-    }
-
-    if (!message) {
-      setFieldError(messageInput, messageError, 'Please enter your message.');
-      hasError = true;
-      if (!firstInvalidField) firstInvalidField = messageInput;
-    } else {
-      clearFieldError(messageInput, messageError);
-    }
-
-    if (hasError) {
-      if (feedback) {
-        feedback.innerHTML = '<div class="alert-error" role="alert">Please correct the highlighted fields above before submitting.</div>';
-      }
-      if (firstInvalidField) {
-        firstInvalidField.focus();
-      }
-      return;
-    }
-
-    // Success
-    if (feedback) {
-      feedback.innerHTML = `<div class="alert-success" role="status"><strong>Message Sent:</strong> Thank you, ${escapeHtml(name)}! Kwame has received your message and will reply to <em>${escapeHtml(email)}</em> during workshop hours.</div>`;
-    }
-
-    form.reset();
-  });
-}
-
+// --------------------------------------------------------------------------
+// Initialize All Behaviors
+// --------------------------------------------------------------------------
 function init() {
-  initSkipLink();
-  initMobileMenu();
+  initNavigation();
   initServiceFilter();
-  initBookingForm();
-  initContactForm();
+  initServicePreselection();
+  initRepairForm();
+  initHeroFallback();
+  initYear();
+  initBackToTop();
 }
 
 if (document.readyState === 'loading') {
@@ -378,3 +393,19 @@ if (document.readyState === 'loading') {
 } else {
   init();
 }
+
+// ==========================================================================
+// Preserved Starter Sections for Future Applied JavaScript Modules
+// ==========================================================================
+
+// === SECTION 1: Common questions accordion ===
+// Each .faq-trigger should expand and collapse its paired .faq-body when clicked.
+
+// === SECTION 2: Service request tracker ===
+// When the booking form is submitted, add the customer's name and request
+// to the list below the form. Prevent the page from refreshing on submit.
+
+// === SECTION 3: Contact form ===
+// Validate the contact form before submission.
+// Show a success message when all fields are correctly filled in.
+// If a required field is missing, tell the user what needs to be fixed.
