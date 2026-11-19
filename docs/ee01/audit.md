@@ -94,9 +94,9 @@ Tested via manual keyboard navigation without mouse interaction across Chrome, E
 | **10** | Hero request repair button | `.hero-actions .btn-lime` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter jumps to `#booking` |
 | **11** | Hero explore services button | `.hero-actions .btn-ghost` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter jumps to `#services` |
 | **12–15** | Symptom filter cards | `.problem-card` (01–04) | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter/Space toggles filter; smooth-scrolls |
-| **16** | Reset filter button | `#reset-services` | `outline: 2px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Activates via Enter/Space: restores all 6 cards; JavaScript explicitly shifts keyboard focus back to 1st symptom card (Stop 12, `.problem-card[data-filter="tyre"]`) |
-| **17–22** | Service card action links | `.service-link` (1–6) | `outline: 2px solid var(--forest); text-decoration: underline;` | **12.86:1** | Enter jumps to `#booking` & pre-selects dropdown |
-| **23** | About section location link | `.about-text .text-link` | `outline: 2px solid var(--forest); text-decoration: underline;` | **12.86:1** | Enter jumps to `#visit` |
+| **16** | Reset filter button | `#reset-services` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Activates via Enter/Space: restores all 6 cards; JavaScript explicitly shifts keyboard focus back to 1st symptom card (Stop 12, `.problem-card[data-filter="tyre"]`) |
+| **17–22** | Service card action links | `.service-link` (1–6) | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter jumps to `#booking` & pre-selects dropdown |
+| **23** | About section location link | `.about-text .text-link` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter jumps to `#visit` |
 | **24–27** | Repair booking form controls | `input`, `select`, `textarea` | `border-color: var(--forest); box-shadow: 0 0 0 3px rgba(...)` | **12.86:1** | Standard typing; invalid fields get red ring |
 | **28** | Form submit button | `#repair-form button` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter submits form or focuses first invalid field |
 | **29–33** | FAQ question disclosures | `.faq-list summary` | `outline: 3px solid var(--forest); background: #f2f7ef;` | **12.86:1** | Enter/Space expands and collapses answers |

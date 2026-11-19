@@ -86,33 +86,41 @@ Elevating each foreground and background pair well above the 4.5:1 minimum thres
 - **Who It Affects:** All sighted users, particularly people with cognitive or learning disabilities who rely on clear, consistent visual cues to identify clickable actions.
 
 #### What Was Changed:
-Separated service price displays from interactive action links. In [`index.html`](../../index.html) and [`css/styles.css`](../../css/styles.css), every service card now features an explicit `.service-link` action button with an arrow icon:
+Separated service price displays from interactive action links. In [`index.html`](../../index.html) and [`css/styles.css`](../../css/styles.css), every service card now features an explicit circular `.service-link` action button with an arrow icon and descriptive `aria-label`:
 
 ```html
-<a class="service-link" href="#booking" data-service="Custom Builds &amp; Upgrades">
-  Enquire about a build
-  <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+<a href="#booking" class="service-link" data-service="Custom builds &amp; upgrades"
+  aria-label="Enquire about custom builds and upgrades">
+  <svg class="icon" aria-hidden="true">
+    <use href="#i-arrow-up" />
+  </svg>
 </a>
 ```
 
 ```css
 .service-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--forest);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e7f2db;
+  color: #15382b;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
 }
-.service-link:hover,
-.service-link:focus-visible {
-  color: var(--forest-deep);
+.service-link:hover {
+  background: #cde98c;
+  color: #102b21;
+  transform: scale(1.05);
+}
+.accent-card .service-link {
+  background: #15382b;
+  color: #ffffff;
 }
 ```
 
 #### Why:
-Links now possess distinct affordances (underlines, interactive hover states, action verb copy, directional arrow icon) that clearly distinguish them from non-interactive text.
+Links now possess distinct interactive affordances (distinct circular button container, directional arrow icon, tactile hover scaling, accessible descriptive `aria-label`, and high-contrast 3px focus ring) that clearly distinguish them from static price labels.
 
 #### How It Was Verified by Hand:
 1. Visually compared static starting prices against action links.

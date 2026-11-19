@@ -271,9 +271,9 @@ Tested via manual keyboard navigation in Chrome, Edge, and Firefox without mouse
 | **10** | Hero "Request a repair" | `.hero-actions .btn-lime` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Jumps to `#booking` |
 | **11** | Hero "Explore services" | `.hero-actions .btn-ghost` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Jumps to `#services` catalogue |
 | **12–15** | Symptom Filter Cards | `.problem-card` (01–04) | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Filters catalogue; updates `aria-pressed`; auto-scrolls |
-| **16** | Reset Filter Action | `#reset-services` | `outline: 2px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Activates via Enter/Space: restores all 6 services; JavaScript explicitly shifts keyboard focus back to the 1st symptom card (Stop 12, `.problem-card[data-filter="tyre"]`) |
-| **17–22** | Service Action Links | `.service-link` (1–6) | `outline: 2px solid var(--forest); text-decoration: underline;` | **12.86:1** | Jumps to `#booking` and pre-selects chosen service |
-| **23** | About Location Link | `.about-text .text-link` | `outline: 2px solid var(--forest); text-decoration: underline;` | **12.86:1** | Jumps to `#visit` |
+| **16** | Reset Filter Action | `#reset-services` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Activates via Enter/Space: restores all 6 services; JavaScript explicitly shifts keyboard focus back to the 1st symptom card (Stop 12, `.problem-card[data-filter="tyre"]`) |
+| **17–22** | Service Action Links | `.service-link` (1–6) | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Jumps to `#booking` and pre-selects chosen service |
+| **23** | About Location Link | `.about-text .text-link` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Jumps to `#visit` |
 | **24–27** | Repair Form Inputs | `input`, `select`, `textarea` | `border-color: var(--forest); box-shadow: 0 0 0 3px rgba(...)` | **12.86:1** | Text input; error states highlighted with red ring |
 | **28** | Submit Button | `#repair-form button` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Validates form or launches WhatsApp gateway |
 | **29–33** | FAQ Question Summaries | `.faq-list summary` | `outline: 3px solid var(--forest); background: #f2f7ef;` | **12.86:1** | Toggles answer open/closed via Enter or Space |
