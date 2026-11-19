@@ -49,9 +49,9 @@ The layout follows a mobile-first hierarchy designed for customers searching for
 
 The initial layout structure was wireframed prior to implementation using draw.io to establish component relationships, content priority, and responsive adaptations across viewports.
 
-![Wheelhouse Bike Repair Pre-Implementation Wireframe Sketch](docs/ee01/sketches/Sketch%20Description.drawio.png)
+![Wheelhouse Bike Repair Pre-Implementation Wireframe Sketch](docs/ee01/sketches/sketch-description.drawio.png)
 
-*Direct file link:* [Pre-Implementation Wireframe Sketch (draw.io / PNG)](docs/ee01/sketches/Sketch%20Description.drawio.png)
+*Direct file link:* [Pre-Implementation Wireframe Sketch (draw.io / PNG)](docs/ee01/sketches/sketch-description.drawio.png)
 
 #### Wireframe Structure & Alignment Reasoning:
 - **Mobile Viewport Structure (375px–412px):** Single-column stacked flow; primary call action in top navigation; full-width symptom tiles; stacked service cards; fluid container padding (`calc(100% - 38px)`); persistent bottom call-to-action bar (`.mobile-cta`).
@@ -243,11 +243,38 @@ Built with semantic `<details>` and `<summary>` elements, styled with clear focu
 }
 ```
 
-#### 2. Visible Focus Indicators (WCAG 2.4.7 & 2.4.11)
+#### 2. Visible Focus Indicators & Sequential Tab-Order Results (WCAG 2.4.3 & 2.4.7)
+
+All interactive elements feature unmistakable focus styling exceeding WCAG Level AA/AAA requirements:
 - **Light Surfaces:** `outline: 3px solid var(--forest); outline-offset: 3px;` (**12.86:1** contrast).
 - **Dark Surfaces (`#visit`, `.footer`):** `outline: 3px solid var(--lime) !important; outline-offset: 3px !important;` (**10.05:1** to **12.63:1** contrast).
 - **Header Navigation Links:** `color: #102b21; outline: 2px solid var(--forest); outline-offset: 4px; border-radius: 3px;`.
+- **FAQ Summaries:** `outline: 3px solid var(--forest); outline-offset: 2px; background: #f2f7ef; color: var(--forest); border-radius: 4px;`.
 - **Floating "Back to top" Button:** `outline: 3px solid var(--forest); box-shadow: 0 0 0 5px var(--lime);`.
+- **Form Inputs:** `border-color: var(--forest); box-shadow: 0 0 0 3px rgba(21, 56, 43, 0.15);` (Error: `border-color: #b3261e; box-shadow: 0 0 0 3px rgba(179, 38, 30, 0.2);`).
+
+##### Verified Sequential Tab-Order Navigation Result:
+Tested via manual keyboard navigation in Chrome, Edge, and Firefox without mouse interaction:
+
+| Step / Tab Stop | Interactive Component | Element Selector | Focus Indicator Style Applied | Contrast Ratio | Operability |
+| :---: | :--- | :--- | :--- | :---: | :--- |
+| **1** | Skip to Content Bypass | `.skip-link` | Slides down to `top: 12px`, `3px solid var(--forest)` | **12.86:1** | Activates via Enter; jumps focus directly to `#main` |
+| **2** | Brand / Workshop Logo | `a.brand` | `outline: 2px solid var(--forest); outline-offset: 4px;` | **12.86:1** | Navigates to `#top` |
+| **3** | Mobile Menu Toggle *(Mobile)* | `button.menu-toggle` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Expands/collapses navigation drawer with Enter/Space |
+| **4–8** | Primary Navigation Links | `.main-nav > a` | `outline: 2px solid var(--forest); color: #102b21;` | **12.86:1** | Smooth-scrolls to target sections |
+| **9** | Header CTA Button | `.nav-cta` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Jumps to `#booking` form |
+| **10** | Hero "Request a repair" | `.hero-actions .btn-lime` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Jumps to `#booking` |
+| **11** | Hero "Explore services" | `.hero-actions .btn-ghost` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Jumps to `#services` catalogue |
+| **12–15** | Symptom Filter Cards | `.problem-card` (01–04) | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Filters catalogue; updates `aria-pressed`; auto-scrolls |
+| **16** | Reset Filter Action | `#reset-services` | `outline: 2px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Restores all 6 services; shifts focus to 1st symptom card |
+| **17–22** | Service Action Links | `.service-link` (1–6) | `outline: 2px solid var(--forest); text-decoration: underline;` | **12.86:1** | Jumps to `#booking` and pre-selects chosen service |
+| **23** | About Location Link | `.about-text .text-link` | `outline: 2px solid var(--forest); text-decoration: underline;` | **12.86:1** | Jumps to `#visit` |
+| **24–27** | Repair Form Inputs | `input`, `select`, `textarea` | `border-color: var(--forest); box-shadow: 0 0 0 3px rgba(...)` | **12.86:1** | Text input; error states highlighted with red ring |
+| **28** | Submit Button | `#repair-form button` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Validates form or launches WhatsApp gateway |
+| **29–33** | FAQ Question Summaries | `.faq-list summary` | `outline: 3px solid var(--forest); background: #f2f7ef;` | **12.86:1** | Toggles answer open/closed via Enter or Space |
+| **34** | Google Maps Directions | `#visit .btn` | `outline: 3px solid var(--lime) !important;` | **10.05:1** | Opens external directions in new tab (`rel="noopener"`) |
+| **35–41** | Footer Navigation Links | `.footer a` | `outline: 3px solid var(--lime) !important;` | **12.63:1** | Jumps to page anchors or dials telephone |
+| **42** | Floating Back-to-Top | `#back-to-top` | `outline: 3px solid var(--forest); box-shadow: 0 0 0 5px var(--lime);` | **12.86:1** | Scrolls to `#top`; shifts focus to `#top` |
 
 #### 3. Skip-to-Content Bypass Link
 ```html
@@ -305,7 +332,7 @@ Any note regarding "further testing" in documentation refers specifically to phy
 | :--- | :--- |
 | [Live Website (GitHub Pages)](https://zakari999.github.io/wheelhouse-bike-repair/) | Live responsive, accessible deployment of the rebuilt workshop website |
 | [Original Website Diagnosis](docs/ee01/diagnosis.md) | Identified defects, root causes, and business impact of the starter site *(Analyse)* |
-| [Pre-Implementation Layout Sketch](docs/ee01/sketches/Sketch%20Description.drawio.png) | Pre-build wireframe structure, component hierarchy, and mobile-first planning |
+| [Pre-Implementation Layout Sketch](docs/ee01/sketches/sketch-description.drawio.png) | Pre-build wireframe structure, component hierarchy, and mobile-first planning |
 | [Audit Written for Pair (Jerry Akuaku's Site)](docs/ee01/audit-of-pair-site.md) | Accessibility audit written for pair covering WCAG A/AA, user impact, and prioritized findings *(Analyse, Understand, Evaluate)* |
 | [Audit Received from Pair (Jeremiah Narteh Akuaku)](docs/peer-accessibility-audit.md) | External peer accessibility audit received from pair evaluating our starter site |
 | [Write-up of Fixes & Hand Verification](docs/ee01/fixes.md) | Detailed record of what was changed, why, and how every peer audit issue was verified by hand *(Apply)* |

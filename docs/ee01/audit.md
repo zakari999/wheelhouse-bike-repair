@@ -74,11 +74,35 @@ The original website relied heavily on unsemantic `<div>` containers, non-functi
   ```
   Addresses Finding 1 of the peer audit. When focused, the entire summary bar illuminates with a soft green background tint (`#f2f7ef`) and a crisp `3px solid var(--forest)` outline, ensuring focus is never clipped.
 
-#### 4. High-Contrast Keyboard Focus Indicators (WCAG 2.4.7 & 2.4.11)
+#### 4. High-Contrast Keyboard Focus Indicators & Verified Tab Order (WCAG 2.4.3 & 2.4.7)
 - **Light Surfaces:** `outline: 3px solid var(--forest); outline-offset: 3px;` (**12.86:1** contrast).
 - **Dark Surfaces (`#visit`, `.footer`):** `outline: 3px solid var(--lime) !important; outline-offset: 3px !important;` (**10.05:1** to **12.63:1** contrast).
 - **Header Nav Links:** Tabbing into header links applies `color: #102b21; outline: 2px solid var(--forest); outline-offset: 4px; border-radius: 3px;`.
+- **FAQ Summaries:** `outline: 3px solid var(--forest); outline-offset: 2px; background: #f2f7ef; color: var(--forest); border-radius: 4px;`.
 - **Floating Back-to-Top Button:** Double focus ring (`outline: 3px solid var(--forest); box-shadow: 0 0 0 5px var(--lime);`).
+
+##### Verified Sequential Tab-Order Results:
+Tested via manual keyboard navigation without mouse interaction across Chrome, Edge, and Firefox:
+
+| Tab Stop # | Component / Focus Target | Element | Focus Indicator Applied | Contrast Ratio | Keyboard Operability |
+| :---: | :--- | :--- | :--- | :---: | :--- |
+| **1** | Skip-to-content bypass | `.skip-link` | Slides down to `top: 12px`, `3px solid var(--forest)` | **12.86:1** | Enter jumps focus to `#main` |
+| **2** | Logo link | `a.brand` | `outline: 2px solid var(--forest); outline-offset: 4px;` | **12.86:1** | Enter navigates to `#top` |
+| **3** | Mobile menu button *(Mobile)* | `button.menu-toggle` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter/Space toggles drawer; Escape closes |
+| **4–8** | Primary navigation links | `.main-nav > a` | `outline: 2px solid var(--forest); color: #102b21;` | **12.86:1** | Enter jumps to target section anchor |
+| **9** | Header booking CTA | `.nav-cta` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter jumps to `#booking` |
+| **10** | Hero request repair button | `.hero-actions .btn-lime` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter jumps to `#booking` |
+| **11** | Hero explore services button | `.hero-actions .btn-ghost` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter jumps to `#services` |
+| **12–15** | Symptom filter cards | `.problem-card` (01–04) | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter/Space toggles filter; smooth-scrolls |
+| **16** | Reset filter button | `#reset-services` | `outline: 2px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter/Space resets all 6 cards; shifts focus |
+| **17–22** | Service card action links | `.service-link` (1–6) | `outline: 2px solid var(--forest); text-decoration: underline;` | **12.86:1** | Enter jumps to `#booking` & pre-selects dropdown |
+| **23** | About section location link | `.about-text .text-link` | `outline: 2px solid var(--forest); text-decoration: underline;` | **12.86:1** | Enter jumps to `#visit` |
+| **24–27** | Repair booking form controls | `input`, `select`, `textarea` | `border-color: var(--forest); box-shadow: 0 0 0 3px rgba(...)` | **12.86:1** | Standard typing; invalid fields get red ring |
+| **28** | Form submit button | `#repair-form button` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter submits form or focuses first invalid field |
+| **29–33** | FAQ question disclosures | `.faq-list summary` | `outline: 3px solid var(--forest); background: #f2f7ef;` | **12.86:1** | Enter/Space expands and collapses answers |
+| **34** | Google Maps directions link | `#visit .btn` | `outline: 3px solid var(--lime) !important;` | **10.05:1** | Enter opens Google Maps in new tab |
+| **35–41** | Footer navigation links | `.footer a` | `outline: 3px solid var(--lime) !important;` | **12.63:1** | Enter jumps to anchor or dials telephone |
+| **42** | Floating "Back to top" | `#back-to-top` | `outline: 3px solid var(--forest); box-shadow: 0 0 0 5px var(--lime);` | **12.86:1** | Enter scrolls to top and returns focus to `#top` |
 
 #### 5. Persistent Form Validation & Screen-Reader Feedback (WCAG 3.3.1, 3.3.2, 4.1.3)
 - `<form id="repair-form" novalidate>` prevents fleeting native browser balloons.
