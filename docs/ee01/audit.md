@@ -179,7 +179,7 @@ The fluid layout is governed by 5 explicit breakpoints in [`css/styles.css`](../
 
 ## 5. Visual Consistency & Implemented Design System
 
-All visual rules are consolidated in [`css/styles.css`](../../css/styles.css) (976 lines):
+All visual rules are consolidated in [`css/styles.css`](../../css/styles.css):
 
 | Token / Category | Exact Value | Purpose in Workshop Identity |
 | :--- | :--- | :--- |
@@ -202,7 +202,7 @@ All visual rules are consolidated in [`css/styles.css`](../../css/styles.css) (9
 1. **First: Mobile Usability & Performance:** Replaced the non-responsive 960px container with a fluid layout and lightweight CSS/JS without external frameworks.
 2. **Second: Transparent Service & Direct Contact:** Positioned direct phone and WhatsApp booking pathways throughout the user journey.
 3. **Third: Customer Confidence & Accessibility:** Maintained WCAG AAA contrast, clear focus indicators, persistent form feedback, and honest indicative pricing.
-4. **Fourth: Maintainability:** Clean, documented codebase with a stylesheet kept under 1,000 lines (currently **976 lines**).
+4. **Fourth: Maintainability:** Clean, modular stylesheet architecture organized into design tokens, base resets, layout containers, component patterns, and responsive media queries.
 
 ---
 

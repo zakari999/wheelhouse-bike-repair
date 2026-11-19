@@ -161,19 +161,16 @@ textarea:focus-visible {
 .main-nav { display: flex; align-items: center; gap: 27px; margin-left: auto; }
 .main-nav > a:not(.nav-mobile-action) {
   font-weight: 700;
-  color: #244638;
-  color: #2e5241;
+  color: var(--ink-2);
   font-size: 14px;
-  transition: color 0.2s;
   transition: color 0.2s ease;
 }
-.main-nav > a:hover { color: #15382b; }
 .main-nav > a:hover,
-.main-nav > a:focus,
-.main-nav > a:focus-visible {
-  color: #102b21;
+.main-nav > a:focus {
+  color: var(--forest-deep);
 }
 .main-nav > a:focus-visible {
+  color: var(--forest-deep);
   outline: 2px solid var(--forest);
   outline-offset: 4px;
   border-radius: 3px;
