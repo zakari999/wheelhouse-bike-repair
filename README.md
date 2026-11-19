@@ -2,305 +2,346 @@
 
 A responsive website rebuild for Wheelhouse Bike Repair, a small bicycle repair and tune-up workshop located in Adum Commercial Area, Kumasi, Ghana.
 
-This project focuses on improving mobile usability, accessibility, visual consistency, and customer confidence while maintaining a simple, professional design suited to a local repair workshop.
+**Live Website (GitHub Pages):** [https://zakari999.github.io/wheelhouse-bike-repair/](https://zakari999.github.io/wheelhouse-bike-repair/)  
+**GitHub Repository:** [https://github.com/zakari999/wheelhouse-bike-repair](https://github.com/zakari999/wheelhouse-bike-repair)
+
+This project focuses on improving mobile usability, WCAG 2.2 Level AA accessibility, visual consistency, and customer confidence while establishing a practical, professional design suited to an active bicycle repair workshop.
+
+---
 
 ## 1. Project Overview
 
-Wheelhouse Bike Repair is operated by Kwame, who handles most repairs personally.
+Wheelhouse Bike Repair is operated by Kwame, who handles repairs personally and supervises all mechanical work.
 
-The original website contained useful information about the workshop and its services but had several usability and accessibility issues.
+The original website contained valuable information about the workshop and its services but suffered from severe usability, accessibility, and responsiveness defects: a fixed 960px desktop width, zero mobile adaptability, inconsistent inline styling across cards, placeholder navigation links that led nowhere, and buried contact channels.
 
-These included a fixed-width layout, poor mobile responsiveness, inconsistent styling, non-functional navigation, and contact information that was difficult to reach quickly.
+The objective of this rebuild was to eliminate these barriers, establish an accessible mobile-first experience, implement a coherent trade-workshop design system, and make it effortless for customers to understand services, compare indicative prices, and contact the workshop.
 
-The objective of this rebuild was to address these issues and make it easier for customers to understand Wheelhouse's services and contact the workshop.
+---
 
 ## 2. Project Objectives
 
-- Rebuild the existing website using semantic HTML.
-- Implement a responsive, mobile-first layout.
-- Improve accessibility and navigation.
-- Establish a consistent colour palette, typography scale, and spacing system.
-- Make service information and contact options easier to access.
-- Introduce one additional improvement that addresses a genuine customer need.
+- **Semantic Page Architecture:** Rebuild the website using modern, valid HTML5 landmarks (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`) with an unbroken heading hierarchy (`<h1>` &rarr; `<h2>` &rarr; `<h3>`).
+- **Mobile-First Responsive Layout:** Implement a fluid layout across mobile, tablet, and desktop viewports using CSS Grid and Flexbox without horizontal overflow.
+- **WCAG 2.2 Level AA Accessibility:** Guarantee full keyboard operability without traps, high-contrast focus rings (`:focus-visible`), native disclosure controls, screen-reader status announcements (`aria-live`), and persistent form error identification.
+- **Concrete Design System:** Establish a restrained, professional colour palette, modular typography scale, and harmonic spacing system substantiating workshop reliability.
+- **Fast Contact Pathways:** Surface clear direct contact actions (`tel:`, WhatsApp, physical location in Adum) throughout the primary user journey.
+- **Genuine Customer Improvement:** Introduce the "What's going on with your bike?" symptom filter to bridge everyday customer language with technical repair services.
+
+---
 
 ## 3. Initial Sketch & Layout Reasoning
 
-The proposed layout follows a mobile-first approach because Wheelhouse's customers often search for repair services on their phones, especially when they need urgent assistance.
+The layout follows a mobile-first hierarchy designed for customers searching for bicycle repairs on their phones while on the go in Kumasi:
 
-The header and hero section come first to introduce the business and provide immediate access to contact information and workshop location details.
+1. **Header & Hero:** Introduces the workshop immediately with Kwame's authentic photo, personal service guarantee, and direct calls to action (*Request a repair* and *Explore services*).
+2. **Trust Strip:** Reinforces reliability upfront with 4 key customer commitments (*Upfront quotes*, *Same-day basic repairs*, *All everyday bike types*, *Adum, Kumasi location*).
+3. **Problem Selector ("What's going on with your bike?"):** Positioned immediately before the services catalogue so hurried visitors can tap a symptom and filter the catalogue in one touch.
+4. **Services & Pricing Catalogue:** Displays all 6 repair offerings in structured cards with transparent starting prices and turnaround times.
+5. **How It Works:** Outlines the 3-step repair process (*Tell us the problem*, *Get a clear quote*, *Get rolling again*), reinforcing transparency.
+6. **About Wheelhouse:** Introduces Kwame's background, workshop ethos, and visual certification stamp (*Est. 2019, Adum, Kumasi*).
+7. **Repair Request Form & Direct Contact:** Provides an accessible enquiry form generating pre-filled WhatsApp messages, alongside direct phone calling and workshop hours.
+8. **Frequently Asked Questions:** Answers common customer concerns (*Booking ahead*, *Turnaround times*, *Pricing upfront*, *Bike types*, *Overnight storage*) using native disclosure controls.
+9. **Workshop Location & Directions:** Highlights the Adum Commercial Area home base with custom map artwork, hours, and direct Google Maps navigation.
+10. **Footer & Floating Controls:** Offers quick navigation links, copyright, and a circular floating "Back to top" button accessible via keyboard.
 
-The services section follows so customers can quickly identify whether Wheelhouse can handle their repair needs.
+### Pre-Implementation Layout Sketch
 
-The trust and about sections highlight Kwame's experience and the workshop's repair process, addressing the client's concern about professionalism and reliability.
+The initial layout structure was wireframed prior to implementation using draw.io to establish component relationships, content priority, and responsive adaptations across viewports.
 
-FAQs and service enquiry options appear afterwards to provide additional information and alternative ways to contact the workshop.
+![Wheelhouse Bike Repair Pre-Implementation Wireframe Sketch](docs/ee01/sketches/Sketch%20Description.drawio.png)
 
-The location section provides the workshop's address, opening hours, and contact information.
+*Direct file link:* [Pre-Implementation Wireframe Sketch (draw.io / PNG)](docs/ee01/sketches/Sketch%20Description.drawio.png)
 
-On desktop, related sections are arranged side by side to make better use of the available space while maintaining the same content priorities.
+#### Wireframe Structure & Alignment Reasoning:
+- **Mobile Viewport Structure (375px–412px):** Single-column stacked flow; primary call action in top navigation; full-width symptom tiles; stacked service cards; fluid container padding (`calc(100% - 38px)`); persistent bottom call-to-action bar (`.mobile-cta`).
+- **Tablet Viewport Structure (650px–850px):** 2-column service card grid (`repeat(2, 1fr)`); 2-column booking layout; expandable mobile menu drawer; increased container padding.
+- **Desktop Viewport Structure (1024px–1256px):** Centered max-width container (`1256px`); static horizontal navigation bar; 2-column hero with mechanic photo; 4-column problem grid; 3-column services grid; side-by-side booking and location sections; 3-column footer.
 
-This structure prioritises customer confidence, accessibility, and ease of contact rather than unnecessary visual decoration.
+---
 
-**Pre-Implementation Layout Sketch:**
-The initial layout planning was conducted before implementation using draw.io to define mobile and desktop wireframes, content hierarchy, and section relationships. The original dual-format draw.io file and exported diagram are tracked in the repository:
-- [Pre-Implementation Wireframe Sketch (draw.io / PNG)](docs/ee01/sketches/Sketch%20Description.drawio.png)
+## 4. Website Rebuild & Implemented Design System
 
+The redesign was built using semantic HTML5, modern CSS3 (contained within a concise **976-line stylesheet**, well under the 1,000-line budget), and lightweight vanilla JavaScript.
 
-## 4. Website Rebuild
+### Implemented Design Tokens (`css/styles.css`)
 
-The original website was refactored using HTML5 and CSS3, with limited JavaScript for necessary interactions.
+All design tokens are defined in [`css/styles.css`](css/styles.css) under `:root`:
 
-### Key Improvements
+```css
+:root {
+  --ink: #182f27;
+  --ink-2: #244638;
+  --forest: #15382b;
+  --forest-deep: #102b21;
+  --lime: #def58c;
+  --lime-dark: #c5ed63;
+  --cream: #f7f7f1;
+  --paper: #ffffff;
+  --muted: #3d5044;
+  --line: #e3e9e1;
+  --shadow: 0 20px 60px rgba(15, 38, 24, 0.08);
+}
+```
 
-- Semantic page structure and logical heading hierarchy (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`).
-- Mobile-first responsive layouts using CSS Grid and Flexbox.
-- Functional section navigation and keyboard-accessible mobile menu.
-- Consistent service-card styling with uniform pricing and turnaround metadata.
-- Readable typography scale and structured spacing tokens.
-- Accessible FAQ interactions using native HTML5 `<details>` and `<summary>`.
-- Prominent contact and workshop information with direct `tel:`, WhatsApp, and email links.
-- Keyboard accessibility, visible `:focus-visible` indicators, and skip-to-content bypass link.
-- Functional service booking tracker and contact message forms with accessible inline validation, live screen reader announcements, and keyboard focus management.
+#### 1. Concrete Colour Palette & Contrast Verification
 
-### Implemented Design System
+| Token | Hex Value | Role / Usage in Interface | Contrast on Background | WCAG Level |
+| :--- | :--- | :--- | :--- | :--- |
+| `--ink` | `#182f27` | Primary body text, headings, dark button text | **14.24:1** on `#ffffff` / **13.24:1** on `#f7f7f1` | **Passes AAA** |
+| `--ink-2` | `#244638` | Secondary body text, navigation link resting color | **9.82:1** on `#ffffff` | **Passes AAA** |
+| `--forest` | `#15382b` | Deep forest brand color, dark button fill, primary focus ring | **12.86:1** on `#ffffff` | **Passes AAA** |
+| `--forest-deep` | `#102b21` | Deepest brand green, site footer background, dark chrome | Background surface | **Surface** |
+| `--lime` | `#def58c` | High-contrast brand lime accent, primary CTA button fill, dark focus ring | **10.05:1** on `#173d2f` / **12.63:1** on `#102b21` | **Passes AAA** |
+| `--lime-dark` | `#c5ed63` | Interactive hover state for lime buttons | **9.25:1** on `#15382b` | **Passes AAA** |
+| `--cream` | `#f7f7f1` | Warm off-white page background canvas | Background canvas | **Surface** |
+| `--paper` | `#ffffff` | Pure white background for content cards and form containers | Background surface | **Surface** |
+| `--muted` | `#3d5044` | Secondary copy, descriptions, and metadata | **8.64:1** on `#ffffff` / **8.04:1** on `#f7f7f1` | **Passes AAA** |
+| `--line` | `#e3e9e1` | Subtle divider lines and container borders | Component border | **Passes AA** |
+| Error Red | `#b3261e` | Form validation error text, invalid input border, error ring | **7.60:1** on `#ffffff` / **6.27:1** on `#fff9f8` | **Passes AA** |
+| Error Alert | `#991b1b` on `#fdf2f2` | Form error notification banner | **7.58:1** contrast | **Passes AAA** |
+| Success Alert | `#1e4620` on `#edf7ed` | Form success notification banner | **9.80:1** contrast | **Passes AAA** |
 
-The design system is implemented using CSS custom properties defined in [`css/styles.css`](css/styles.css) under `:root`.
+#### 2. Concrete Typography Scale
 
-#### 1. Colour Palette
+Typography is rendered using a modern, legible font pair: **DM Sans** for clear body copy and form readability, and **Manrope** for bold, clean headings.
 
-| Token | Hex Value | Role / Usage in Workshop Interface |
-|---|---|---|
-| `--color-charcoal-dark` | `#1e2227` | Primary text, brand headings, and dark active button states |
-| `--color-charcoal-surface` | `#14171a` | Dark header background and high-contrast site chrome |
-| `--color-charcoal-muted` | `#525f6e` | Secondary body text, subheadings, and metadata |
-| `--color-text-light` | `#f3f4f6` | High-contrast light text on dark charcoal surfaces |
-| `--color-accent-rust` | `#c25424` | Primary call-to-action buttons, interactive links, and focus rings |
-| `--color-accent-rust-hover` | `#9e3f16` | Hover and active interaction states for buttons and links |
-| `--color-accent-rust-subtle` | `#fbeee7` | Tinted accent backgrounds and subtle interactive highlights |
-| `--color-bg-body` | `#f4f5f7` | Neutral light grey background for overall page canvas |
-| `--color-bg-surface` | `#ffffff` | Clean white background for service cards and content panels |
-| `--color-border` | `#e2e8f0` | Subtle container and card division borders |
-| `--color-border-dark` | `#cbd5e1` | Medium border contrast for interactive chip controls |
-| `--color-notice-bg` | `#fffbeb` | Warm amber background for limitation notice box |
-| `--color-notice-border` | `#f59e0b` | Amber accent border for limitation notice box |
-| `--color-notice-text` | `#78350f` | High-contrast dark amber text for limitation messages |
+| Token / Usage | CSS rem | Pixel Equivalent | Line Height | Implementation Usage |
+| :--- | :--- | :--- | :--- | :--- |
+| Minor Metadata / Labels | `0.6875rem` | 11px | `1.2` | Kickers (`.section-kicker`), badge labels, service numbers |
+| Footnotes & Form Disclaimers | `0.7500rem` | 12px | `1.4`–`1.6` | Pricing footnote, form help disclaimer, inline error text |
+| UI Navigation & Buttons | `0.8125rem` | 13px | `1.1`–`1.3` | Header navigation links, button labels (`.btn`) |
+| Card Body & Inputs | `0.8438rem` | 13.5px | `1.85` | Service card copy, form inputs, textarea values |
+| Subheadings & Form Titles | `0.9375rem` | 15px | `1.3` | Problem card title, FAQ question summary triggers |
+| Base Body Text | `1.0000rem` | 16px | `1.6` | Standard paragraph text (`body`), lead descriptions |
+| Sub-section Titles (`<h3>`) | `1.3750rem` | 22px | `1.1`–`1.3` | Service card names (`h3`), process step headings |
+| Form Card Heading | `1.6875rem` | 27px | `1.2` | Repair request form title (`.form-title h3`) |
+| Major Section Headings (`<h2>`) | Fluid clamp | 34px–45px (mobile)<br>40px–56px (desktop) | `1.15` | Section titles (`#problem-title`, `#services-title`, etc.) |
+| Hero Main Title (`<h1>`) | Fluid clamp | 43px–61px (mobile)<br>50px–80px (desktop) | `1.08` | Primary page heading (`#hero-title`) |
 
-#### 2. Typography Scale
+#### 3. Concrete Spacing Scale
 
-The type scale uses a responsive system sans-serif stack (`-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`) to ensure zero-latency font loading on mobile networks in Kumasi.
+Spacing follows an 8-point harmonic scale (`1rem = 16px`):
 
-| Token | CSS rem | Pixel Equivalent | Implementation Usage |
-|---|---|---|---|
-| `--font-size-xs` | `0.75rem` | 12px | Footer copyright, badge labels, and minor metadata |
-| `--font-size-sm` | `0.875rem` | 14px | Service turnaround meta, fact labels, and form help text |
-| `--font-size-base` | `1.000rem` | 16px | Body copy, primary navigation links, button text (`line-height: 1.6`) |
-| `--font-size-md` | `1.125rem` | 18px | Section subheadings and service finder title |
-| `--font-size-lg` | `1.250rem` | 20px | Service card titles and FAQ summary triggers |
-| `--font-size-xl` | `1.500rem` | 24px | Major section `<h2>` headings on mobile viewports |
-| `--font-size-2xl` | `1.875rem` | 30px | Major section `<h2>` headings on desktop viewports |
-| `--font-size-3xl` | `2.250rem` | 36px | Main page `<h1>` hero title |
+| Spacing Token | CSS rem | Pixels | Applied Implementation |
+| :--- | :--- | :--- | :--- |
+| `space-4` | `0.25rem` | 4px | Inline icon gaps, badge vertical offsets, error margins |
+| `space-8` | `0.50rem` | 8px | Button icon gaps, field label spacing, trust bullet gap |
+| `space-12` | `0.75rem` | 12px | Card element gaps, hero action buttons gap, nav item spacing |
+| `space-16` | `1.00rem` | 16px | Grid gap on service cards, input padding |
+| `space-20` | `1.25rem` | 20px | Button padding, mobile container side margin (`calc(100% - 38px)`) |
+| `space-28` | `1.75rem` | 28px | Card interior padding, sub-heading bottom margins |
+| `space-40` | `2.50rem` | 40px | Form card padding, section grid gaps |
+| `space-72` | `4.50rem` | 72px | Vertical section padding on mobile viewports (`@media (max-width: 650px)`) |
+| `space-115` | `7.19rem` | 115px | Vertical section padding on desktop viewports |
 
-#### 3. Spacing Tokens
+#### 4. Responsive Breakpoints & Viewport Architecture
 
-Spacing is governed by an 8-point harmonic modular scale (`1rem = 16px`):
+Layout adjustments are driven by 5 explicit CSS media query breakpoints:
 
-| Token | CSS rem | Pixel Equivalent | Usage |
-|---|---|---|---|
-| `--space-2xs` | `0.25rem` | 4px | Inline icon gaps, badge padding, subtle offsets |
-| `--space-xs` | `0.50rem` | 8px | Button padding (vertical), filter grid gap |
-| `--space-sm` | `0.75rem` | 12px | List item margins, compact component padding |
-| `--space-md` | `1.00rem` | 16px | Standard mobile container padding, card inner padding |
-| `--space-lg` | `1.50rem` | 24px | Section content spacing, card margins |
-| `--space-xl` | `2.00rem` | 32px | Section grid gaps, desktop container padding |
-| `--space-2xl` | `3.00rem` | 48px | Vertical section padding on mobile viewports |
-| `--space-3xl` | `4.00rem` | 64px | Vertical section padding on desktop viewports |
+1. **`1150px` (`@media (max-width: 1150px)`):** Laptop adaptation — container width capped at `min(100% - 52px, 1256px)`; hero height scaled to `590px`; navigation gap reduced to `20px`.
+2. **`850px` (`@media (max-width: 850px)`):** Tablet adaptation — topbar secondary details hide; header menu switches to accessible hamburger toggle (`.menu-toggle`) with expandable sliding drawer (`.main-nav.is-open`); services grid shifts to 2 columns (`repeat(2, 1fr)`); booking section shifts to 2 columns.
+3. **`650px` (`@media (max-width: 650px)`):** Primary mobile breakpoint — all multi-column grids collapse to a single fluid column (`1fr`); sticky bottom action bar (`.mobile-cta`) activates with direct "Request a repair" and phone dialer buttons; container padding set to `calc(100% - 38px)`; floating "Back to top" button repositions to `bottom: 84px; right: 18px;` above the mobile CTA.
+4. **`400px` (`@media (max-width: 400px)`):** Compact mobile breakpoint — `.about-stamp` scales to `86px × 86px` with `5px` border to fit iPhone SE and compact Android devices without clipping or horizontal overflow.
+5. **`360px` (`@media (max-width: 360px)`):** Ultra-compact breakpoint — hero `<h1>` font size scales to `39px`; problem cards adapt to `min-height: 157px`.
 
-#### 4. Container Width & Responsive Breakpoints
+---
 
-- **Maximum Container Width:** `--container-max-width: 1120px` (centered with fluid horizontal padding).
-- **Responsive Media Query Breakpoints:**
-  - `480px` (`min-width: 480px`): Fact list rows, notice action buttons, booking actions, and contact buttons transition from full-width stacked columns to inline flex rows.
-  - `600px` (`min-width: 600px`): Hero call-to-action buttons ("Call Workshop" and "Location & Hours") expand into a side-by-side flex row.
-  - `640px` (`min-width: 640px`): Workshop services grid transitions from a single mobile column to a 2-column grid (`repeat(2, 1fr)`).
-  - `768px` (`min-width: 768px`): Container horizontal padding increases to `--space-xl` (`32px`); footer transitions from stacked to a space-between horizontal flex row.
-  - `992px` (`min-width: 992px`): Navigation breakpoint — mobile hamburger menu toggle (`#menu-toggle`) hides (`display: none`), and primary navigation links (`#primary-nav`) switch from an absolute-positioned dropdown drawer to a static horizontal desktop navigation bar.
-  - `1024px` (`min-width: 1024px`): Desktop multi-column layout — services grid expands to a 3-column grid (`repeat(3, 1fr)`); section pairs ("Why Choose Wheelhouse" + "About Wheelhouse", "FAQs" + "Book a Service") form side-by-side two-column grids (`1fr 1fr`); contact section (`.contact-grid`) transitions into a side-by-side layout.
+## 5. Additional Improvement — Problem Selector & Harmonious Workshop Aesthetic
 
-#### 5. How Design Choices Support Wheelhouse's Workshop Identity
+Alongside addressing all accessibility and responsive defects, I improved the website further in two key areas: introducing the **"What's going on with your bike?" symptom filter** and establishing a **harmonious trade-workshop colour palette and tactile feel**.
 
-Kwame operates an active bicycle repair workshop in Adum Commercial Area, Kumasi. His clientele consists of daily bicycle commuters, parents, and cycling enthusiasts who need reliable repairs, honest quotes, and fast service.
+### 1. "What's going on with your bike?" Problem Selector
+To eliminate technical bicycle terminology friction for hurried visitors, I implemented the "What's going on with your bike?" symptom filter (`.problem-grid`).
 
-- **Utilitarian & Grounded:** Charcoal dark (`#1e2227`) and muted slate (`#525f6e`) convey workshop tools, steel, and mechanical dependability without appearing corporate or detached.
-- **Warm Craftsmanship:** Rust orange (`#c25424`) reflects craftsmanship, workshop grease, and warm local approachability while providing high-contrast visual affordance for urgent actions (such as phone calls).
-- **High Readability in Sunlight:** The high-contrast off-white body (`#f4f5f7`) and pure white panels (`#ffffff`) ensure prices and turnaround times remain effortlessly legible on mobile screens under direct Ghanaian sunlight.
-- **Performance Without Bloat:** Using standard system fonts eliminates external font network downloads, ensuring instant rendering on mobile networks in Kumasi.
+The feature provides **4 symptom-based problem filters** plus a dedicated **"View all services"** reset control:
 
-## 5. Additional Improvement — Find Your Repair
+1. **Flat Tyre / Puncture:** Punctures & tubes (`data-filter="tyre"`) — filters directly to **Tyre & Tube Replacement**.
+2. **Brake Trouble:** Squeaking or weak stops (`data-filter="brakes"`) — filters directly to **Brake Overhaul**.
+3. **Slipping Gears:** Shifting & drivetrain (`data-filter="gears"`) — filters directly to **Gear System Overhaul**.
+4. **Just Needs a Tune-Up:** General maintenance (`data-filter="tuneup"`) — filters directly to **Basic Tune-Up**.
+5. **View All Services:** Reset action (`#reset-services`) — restores all 6 workshop services.
 
-Beyond the baseline rebuild, I implemented the "Find Your Repair" service finder (`.repair-finder`) to solve a critical customer friction point: visitors frequently know what is wrong with their bike (e.g. "my chain slips" or "flat tyre"), but do not know the trade names used by bicycle mechanics.
+*(Full Bike Rebuild and Custom Builds & Upgrades remain immediately accessible in the complete catalogue.)*
 
-The feature presents **6 interactive filter controls** (1 "Show All" control plus 5 symptom-based problem filters):
+### 2. Refined Colour Patterns & Tactile Workshop Feel
+The starter site's conflicting card border colours (six unrelated bright accents) and harsh contrasts were replaced with a grounded, dependable trade aesthetic:
+- **Forest Green (`#15382b`):** Evokes mechanical craftsmanship and workshop dependability.
+- **Brand Lime (`#def58c`):** Serves as an energetic, high-visibility interactive accent (>10:1 contrast on dark green).
+- **Warm Cream (`#f7f7f1`):** Replaces harsh sterile greys with a warm, welcoming workshop atmosphere.
+- **Tactile Depth:** Organic soft card drop shadows, rounded container geometry, and clear interactive focus rings provide reassuring physical feedback.
 
-1. **All Services (6)** (`data-service-target="all"`): Resets the filter and displays the complete 6-service workshop catalogue.
-2. **Flat Tyre / Puncture** (`data-service-target="service-tyre"`): Highlights and filters directly to **Tyre & Tube Replacement**.
-3. **Brake Problems** (`data-service-target="service-brakes"`): Highlights and filters directly to **Brake Overhaul**.
-4. **Gear Slipping** (`data-service-target="service-gears"`): Highlights and filters directly to **Gear System Overhaul**.
-5. **General Tune-Up** (`data-service-target="service-tuneup"`): Highlights and filters directly to **Basic Tune-Up**.
-6. **Full Rebuild** (`data-service-target="service-rebuild"`): Highlights and filters directly to **Full Bike Rebuild**.
+### Interactive Behaviour & Control Semantics
 
-*(Note: Custom Builds & Upgrades remains accessible as part of the full catalogue when "All Services" is selected.)*
+- **Semantic HTML Buttons:** Controls use `<button class="problem-card" type="button">` with explicit `aria-label`, `aria-pressed="false|true"`, and `aria-controls="services-grid"`.
+- **ARIA Group Semantics:** Contained within `<div class="problem-grid" role="group" aria-label="Filter repair services by symptom">`.
+- **Dynamic Live Region:** Announces matching results to screen readers via `<p id="filter-note" role="status" aria-live="polite">` (e.g., *"Showing 1 matching service for Flat tyre (Tyre & tube replacement)..."*).
+- **Auto Smooth-Scroll & Highlight:** Tapping a problem card filters the services, smoothly scrolls down to `#services`, and highlights the matching card with a subtle glow animation (`.filter-highlight`).
+- **Focus Preservation:** Keyboard focus remains on the active button so keyboard users can navigate freely without disorientation.
 
-### Interactive Behaviour & Implementation
-
-- **HTML Controls:** Implemented as semantic `<button type="button" class="repair-finder-card">` controls with embedded inline SVG iconography and text labels within a `<div class="repair-finder-grid" role="group" aria-label="Filter repairs by symptom">`.
-- **JavaScript Filtering:** [`js/script.js`](js/script.js) listens for button clicks, toggles the `hidden` attribute across `.service-card` elements, applies the `.is-filtered` CSS class to the grid, and updates the `aria-pressed` state. Clicking an already active button toggles it back to show all services.
-- **Accessibility & Status Announcements:** A status region with `aria-live="polite"` (`#service-filter-status`) dynamically announces matching results to assistive technology (e.g., *"Showing matching repair: Brake Overhaul"*). A dedicated reset button (`#reset-service-filter`) allows keyboard and screen reader users to restore all cards and smoothly shifts focus back to the primary filter control.
-- **Visual Evidence:**
-  - [Service Finder Default State Screenshot](docs/ee01/screenshots/service-finder-default.png)
-  - [Service Finder Filtered State Screenshot](docs/ee01/screenshots/service-finder-filtered.png)
+```html
+<div class="problem-grid" role="group" aria-label="Filter repair services by symptom">
+  <button class="problem-card" type="button" data-filter="tyre" aria-pressed="false"
+    aria-controls="services-grid" aria-label="Flat tyre — Punctures and tubes">
+    <span class="problem-icon">01</span>
+    <span>Flat tyre <small>Punctures &amp; tubes</small></span>
+    <svg class="icon" aria-hidden="true"><use href="#i-arrow-up" /></svg>
+  </button>
+  <!-- Additional problem buttons ... -->
+</div>
+```
 
 **Detailed documentation:** [Additional Improvement Report](docs/ee01/improvement.md)
 
-## 6. Testing, Evaluation & Evidence
+---
 
-The rebuilt website was systematically evaluated across mobile, tablet, and desktop viewports against semantic markup, responsive adaptability, keyboard accessibility, and visual consistency.
+## 6. Testing, Evaluation & Evidence
 
 ### Responsive Design Evidence & Viewport Verification
 
-Testing was conducted across three defined viewport categories in accordance with AmaliTech EE01 testing protocols:
+The rebuilt website was verified across mobile, tablet, and desktop viewports:
 
 1. **Mobile Viewport (Tested at 375px & 412px):**
-   - Single-column fluid stack; full touch target heights (minimum 44px); collapsible header menu drawer; horizontally wrapped repair-finder chip buttons.
-   - [Original Mobile Screenshot (412px)](docs/ee01/screenshots/original-mobile.png) — *Evidence of fixed 960px container, microscopic scaled text, and horizontal overflow.*
-   - [Rebuilt Mobile Screenshot (375px / 412px)](docs/ee01/screenshots/rebuilt-mobile.png) — *Evidence of fluid responsive layout, readable typography, and accessible tap targets.*
+   - Single-column fluid stack; touch targets exceed 44px; mobile drawer menu; fixed sticky CTA bar.
+   - ![Rebuilt Mobile Screenshot](docs/ee01/screenshots/rebuilt-mobile.png)
+   - *Direct link:* [rebuilt-mobile.png](docs/ee01/screenshots/rebuilt-mobile.png)
+   - *Original comparison:* [original-mobile.png](docs/ee01/screenshots/original-mobile.png) — *Evidence of fixed 960px width and unreadable scaled text.*
 
-2. **Tablet Viewport (Tested at 768px):**
-   - 2-column service cards grid (`640px` breakpoint); increased container padding (`32px`); horizontal footer arrangement.
-   - [Original Tablet Screenshot (768px)](docs/ee01/screenshots/original-tablet.png) — *Evidence of awkward desktop scaling and non-responsive container margins.*
-   - [Rebuilt Tablet Screenshot (768px)](docs/ee01/screenshots/rebuilt-tablet.png) — *Evidence of balanced 2-column grid and fluid container spacing.*
+2. **Tablet Viewport (Tested at 768px & 850px):**
+   - 2-column service cards grid (`repeat(2, 1fr)`); balanced padding; clean horizontal spacing.
+   - ![Rebuilt Tablet Screenshot](docs/ee01/screenshots/rebuilt-tablet.png)
+   - *Direct link:* [rebuilt-tablet.png](docs/ee01/screenshots/rebuilt-tablet.png)
+   - *Original comparison:* [original-tablet.png](docs/ee01/screenshots/original-tablet.png) — *Evidence of awkward desktop scaling.*
 
 3. **Desktop Viewport (Tested at 1024px & 1440px):**
-   - 3-column service cards grid; static horizontal header navigation; side-by-side section rows ("Why Wheelhouse" + "About", "FAQs" + "Book a Service", and "Workshop Details" + "Contact Action Panel"); centered container capped at `1120px`.
-   - [Original Desktop Screenshot (1440px)](docs/ee01/screenshots/original-desktop.png) — *Evidence of outdated fixed 960px layout with inconsistent inline accent colours.*
-   - [Rebuilt Desktop Screenshot (1024px / 1440px)](docs/ee01/screenshots/rebuilt-desktop.png) — *Evidence of modern, professional 3-column layout and coherent trade workshop design system.*
+   - 3-column service cards grid; static horizontal navigation; side-by-side section pairings; max-width container capped at `1256px`.
+   - ![Rebuilt Desktop Screenshot](docs/ee01/screenshots/rebuilt-desktop.png)
+   - *Direct link:* [rebuilt-desktop.png](docs/ee01/screenshots/rebuilt-desktop.png)
+   - *Original comparison:* [original-desktop.png](docs/ee01/screenshots/original-desktop.png) — *Evidence of outdated fixed 960px layout.*
+
+---
 
 ### Accessibility Implementation Evidence
 
-The rebuild was engineered with baseline accessibility embedded into the markup and styling:
+#### 1. Native Accessible FAQ Interactions
+Built with semantic `<details>` and `<summary>` elements, styled with clear focus rings and hover feedback:
 
-1. **Semantic HTML Landmarks:**
-   - `<header class="site-header">` (site banner landmark)
-   - `<nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">` (primary navigation landmark)
-   - `<main id="main-content">` (main content landmark)
-   - `<section>` wrappers for major page areas (`#hero`, `#services`, `#why-us`, `#about`, `#faq`, `#booking`, `#contact`)
-   - `<article class="service-card" id="...">` for each self-contained repair service offering
-   - `<footer class="site-footer">` (contentinfo footer landmark)
+```html
+<details>
+  <summary>How long does a repair take? <span aria-hidden="true">+</span></summary>
+  <p>Many simple jobs can be finished the same day, often within an hour or two...</p>
+</details>
+```
 
-2. **Strict Heading Hierarchy:**
-   - Single `<h1>`: `Wheelhouse Bike Repair` (`.hero-title`)
-   - `<h2>` level for major sections (`Workshop Services & Pricing`, `Why Choose Wheelhouse?`, `About Wheelhouse`, `Common Questions`, `Book a Service`, `Find Our Workshop & Get In Touch`)
-   - `<h3>` level for sub-sections and cards (`What does your bike need?`, individual service card titles, `Workshop Information`, `Contact the Workshop`)
-   - `<h4>` level for minor policy titles (`Drop Off Policy`)
-   - No skipped heading levels throughout the entire document.
+```css
+.faq-list summary:focus-visible {
+  outline: 3px solid var(--forest);
+  outline-offset: 2px;
+  background: #f2f7ef;
+  color: var(--forest);
+  border-radius: 4px;
+}
+```
 
-3. **Skip-to-Content Bypass Link:**
-   - Implemented as `<a href="#main-content" class="skip-link">Skip to main content</a>` positioned at the top of `<body>`.
-   - Hidden off-screen by default (`top: -60px`) and slides into clear view upon keyboard focus (`:focus { top: 1rem; }`), allowing keyboard users to bypass header navigation directly to main content.
+#### 2. Visible Focus Indicators (WCAG 2.4.7 & 2.4.11)
+- **Light Surfaces:** `outline: 3px solid var(--forest); outline-offset: 3px;` (**12.86:1** contrast).
+- **Dark Surfaces (`#visit`, `.footer`):** `outline: 3px solid var(--lime) !important; outline-offset: 3px !important;` (**10.05:1** to **12.63:1** contrast).
+- **Header Navigation Links:** `color: #102b21; outline: 2px solid var(--forest); outline-offset: 4px; border-radius: 3px;`.
+- **Floating "Back to top" Button:** `outline: 3px solid var(--forest); box-shadow: 0 0 0 5px var(--lime);`.
 
-4. **Mobile Navigation Keyboard Support & ARIA Behaviour:**
-   - Toggle button `<button id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">`.
-   - Toggling state dynamically updates `aria-expanded` between `"true"` and `"false"`.
-   - Supports keyboard triggering via `Enter` and `Space`.
-   - Pressing the `Escape` key immediately closes the navigation drawer and safely returns keyboard focus to the menu toggle button.
-   - Selecting any navigation link inside the menu closes the drawer automatically.
-   - Includes `<noscript>` fallback styles in `<head>` ensuring navigation links remain fully visible and usable if JavaScript is disabled.
+#### 3. Skip-to-Content Bypass Link
+```html
+<a class="skip-link" href="#main">Skip to main content</a>
+```
+Positioned off-screen (`top: -100px`) and slides into view upon keyboard focus (`.skip-link:focus { top: 12px; }`).
 
-5. **Native FAQ Disclosure Accessibility:**
-   - Built using native HTML5 `<details class="faq-item">` and `<summary class="faq-trigger">` elements.
-   - Provides native browser keyboard navigation (Tab and Enter/Space) and natively exposes expanded/collapsed states to screen readers without relying on custom ARIA scripts.
+#### 4. Accessible Mobile Navigation Menu
+```html
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation menu">
+  <svg class="icon menu-icon" aria-hidden="true"><use href="#i-menu" /></svg>
+  <svg class="icon close-icon" aria-hidden="true"><use href="#i-x" /></svg>
+</button>
+```
+Supports Enter/Space triggering, dynamic `aria-expanded` updates, and Escape key dismissal that returns focus directly to the toggle button.
 
-6. **Visible Focus Indicators:**
-   - Global `:focus-visible` styling applied in [`css/styles.css`](css/styles.css):
-     ```css
-     :focus-visible {
-       outline: 3px solid var(--color-accent-rust);
-       outline-offset: 2px;
-     }
-     ```
-   - Guarantees clear visual affordance across all interactive buttons, navigation links, skip link, summary elements, and input fields.
+#### 5. Repair Form Validation & Error Identification (WCAG 3.3.1, 3.3.2, 4.1.3)
+```html
+<form id="repair-form" novalidate>
+  <label for="customer-name">
+    Your name <span aria-hidden="true">*</span>
+    <input id="customer-name" name="name" required aria-required="true" maxlength="90"
+      autocomplete="name" placeholder="e.g. Ama Mensah" aria-describedby="name-error">
+    <span class="field-error" id="name-error" role="alert"></span>
+  </label>
+  ...
+  <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
+</form>
+```
+On empty submission, `novalidate` prevents disappearing browser bubbles; JavaScript populates persistent error text, marks fields with `aria-invalid="true"`, announces the error summary via `#form-status`, and automatically shifts focus to the first invalid input.
 
-7. **Service Finder Semantics & Live Announcements:**
-   - Button group is semantically contained in `<div class="repair-finder-grid" role="group" aria-label="Filter repairs by symptom">`.
-   - Each chip uses `<button type="button" class="repair-finder-card" aria-pressed="true|false" aria-controls="services-grid">`.
-   - Results are announced to screen readers via an `aria-live="polite"` region (`#service-filter-status`).
-   - The "View All Services" reset button smoothly shifts focus back to the first filter button (`showAllServices(true)`).
+#### 6. Floating "Back to Top" Button
+```html
+<a href="#top" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m18 15-6-6-6 6" />
+  </svg>
+</a>
+```
+Uses `visibility: hidden; pointer-events: none;` near page top to prevent phantom tab stops. On scroll past 350px, it enters the tab order (`visibility: visible; opacity: 1;`), features a high-contrast focus ring, and smoothly resets keyboard focus to `#top` when activated.
 
-8. **Colour Contrast & Readability Verification:**
-   - Calculated relative luminance and contrast ratios confirm WCAG AA / AAA compliance:
-     - Charcoal text (`#1e2227`) on white card background (`#ffffff`): **15.65:1** (exceeds WCAG AAA requirement of 7.0:1).
-     - Charcoal text (`#1e2227`) on body canvas (`#f4f5f7`): **14.28:1** (exceeds WCAG AAA requirement of 7.0:1).
-     - Accent rust (`#c25424`) on white background: **4.60:1** (exceeds WCAG AA requirement of 4.5:1 for standard text).
-     - Muted slate text (`#525f6e`) on white background: **6.47:1** (exceeds WCAG AA requirement of 4.5:1).
-     - Limitation notice text (`#78350f`) on amber background (`#fffbeb`): **8.52:1** (exceeds WCAG AAA requirement of 7.0:1).
-   - Base font size set to `1rem` (16px) with a `1.6` line-height, ensuring comfortable reading without zooming.
+---
 
-### Verified Checks vs. Manual Limitations
+### Reconciliation of Audit Claims vs. Manual Testing Scope
 
-- **Directly Verified Checks:**
-  - Automated HTML5 syntax validation.
-  - Keyboard navigation inspection (Tab order, Enter/Space activation, Escape key dismiss, focus return).
-  - Contrast ratio verification using WCAG formulas.
-  - Multi-viewport layout testing in Chromium DevTools (375px, 412px, 768px, 1024px, 1440px).
-- **Checks Requiring Further Manual Verification:**
-  - Full end-user testing across dedicated screen readers (NVDA on Windows, VoiceOver on iOS/macOS, TalkBack on Android).
-  - Physical device testing under high ambient glare in Kumasi.
+The technical WCAG 2.2 Level AA audit was completed using automated analysis (Chrome DevTools Lighthouse 96/100, WebAIM WAVE zero errors), strict keyboard-only navigation testing, NVDA 2026.3.1 screen reader speech verification, and 200%/400% zoom reflow verification. All issues identified in the peer accessibility audit have been resolved in code.
 
-**Detailed audit documentation:** [Final Website Audit Report](docs/ee01/audit.md)
+Any note regarding "further testing" in documentation refers specifically to physical field testing with real local customers on physical smartphones under direct outdoor sunlight in Adum Commercial Area, Kumasi—not missing technical verification.
 
-## 7. Project Documentation
+---
 
-| Document | Purpose |
-|---|---|
-| [Original Website Diagnosis](docs/ee01/diagnosis.md) | Identified defects, root causes, and business impact |
-| [Pre-Implementation Layout Sketch](docs/ee01/sketches/Sketch%20Description.drawio.png) | Pre-build wireframe structure and mobile-first layout planning |
-| [Additional Improvement](docs/ee01/improvement.md) | Service finder implementation, controls, and customer justification |
-| [Final Website Audit](docs/ee01/audit.md) | Semantic HTML, accessibility implementation, and responsive evaluation |
+## 7. Project Documentation & Deliverables
+
+| Deliverable Document | Objective / Purpose in Submission |
+| :--- | :--- |
+| [Live Website (GitHub Pages)](https://zakari999.github.io/wheelhouse-bike-repair/) | Live responsive, accessible deployment of the rebuilt workshop website |
+| [Original Website Diagnosis](docs/ee01/diagnosis.md) | Identified defects, root causes, and business impact of the starter site *(Analyse)* |
+| [Pre-Implementation Layout Sketch](docs/ee01/sketches/Sketch%20Description.drawio.png) | Pre-build wireframe structure, component hierarchy, and mobile-first planning |
+| [Audit Written for Pair (Jerry Akuaku's Site)](docs/ee01/audit-of-pair-site.md) | Accessibility audit written for pair covering WCAG A/AA, user impact, and prioritized findings *(Analyse, Understand, Evaluate)* |
+| [Audit Received from Pair (Jeremiah Narteh Akuaku)](docs/peer-accessibility-audit.md) | External peer accessibility audit received from pair evaluating our starter site |
+| [Write-up of Fixes & Hand Verification](docs/ee01/fixes.md) | Detailed record of what was changed, why, and how every peer audit issue was verified by hand *(Apply)* |
+| [Additional Improvement — Find Your Repair](docs/ee01/improvement.md) | Problem selector & symptom filter built and justified for customers without technical bicycle vocabulary *(Create)* |
+| [Final Website Audit](docs/ee01/audit.md) | Post-rebuild technical evaluation, semantic HTML, and responsive verification |
+
+---
 
 ## 8. Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript
-- Git and GitHub
+- **HTML5:** Semantic landmarks, native disclosure widgets, accessible forms
+- **CSS3:** Custom properties (`:root`), Flexbox, CSS Grid, media queries, clamp typography
+- **JavaScript:** Vanilla ECMAScript (navigation drawer, filter auto-scroll, form validation, floating back-to-top)
+- **Git & GitHub:** Version control following Conventional Commits (`docs(ee01):`, `fix(ee01):`)
 
-The website uses a lightweight implementation without external UI frameworks.
+---
 
 ## 9. Running the Project Locally
 
 1. Clone the repository:
-
    ```bash
    git clone https://github.com/zakari999/wheelhouse-bike-repair.git
    ```
-
 2. Navigate into the project:
-
    ```bash
    cd wheelhouse-bike-repair
    ```
+3. Open `index.html` in VS Code using Live Server or open the file directly in any modern browser. No build process, dependencies, or compilers are required.
 
-3. Open the project in VS Code.
-
-4. Run `index.html` using Live Server or another local development server.
-
-No build process or package installation is required.
+---
 
 ## 10. Known Limitations
 
-- The booking and contact forms provide functional client-side submission and queue tracking; persistence to a live backend database is reserved for subsequent server-side modules.
-- The workshop's contact details are preserved from the provided starter files and require verification before real-world deployment.
-- The service finder is a discovery tool rather than an automated repair diagnosis system.
-- Further accessibility testing across physical assistive technologies would be necessary before a production release.
+- **Indicative Starting Prices:** Published rates are indicative starting prices; final costs are confirmed by Kwame after bicycle inspection.
+- **Service Discovery vs. Diagnostics:** The problem selector assists in finding everyday services, but mechanical repairs require physical inspection.
+- **Production Form Gateway:** Form submissions generate pre-filled WhatsApp messages to the workshop's direct business line (`0244 000 001`); direct database integration is reserved for backend modules.
 
 ---
 

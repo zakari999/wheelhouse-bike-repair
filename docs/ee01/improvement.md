@@ -1,137 +1,305 @@
 # EE01 — Additional Improvement
 
 **Project:** Wheelhouse Bike Repair  
-**Improvement:** Find Your Repair — Service Finder
+**Improvement:** Find Your Repair — Problem Selector & Service Filter  
+**Module:** EE01 — Web & UI Essentials  
+
+---
 
 ## 1. Identified Customer Problem
 
-Wheelhouse customers often search for bicycle repairs when they need urgent assistance. Some may recognise the problem with their bicycle but not know the technical name of the repair service they require.
+Wheelhouse customers frequently search for bicycle repairs when they need urgent assistance—often on their mobile phones while on the go in Adum or elsewhere in Kumasi. Many customers recognize the physical symptoms of their bike trouble (for example, "my chain slips when pedalling" or "my brakes squeak and feel weak"), but do not know the technical trade names used by bicycle mechanics (such as *Gear System Overhaul* or *Brake Overhaul*).
 
-Although the website displays all six services, customers may need to read multiple descriptions before identifying the most relevant option.
+Although the website displays all six workshop services, having to read through all six technical descriptions before finding the right repair creates avoidable cognitive friction for a customer in a hurry.
+
+---
 
 ## 2. Proposed Improvement
 
-I introduced the "Find Your Repair" feature (`.repair-finder`) that allows visitors to filter workshop services by selecting a familiar bicycle symptom or problem.
+I introduced the **"What's going on with your bike?"** problem selector (`.problem-grid`), allowing visitors to filter workshop services by tapping a familiar bicycle symptom.
 
-The feature provides **6 interactive filter controls** (1 "Show All" control plus 5 symptom-based problem filters):
+The feature provides **4 symptom-based problem filters** plus a dedicated **"View all services"** reset control:
 
-- **All Services (6)** (`data-service-target="all"`): Displays the complete workshop catalogue of all six repair services.
-- **Flat Tyre / Puncture** (`data-service-target="service-tyre"`): Filters directly to **Tyre & Tube Replacement** (`#service-tyre`).
-- **Brake Problems** (`data-service-target="service-brakes"`): Filters directly to **Brake Overhaul** (`#service-brakes`).
-- **Gear Slipping** (`data-service-target="service-gears"`): Filters directly to **Gear System Overhaul** (`#service-gears`).
-- **General Tune-Up:** Basic Tune-Up (`data-service-target="service-tuneup"`, filters directly to `#service-tuneup`).
-- **Full Rebuild** (`data-service-target="service-rebuild"`): Filters directly to **Full Bike Rebuild** (`#service-rebuild`).
+- **Flat Tyre / Puncture:** Punctures & tubes (`data-filter="tyre"`) — filters directly to **Tyre & Tube Replacement** (`.service-card[data-category="tyre"]`).
+- **Brake Trouble:** Squeaking or weak stops (`data-filter="brakes"`) — filters directly to **Brake Overhaul** (`.service-card[data-category="brakes"]`).
+- **Slipping Gears:** Shifting & drivetrain (`data-filter="gears"`) — filters directly to **Gear System Overhaul** (`.service-card[data-category="gears"]`).
+- **Just Needs a Tune-Up:** General maintenance (`data-filter="tuneup"`) — filters directly to **Basic Tune-Up** (`.service-card[data-category="tuneup"]`).
+- **View All Services:** Reset action (`#reset-services`) — unhides all cards and restores the full 6-service workshop catalogue.
 
-*(Note: Custom Builds & Upgrades remains accessible as part of the full catalogue when "All Services (6)" is active.)*
+*(Note: Full Bike Rebuild and Custom Builds & Upgrades remain immediately accessible as part of the complete catalogue when all services are shown.)*
 
-By default, all six services remain visible. Selecting a problem filters the displayed services to the corresponding option. Visitors can toggle the selection off to restore all services, click another symptom, or use the "View All Services &rarr;" reset button.
+By default, all six services are visible. When a customer selects a problem card, the grid filters to display the matching repair, smoothly scrolls down to the `#services` section so the user sees the result without manual scrolling, and highlights the revealed card with a subtle glow animation. Tapping an active button toggles it off, or the customer can click **"View all services"** to restore all cards.
 
-## 3. Why I Chose This Improvement
+---
 
-My initial approach was to navigate to and highlight the relevant service card. However, the service cards were already positioned directly below the selection options, making this interaction less useful.
+## 3. Further Aesthetic & Feel Improvements — Harmonious Colour Patterns and Workshop Identity
 
-I revised the feature to filter the services instead.
+In addition to the interactive problem filter, the entire visual language, colour patterns, and sensory feel of the website were fundamentally elevated to create an authentic, trustworthy, and premium trade-workshop experience.
 
-This provides more meaningful assistance by reducing the amount of information visitors need to review when looking for a particular repair.
+### 3.1 Eliminating the Starter Site's Inconsistent Styling
+The original starter website suffered from scattered, discordant visual treatments: six service cards featured six unrelated bright border accents (clashing red, purple, orange, blue, green, and teal), harsh yellow text sat on slate blue headers, and typography was inconsistently sized inline. This fragmented presentation felt haphazard and failed to project the calm, deliberate craftsmanship Kwame brings to every bicycle repair.
 
-## 4. Value to the Business and Customers
+### 3.2 Implemented Workshop Colour Patterns
+To replace this dissonance, I introduced a unified, grounded colour palette under `:root` inspired by natural materials and precision mechanical tools:
 
-**Customer value:** Visitors can identify relevant services more quickly without needing to understand bicycle repair terminology.
+- **Deep Forest Green (`--forest: #15382b`, `--forest-deep: #102b21`):** Represents dependable mechanical craftsmanship, workshop durability, and professional maturity. Used for key structural containers, primary headings, dark surfaces, and robust focus rings.
+- **High-Contrast Brand Lime (`--lime: #def58c`, `--lime-dark: #c5ed63`):** Acts as a fresh, high-visibility accent colour. Applied to the primary *Request a repair* call-to-action button, active filter badges, and dark-surface focus rings, delivering **10.05:1** to **12.63:1** contrast (exceeding WCAG AAA).
+- **Warm Canvas Cream (`--cream: #f7f7f1`) & Crisp White (`--paper: #ffffff`):** Softens the background into a warm, tactile workshop canvas, replacing sterile default greys and harsh stark whites with an inviting visual texture.
+- **Deep Ink (`--ink: #182f27`, `--ink-2: #244638`):** Provides exceptional typographic clarity, ensuring body copy and metadata achieve **14.24:1** contrast on white surfaces.
 
-**Business value:** The feature makes Wheelhouse's services easier to explore and helps prospective customers reach relevant service information before contacting the workshop.
+### 3.3 Enhanced Tactile Feel and Interactive Feedback
+The redesign gives the user interface a deliberate, tactile quality suited to an active bicycle repair shop:
+- **Component Elevation & Shadows:** Content cards use soft, organic ambient drop shadows (`--shadow: 0 20px 60px rgba(15, 38, 24, 0.08)`) and subtle border lines (`1px solid #e3e9e1`) that create clean physical separation without visual clutter.
+- **Reassuring Interactive States:** Buttons and problem tiles feature smooth tactile feedback upon hover and focus (`#eaf3df` active tint, `2px` inset focus ring, and subtle card elevation).
+- **Modern Typography Hierarchy:** Pairing **Manrope** (bold, geometric headings) with **DM Sans** (clean, highly legible body text) balances modern editorial polish with utilitarian readability.
 
-The improvement supports the owner's objective of providing a straightforward and professional experience for people comparing repair shops on their phones.
+---
 
-## 5. Scope and Limitations
+## 4. Why I Chose This Improvement
 
-The service finder is intended to help users discover relevant services, not diagnose mechanical problems.
+My initial exploration was merely to jump down the page and anchor-link to the service card. However, anchor jumping without filtering left all other services visible, meaning the user still had to scroll past irrelevant options.
 
-It covers five common customer needs rather than every possible bicycle issue. Customers can still browse all six available services or contact Wheelhouse for assistance.
+Revising the feature into a true **client-side filter with automatic smooth scrolling** solves the customer problem much more effectively:
+1. It eliminates information overload by hiding non-relevant services.
+2. It guides the customer directly to their matching price and turnaround time.
+3. It pre-selects the corresponding service in the repair booking form when the customer clicks the service card link.
 
-The feature does not provide automated quotations or guarantee that a selected service will resolve a particular problem.
+---
 
-## 6. Conclusion
+## 5. Value to the Business and Customers
 
-Find Your Repair improves the usability of the service catalogue by helping customers narrow down their options based on familiar problems.
+- **Customer Value:** Visitors find their repair in one tap without needing mechanical vocabulary. They see an honest starting price and clear scope immediately.
+- **Business Value:** Kwame's workshop reduces time spent answering basic enquiries. Customers arrive at the workshop or initiate a WhatsApp enquiry already knowing which service they need.
+- **Conversion Pathway:** Each service card features a direct action link (`.service-link`) that connects directly to the booking form (`#booking`) and pre-selects that specific service in the dropdown.
 
-It is a practical improvement connected to Wheelhouse's customer needs rather than an additional decorative feature.
+---
 
-## 7. Implementation Evidence
+## 6. Scope and Limitations
 
-### 7.1 Visual Evidence & Screenshots
+- **Discovery Tool, Not Automated Diagnostics:** The problem selector is designed to help visitors find common repair categories, not diagnose complex or hidden mechanical issues.
+- **Covers Common Everyday Needs:** The 4 symptom cards cover the vast majority of daily bicycle repairs in Kumasi (punctures, brake wear, drivetrain slipping, and routine servicing). Complex rebuilds and bespoke custom builds remain accessible in the full catalogue.
+- **Indicative Starting Prices:** Published rates are indicative starting prices; final quotes are confirmed in person after Kwame inspects the bicycle.
 
-The implementation evidence is captured in the repository screenshots below:
+---
+
+## 7. Conclusion
+
+The "What's going on with your bike?" selector directly addresses customer hesitation, supports mobile-first urgency, and bridges everyday language with professional bicycle repair services.
+
+---
+
+## 8. Implementation Evidence
+
+### 8.1 Visual Evidence & Screenshots
+
+The implementation is verified across the repository screenshots below:
 
 #### Default Unfiltered State
-In its initial state, "All Services (6)" is active (`aria-pressed="true"`), and all six service cards are displayed in the workshop grid:
+All 4 problem tiles are in their unpressed resting state, and all six service cards are visible in the workshop catalogue:
 
 ![Service finder showing all services](screenshots/service-finder-default.png)
 
 *Direct file link:* [service-finder-default.png](screenshots/service-finder-default.png)
 
 #### Filtered State
-When a customer selects a symptom chip (e.g., "Flat Tyre / Puncture"), the grid filters to display only the matching repair card, and a live status banner appears with an accessible reset option:
+Selecting a problem tile (e.g., *Flat tyre*) updates the tile to `aria-pressed="true"`, filters `.services-grid` to the matching card, smoothly scrolls to `#services`, and announces the match via `#filter-note`:
 
 ![Service finder showing a matching repair](screenshots/service-finder-filtered.png)
 
 *Direct file link:* [service-finder-filtered.png](screenshots/service-finder-filtered.png)
 
-### 7.2 HTML Controls & Semantics
+---
 
-The service finder is structured using semantic button controls contained within a labeled ARIA group:
+### 8.2 HTML Controls & Markup Semantics
+
+The selector is implemented using native `<button type="button">` elements contained in an ARIA group landmark:
 
 ```html
-<div class="repair-finder">
-  <div class="repair-finder-header">
-    <h3 class="repair-finder-title">What does your bike need?</h3>
-    <p class="repair-finder-subtitle">Select a common problem to view the relevant repair, or view all services below:</p>
-  </div>
-  <div class="repair-finder-grid" role="group" aria-label="Filter repairs by symptom">
-    <button type="button" class="repair-finder-card" data-service-target="all" aria-pressed="true" aria-controls="services-grid">
-      <!-- SVG icon -->
-      <span>All Services (6)</span>
-    </button>
-    <button type="button" class="repair-finder-card" data-service-target="service-tyre" aria-pressed="false" aria-controls="services-grid">
-      <!-- SVG icon -->
-      <span>Flat Tyre / Puncture</span>
-    </button>
-    <!-- Additional problem buttons ... -->
-  </div>
-</div>
+<!-- Problem Selector Section -->
+<section class="section problem-section" id="problems" aria-labelledby="problem-title">
+  <div class="container">
+    <div class="section-head compact">
+      <div>
+        <span class="section-kicker">START HERE</span>
+        <h2 id="problem-title">What&rsquo;s going on<br>with your bike?</h2>
+      </div>
+      <p>You don&rsquo;t need to know the technical name. Just pick what sounds familiar and we&rsquo;ll guide you to the right service.</p>
+    </div>
 
-<!-- Accessible live region and reset action -->
-<div id="service-filter-status" class="service-filter-status" aria-live="polite" hidden>
-  <span class="filter-status-count" id="filter-status-count">Showing 1 matching service</span>
-  <button type="button" id="reset-service-filter" class="filter-reset-btn">View All Services &rarr;</button>
-</div>
+    <div class="problem-grid" role="group" aria-label="Filter repair services by symptom">
+      <button class="problem-card" type="button" data-filter="tyre" aria-pressed="false"
+        aria-controls="services-grid" aria-label="Flat tyre — Punctures and tubes">
+        <span class="problem-icon">01</span>
+        <span>Flat tyre <small>Punctures &amp; tubes</small></span>
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up" /></svg>
+      </button>
+
+      <button class="problem-card" type="button" data-filter="brakes" aria-pressed="false"
+        aria-controls="services-grid" aria-label="Brake trouble — Squeaking or weak stops">
+        <span class="problem-icon">02</span>
+        <span>Brake trouble <small>Squeaking or weak stops</small></span>
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up" /></svg>
+      </button>
+
+      <button class="problem-card" type="button" data-filter="gears" aria-pressed="false"
+        aria-controls="services-grid" aria-label="Slipping gears — Shifting and drivetrain">
+        <span class="problem-icon">03</span>
+        <span>Slipping gears <small>Shifting &amp; drivetrain</small></span>
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up" /></svg>
+      </button>
+
+      <button class="problem-card" type="button" data-filter="tuneup" aria-pressed="false"
+        aria-controls="services-grid" aria-label="Just needs a tune-up — General maintenance">
+        <span class="problem-icon">04</span>
+        <span>Just needs a tune-up <small>General maintenance</small></span>
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up" /></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section with Live Region and Reset Action -->
+<section class="section services-section" id="services" aria-labelledby="services-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="section-kicker">WHAT WE DO</span>
+        <h2 id="services-title">Quality repairs.<br><em>Straightforward prices.</em></h2>
+      </div>
+      <div class="services-intro">
+        <p>From quick fixes to complete rebuilds, we&rsquo;ll help you get the most out of your ride.</p>
+        <button class="text-button" type="button" id="reset-services">
+          View all services <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Screen Reader Live Status Region -->
+    <p class="filter-note" id="filter-note" hidden role="status" aria-live="polite"></p>
+
+    <div class="services-grid" id="services-grid">
+      <!-- 6 service cards with data-category attributes -->
+    </div>
+  </div>
+</section>
 ```
 
-Key markup characteristics:
-- **Button Elements (`<button type="button">`):** Ensured full native keyboard focusability (Tab key) and activation via both `Enter` and `Space` keys without needing hacky anchor tag handlers.
-- **ARIA Group Semantics:** `role="group"` with `aria-label="Filter repairs by symptom"` communicates the relationship between the chip buttons to assistive technologies.
-- **Explicit Target Association:** `aria-controls="services-grid"` informs screen readers that button activation modifies the content of the services grid.
-- **Visual Iconography:** Inline SVG icons represent each problem visually while remaining hidden from screen readers via `aria-hidden="true"`.
+#### Key Semantic Attributes:
+- **Native `<button type="button">` Elements:** Guaranteed full native keyboard access (Tab key navigation) and activation via both `Enter` and `Space` keys without synthetic event hacks.
+- **ARIA Group Semantics:** `role="group"` with `aria-label="Filter repair services by symptom"` explicitly relates the four cards as an interactive filter control group.
+- **Dynamic Toggle State:** `aria-pressed="false|true"` exposes the toggle state to assistive technologies.
+- **Target Association:** `aria-controls="services-grid"` links each button directly to the services grid container.
+- **Screen Reader Announcements:** `<p id="filter-note" role="status" aria-live="polite">` announces filtered results dynamically without interrupting active speech.
+- **Decorative SVG Protection:** All embedded icons carry `aria-hidden="true"`, preventing screen-reader speech synthesizers from announcing unlabelled graphics.
 
-### 7.3 JavaScript Filtering Behaviour
+---
 
-The filtering logic is implemented in [`js/script.js`](../../js/script.js) via the `initServiceFilter()` module:
+### 8.3 JavaScript Filtering & Smooth-Scroll Flow
 
-1. **Active State Toggle:** Each chip button tracks its selection state using `aria-pressed="true|false"`.
-2. **Card Visibility Management:** When a specific symptom is selected, matching cards retain visibility while non-matching cards receive the native HTML `hidden` attribute (`card.hidden = true`).
-3. **Toggle Off:** Clicking an already active filter button acts as a toggle, automatically reverting the view to display all services.
-4. **Layout Class Adjustment:** Applying `.is-filtered` to the `#services-grid` container centers the single filtered card and optimizes its presentation.
-5. **Reset Action:** Clicking the "View All Services &rarr;" reset button invokes `showAllServices(true)`, unhiding all cards, setting the "All Services (6)" button to `aria-pressed="true"`, hiding the status bar, and smoothly refocusing the first chip button for seamless keyboard navigation.
+The interaction is powered by `initServiceFilter()` in [`js/script.js`](../../js/script.js):
 
-### 7.4 Accessibility Considerations
+```javascript
+function initServiceFilter() {
+  const problemButtons = document.querySelectorAll('.problem-card');
+  const serviceCards = [...document.querySelectorAll('.service-card')];
+  const filterNote = document.querySelector('#filter-note');
+  const resetBtn = document.querySelector('#reset-services');
 
-1. **State Communication:** The active filter is communicated both visually (dark charcoal background `#1e2227` with white text) and programmatically via `aria-pressed="true"`.
-2. **Screen Reader Announcements (`aria-live="polite"`):** The status notification container (`#service-filter-status`) dynamically updates its message (e.g., *"Showing matching repair: Tyre & Tube Replacement"*). The `polite` setting ensures assistive technologies read the status update as soon as the user finishes their action without aggressively interrupting ongoing speech.
-3. **Keyboard Focus Management:** When the user clicks the reset button, keyboard focus is intentionally moved back to the first filter button (`filterButtons[0].focus()`), preventing the user from losing their focus position in the document.
-4. **Visible Focus Rings:** All buttons inherit the global `:focus-visible` styling (`outline: 3px solid #c25424; outline-offset: 2px`), ensuring keyboard operators clearly see their current focus.
+  if (!problemButtons.length || !serviceCards.length) return;
 
-### 7.5 Business Value Summary
+  const categoryNames = {
+    tyre: 'Flat tyre (Tyre & tube replacement)',
+    brakes: 'Brake trouble (Brake overhaul)',
+    gears: 'Slipping gears (Gear system overhaul)',
+    tuneup: 'General maintenance (Basic tune-up)'
+  };
 
-For Kwame's workshop in Kumasi:
-- **Reduces Cognitive Overhead:** An urgent customer whose gears are slipping doesn't have to read through six technical repair descriptions or guess what "Gear System Overhaul" means.
-- **Transparent Expectations:** The customer sees the exact starting price (GH₵ 150) and turnaround time ("Same day · Includes road test") immediately.
-- **Direct Conversion Pathway:** Provides direct links to call (`tel:0322000000`) or visit the workshop in Adum Commercial Area with confidence that Wheelhouse handles their exact problem.
+  function applyFilter(category, clickedButton) {
+    const isCurrentlyActive = clickedButton && clickedButton.getAttribute('aria-pressed') === 'true';
+
+    // Toggle off if clicking the already active button
+    if (isCurrentlyActive || category === 'all') {
+      serviceCards.forEach(card => {
+        card.hidden = false;
+        card.classList.remove('filter-highlight');
+      });
+
+      problemButtons.forEach(btn => {
+        btn.setAttribute('aria-pressed', 'false');
+      });
+
+      if (filterNote) {
+        filterNote.hidden = false;
+        filterNote.textContent = 'Showing all 6 services.';
+        setTimeout(() => {
+          if (!document.querySelector('.problem-card[aria-pressed="true"]')) {
+            filterNote.hidden = true;
+          }
+        }, 3000);
+      }
+      return;
+    }
+
+    // Filter to selected category
+    let matchedCard = null;
+    serviceCards.forEach(card => {
+      const isMatch = card.dataset.category === category;
+      card.hidden = !isMatch;
+      card.classList.remove('filter-highlight');
+      if (isMatch) matchedCard = card;
+    });
+
+    problemButtons.forEach(btn => {
+      btn.setAttribute('aria-pressed', btn === clickedButton ? 'true' : 'false');
+    });
+
+    if (filterNote) {
+      filterNote.hidden = false;
+      const label = categoryNames[category] || category;
+      filterNote.textContent = `Showing 1 matching service for ${label}. Select “View all services” to see every option.`;
+    }
+
+    // Smoothly scroll down to results section so user sees the matching service immediately
+    const servicesSection = document.querySelector('#services');
+    if (servicesSection) {
+      const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      setTimeout(() => {
+        servicesSection.scrollIntoView({
+          behavior: isReduced ? 'auto' : 'smooth',
+          block: 'start'
+        });
+
+        if (matchedCard && !isReduced) {
+          matchedCard.classList.remove('filter-highlight');
+          void matchedCard.offsetWidth; // Force reflow
+          matchedCard.classList.add('filter-highlight');
+        }
+      }, 60);
+    }
+  }
+
+  problemButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      applyFilter(button.dataset.filter, button);
+    });
+  });
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      applyFilter('all', null);
+      if (problemButtons.length > 0) {
+        problemButtons[0].focus();
+      }
+    });
+  }
+}
+```
+
+---
+
+### 8.4 Accessibility & Visual Styling
+
+- **High-Contrast Focus Indicators:** All problem buttons inherit the global `:focus-visible` styling (`outline: 3px solid var(--forest); outline-offset: 3px;`), yielding **12.86:1** contrast on white/cream backgrounds.
+- **Active State Affordance:** Active buttons display a solid forest green border (`border-color: var(--forest);`), tinted green background (`#eaf3df`), and a `2px` inset focus ring (`box-shadow: 0 0 0 2px var(--forest);`).
+- **Focus Preservation:** When activating a problem filter, keyboard focus remains on the pressed button, enabling keyboard users to change their selection using Tab or Shift+Tab without disorientation.
+- **Motion Preference Honoured:** When `prefers-reduced-motion: reduce` is enabled, the smooth scroll and card highlight transitions switch to instant execution.
