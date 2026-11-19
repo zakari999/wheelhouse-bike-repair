@@ -3,7 +3,7 @@
 **Project:** Wheelhouse Bike Repair  
 **Document:** Write-up of Fixes (What Changed, Why, and Hand Verification)  
 **Standard:** WCAG 2.2 Level AA  
-**Audit Received:** [Peer Accessibility Audit by Jeremiah Narteh Akuaku](../peer-accessibility-audit.md)  
+**Audit Received:** [Peer Accessibility Audit by Jeremiah Narteh Akuaku](peer-accessibility-audit.md)  
 **Live Site:** [https://zakari999.github.io/wheelhouse-bike-repair/](https://zakari999.github.io/wheelhouse-bike-repair/)
 
 ---
@@ -70,7 +70,7 @@ Discarded the arbitrary starter colors and implemented a unified, high-contrast 
 - Form error text (`#b3261e`) on white: **7.60:1** (Passes AAA)
 
 #### Why:
-By systematically elevating every foreground/background combination well above 7:1, the site satisfies WCAG AAA contrast and remains effortlessly readable under harsh ambient glare.
+Elevating each foreground and background pair well above the 4.5:1 minimum threshold satisfies WCAG Level AA (and Level AAA) contrast requirements (1.4.3 and 1.4.6), ensuring legibility for users with low vision or color-vision deficiencies.
 
 #### How It Was Verified by Hand:
 1. Recalculated relative luminance values mathematically for every paired token.
@@ -126,7 +126,7 @@ Links now possess distinct affordances (underlines, interactive hover states, ac
 ### Advisory 1: Outdated Copyright Year
 
 - **Audit Observation:** Footer displayed "©2023", undermining trust and currency for an active business.
-- **What Was Changed:** Added `<span id="year">2026</span>` dynamically updated by `initYear()` in [`js/script.js`](../../js/script.js) using `new Date().getFullYear()`.
+- **What Was Changed:** Replaced the hardcoded year with an unpopulated `<span id="year"></span>`, dynamically set upon page load by `initYear()` in [`js/script.js`](../../js/script.js) using `new Date().getFullYear()`, preventing a stale static fallback.
 - **How Verified:** Inspected rendered DOM across refreshes.
 
 ### Advisory 2: Missing Hero Imagery
@@ -151,9 +151,9 @@ Links now possess distinct affordances (underlines, interactive hover states, ac
 - Zero unclosed tags or syntax violations (verified via standard parser).
 
 ### 2. Text Resizing and 400% Zoom Reflow (WCAG 1.4.4 & 1.4.10)
-- Browser zoom tested at **200%** and **400%** zoom in Chrome and Edge.
-- Narrow viewport tested at **320px** device width.
-- Layout smoothly collapses to a single fluid column without any horizontal scrollbars (`overflow-x: hidden`).
+- Tested at **200%** and **400%** browser zoom in Chrome and Edge, and at an explicit **320px** viewport width.
+- Multi-column grids collapse to a single fluid column using CSS Grid and Flexbox (`grid-template-columns: 1fr; width: 100%`).
+- Verified that all text, cards, buttons, and forms wrap naturally within the inline flow; no text is clipped, no interactive controls are truncated, and two-dimensional scrolling is entirely avoided without relying on overflow masking.
 
 ### 3. Keyboard Navigation & Focus Operability (WCAG 2.1.1, 2.1.2, 2.4.7)
 - **Skip Link:** `<a class="skip-link" href="#main">Skip to main content</a>` slides down upon focus, allowing keyboard users to bypass navigation.

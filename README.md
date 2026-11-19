@@ -62,7 +62,7 @@ The initial layout structure was wireframed prior to implementation using draw.i
 
 ## 4. Website Rebuild & Implemented Design System
 
-The redesign was built using semantic HTML5, modern CSS3 (contained within a concise **976-line stylesheet**, well under the 1,000-line budget), and lightweight vanilla JavaScript.
+The redesign was built using semantic HTML5, modern CSS3, and lightweight vanilla JavaScript. The stylesheet is organised into clear modular layers: foundational design tokens (`:root`), base resets, responsive layout containers, component patterns, accessible interactive states, and structured media queries.
 
 ### Implemented Design Tokens (`css/styles.css`)
 
@@ -97,7 +97,7 @@ All design tokens are defined in [`css/styles.css`](css/styles.css) under `:root
 | `--cream` | `#f7f7f1` | Warm off-white page background canvas | Background canvas | **Surface** |
 | `--paper` | `#ffffff` | Pure white background for content cards and form containers | Background surface | **Surface** |
 | `--muted` | `#3d5044` | Secondary copy, descriptions, and metadata | **8.64:1** on `#ffffff` / **8.04:1** on `#f7f7f1` | **Passes AAA** |
-| `--line` | `#e3e9e1` | Subtle divider lines and container borders | Component border | **Passes AA** |
+| `--line` | `#e3e9e1` | Subtle decorative divider lines and container borders | Decorative divider (1.21:1 on `#ffffff`) | **Exempt (WCAG 1.4.11)** |
 | Error Red | `#b3261e` | Form validation error text, invalid input border, error ring | **7.60:1** on `#ffffff` / **6.27:1** on `#fff9f8` | **Passes AA** |
 | Error Alert | `#991b1b` on `#fdf2f2` | Form error notification banner | **7.58:1** contrast | **Passes AAA** |
 | Success Alert | `#1e4620` on `#edf7ed` | Form success notification banner | **9.80:1** contrast | **Passes AAA** |
@@ -108,20 +108,23 @@ Typography is rendered using a modern, legible font pair: **DM Sans** for clear 
 
 | Token / Usage | CSS rem | Pixel Equivalent | Line Height | Implementation Usage |
 | :--- | :--- | :--- | :--- | :--- |
-| Minor Metadata / Labels | `0.6875rem` | 11px | `1.2` | Kickers (`.section-kicker`), badge labels, service numbers |
-| Footnotes & Form Disclaimers | `0.7500rem` | 12px | `1.4`–`1.6` | Pricing footnote, form help disclaimer, inline error text |
-| UI Navigation & Buttons | `0.8125rem` | 13px | `1.1`–`1.3` | Header navigation links, button labels (`.btn`) |
-| Card Body & Inputs | `0.8438rem` | 13.5px | `1.85` | Service card copy, form inputs, textarea values |
+| Minor Metadata / Kickers | `0.7500rem` | 12px | `1.2` | Kickers (`.section-kicker`, `.eyebrow`), badge labels, service numbers |
+| Footnotes & Form Disclaimers | `0.8125rem` | 13px | `1.4`–`1.6` | Pricing footnote, form help disclaimer, inline error text |
+| UI Navigation & Buttons | `0.8750rem` | 14px | `1.1`–`1.3` | Header navigation links (`.main-nav > a`), button labels (`.btn`) |
+| Card Body & Inputs | `0.8750rem`–`0.9375rem` | 14px–15px | `1.6`–`1.85` | Service card copy, form inputs, textarea values |
 | Subheadings & Form Titles | `0.9375rem` | 15px | `1.3` | Problem card title, FAQ question summary triggers |
 | Base Body Text | `1.0000rem` | 16px | `1.6` | Standard paragraph text (`body`), lead descriptions |
 | Sub-section Titles (`<h3>`) | `1.3750rem` | 22px | `1.1`–`1.3` | Service card names (`h3`), process step headings |
 | Form Card Heading | `1.6875rem` | 27px | `1.2` | Repair request form title (`.form-title h3`) |
 | Major Section Headings (`<h2>`) | Fluid clamp | 34px–45px (mobile)<br>40px–56px (desktop) | `1.15` | Section titles (`#problem-title`, `#services-title`, etc.) |
-| Hero Main Title (`<h1>`) | Fluid clamp | 43px–61px (mobile)<br>50px–80px (desktop) | `1.08` | Primary page heading (`#hero-title`) |
+| Hero Main Title (`<h1>`) | Fluid clamp | 34px–61px (mobile)<br>50px–80px (desktop) | `1.08` | Primary page heading (`#hero-title`) |
 
-#### 3. Concrete Spacing Scale
+> [!NOTE]
+> **Low-Vision Readability Justification:** In response to audit feedback, all primary interactive UI labels (navigation links and action buttons) were raised to a minimum of **14px** (`0.875rem`), and section kickers were elevated to **12px** (`0.75rem`) with high-contrast forest ink (`#285235` / `#182f27`), ensuring comfortable scanning for low-vision users without eye strain.
 
-Spacing follows an 8-point harmonic scale (`1rem = 16px`):
+#### 3. Concrete Spacing & Layout Metrics
+
+Component-level spacing adheres to a 4px/8px incremental scale, complemented by proportional section insets and fluid responsive container widths:
 
 | Spacing Token | CSS rem | Pixels | Applied Implementation |
 | :--- | :--- | :--- | :--- |
@@ -129,11 +132,13 @@ Spacing follows an 8-point harmonic scale (`1rem = 16px`):
 | `space-8` | `0.50rem` | 8px | Button icon gaps, field label spacing, trust bullet gap |
 | `space-12` | `0.75rem` | 12px | Card element gaps, hero action buttons gap, nav item spacing |
 | `space-16` | `1.00rem` | 16px | Grid gap on service cards, input padding |
-| `space-20` | `1.25rem` | 20px | Button padding, mobile container side margin (`calc(100% - 38px)`) |
+| `space-20` | `1.25rem` | 20px | Form submit button vertical padding (`padding: 20px 21px;`) |
 | `space-28` | `1.75rem` | 28px | Card interior padding, sub-heading bottom margins |
 | `space-40` | `2.50rem` | 40px | Form card padding, section grid gaps |
-| `space-72` | `4.50rem` | 72px | Vertical section padding on mobile viewports (`@media (max-width: 650px)`) |
-| `space-115` | `7.19rem` | 115px | Vertical section padding on desktop viewports |
+
+##### Layout Insets & Fluid Margins:
+- **Mobile Container Gutter:** Fluid width `calc(100% - 38px)`, establishing a consistent 19px lateral margin on small viewports.
+- **Section Vertical Insets:** `115px` (`7.19rem`) vertical padding on desktop viewports, scaling down to `72px` (`4.50rem`) on mobile viewports below 650px.
 
 #### 4. Responsive Breakpoints & Viewport Architecture
 
@@ -143,7 +148,7 @@ Layout adjustments are driven by 5 explicit CSS media query breakpoints:
 2. **`850px` (`@media (max-width: 850px)`):** Tablet adaptation — topbar secondary details hide; header menu switches to accessible hamburger toggle (`.menu-toggle`) with expandable sliding drawer (`.main-nav.is-open`); services grid shifts to 2 columns (`repeat(2, 1fr)`); booking section shifts to 2 columns.
 3. **`650px` (`@media (max-width: 650px)`):** Primary mobile breakpoint — all multi-column grids collapse to a single fluid column (`1fr`); sticky bottom action bar (`.mobile-cta`) activates with direct "Request a repair" and phone dialer buttons; container padding set to `calc(100% - 38px)`; floating "Back to top" button repositions to `bottom: 84px; right: 18px;` above the mobile CTA.
 4. **`400px` (`@media (max-width: 400px)`):** Compact mobile breakpoint — `.about-stamp` scales to `86px × 86px` with `5px` border to fit iPhone SE and compact Android devices without clipping or horizontal overflow.
-5. **`360px` (`@media (max-width: 360px)`):** Ultra-compact breakpoint — hero `<h1>` font size scales to `39px`; problem cards adapt to `min-height: 157px`.
+5. **`360px` (`@media (max-width: 360px)`):** Ultra-compact breakpoint — hero `<h1>` font size scales to `34px`, providing comfortable margins and preventing line-wrapping overflow down to 320px; problem cards adapt to `min-height: 157px`.
 
 ---
 
@@ -175,7 +180,7 @@ The starter site's conflicting card border colours (six unrelated bright accents
 
 - **Semantic HTML Buttons:** Controls use `<button class="problem-card" type="button">` with explicit `aria-label`, `aria-pressed="false|true"`, and `aria-controls="services-grid"`.
 - **ARIA Group Semantics:** Contained within `<div class="problem-grid" role="group" aria-label="Filter repair services by symptom">`.
-- **Dynamic Live Region:** Announces matching results to screen readers via `<p id="filter-note" role="status" aria-live="polite">` (e.g., *"Showing 1 matching service for Flat tyre (Tyre & tube replacement)..."*).
+- **Dynamic Live Region:** Announces matching results to screen readers via `<p id="filter-note" role="status" aria-live="polite">` (emits exact string: *"Showing 1 matching service for Flat tyre (Tyre & tube replacement). Select “View all services” to see every option."* or *"Showing all 6 services."*).
 - **Auto Smooth-Scroll & Highlight:** Tapping a problem card filters the services, smoothly scrolls down to `#services`, and highlights the matching card with a subtle glow animation (`.filter-highlight`).
 - **Focus Preservation:** Keyboard focus remains on the active button so keyboard users can navigate freely without disorientation.
 
@@ -266,7 +271,7 @@ Tested via manual keyboard navigation in Chrome, Edge, and Firefox without mouse
 | **10** | Hero "Request a repair" | `.hero-actions .btn-lime` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Jumps to `#booking` |
 | **11** | Hero "Explore services" | `.hero-actions .btn-ghost` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Jumps to `#services` catalogue |
 | **12–15** | Symptom Filter Cards | `.problem-card` (01–04) | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Filters catalogue; updates `aria-pressed`; auto-scrolls |
-| **16** | Reset Filter Action | `#reset-services` | `outline: 2px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Restores all 6 services; shifts focus to 1st symptom card |
+| **16** | Reset Filter Action | `#reset-services` | `outline: 2px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Activates via Enter/Space: restores all 6 services; JavaScript explicitly shifts keyboard focus back to the 1st symptom card (Stop 12, `.problem-card[data-filter="tyre"]`) |
 | **17–22** | Service Action Links | `.service-link` (1–6) | `outline: 2px solid var(--forest); text-decoration: underline;` | **12.86:1** | Jumps to `#booking` and pre-selects chosen service |
 | **23** | About Location Link | `.about-text .text-link` | `outline: 2px solid var(--forest); text-decoration: underline;` | **12.86:1** | Jumps to `#visit` |
 | **24–27** | Repair Form Inputs | `input`, `select`, `textarea` | `border-color: var(--forest); box-shadow: 0 0 0 3px rgba(...)` | **12.86:1** | Text input; error states highlighted with red ring |
@@ -314,15 +319,40 @@ On empty submission, `novalidate` prevents disappearing browser bubbles; JavaScr
   </svg>
 </a>
 ```
-Uses `visibility: hidden; pointer-events: none;` near page top to prevent phantom tab stops. On scroll past 350px, it enters the tab order (`visibility: visible; opacity: 1;`), features a high-contrast focus ring, and smoothly resets keyboard focus to `#top` when activated.
+Uses `visibility: hidden; pointer-events: none;` near page top to prevent phantom tab stops. On scroll past 350px, it enters the tab order (`visibility: visible; opacity: 1;`), features a high-contrast focus ring, and programmatically resets keyboard focus to `#top` via `initBackToTop()` in [`js/script.js`](js/script.js):
+
+```javascript
+const topTarget = document.querySelector('#top') || document.body;
+if (topTarget) {
+  topTarget.setAttribute('tabindex', '-1');
+  topTarget.focus({ preventScroll: true });
+}
+```
 
 ---
 
-### Reconciliation of Audit Claims vs. Manual Testing Scope
+### Verification Scope and Peer Audit Resolution
 
-The technical WCAG 2.2 Level AA audit was completed using automated analysis (Chrome DevTools Lighthouse 96/100, WebAIM WAVE zero errors), strict keyboard-only navigation testing, NVDA 2026.3.1 screen reader speech verification, and 200%/400% zoom reflow verification. All issues identified in the peer accessibility audit have been resolved in code.
+#### Peer Audit Finding Resolutions:
+- **WCAG Failures Resolved:**
+  - **Finding 1 (WCAG 2.4.7 Focus Visible, Level AA):** Fixed missing FAQ focus indicators by adding `.faq-list summary:focus-visible` with `#f2f7ef` background tint and `3px solid var(--forest)` outline.
+  - **Finding 2 (WCAG 1.4.3 Contrast, Level AA):** Resolved 4.11:1 orange-on-grey contrast failures by implementing concrete `:root` tokens yielding **14.24:1** (primary text) and **10.05:1**–**12.63:1** (brand lime on dark surfaces).
+- **Usability & Consistent Identification Fix:**
+  - **Finding 3 (Usability / WCAG 3.2.4 Consistent Identification):** Separated interactive actions from static prices; service cards now feature explicit `.service-link` controls with arrow icons rather than styled price labels.
+- **Advisories Addressed:**
+  - Updated copyright year to dynamically generate the current year.
+  - Added authentic hero photography illustrating workshop operations.
+  - Resolved mobile text cramping by reflowing contact blocks vertically below 650px.
 
-Any note regarding "further testing" in documentation refers specifically to physical field testing with real local customers on physical smartphones under direct outdoor sunlight in Adum Commercial Area, Kumasi—not missing technical verification.
+#### Testing Scope (What Was and Wasn't Tested):
+- **What Was Tested:**
+  - Full keyboard navigation across all 42 interactive tab stops without a mouse.
+  - Screen reader landmark, heading, and form feedback verification using NVDA 2026.3.1 with Chrome.
+  - Automated scanning via Google Lighthouse (Accessibility: 96/100) and WebAIM WAVE (0 errors).
+  - Responsive reflow at 200% and 400% zoom and down to 320px viewport width.
+- **What Wasn't Tested:**
+  - Alternative screen readers (JAWS, macOS/iOS VoiceOver, Android TalkBack).
+  - Physical on-device user testing with customers under direct outdoor sunlight in Kumasi.
 
 ---
 
@@ -334,7 +364,7 @@ Any note regarding "further testing" in documentation refers specifically to phy
 | [Original Website Diagnosis](docs/ee01/diagnosis.md) | Identified defects, root causes, and business impact of the starter site *(Analyse)* |
 | [Pre-Implementation Layout Sketch](docs/ee01/sketches/sketch-description.drawio.png) | Pre-build wireframe structure, component hierarchy, and mobile-first planning |
 | [Audit Written for Pair (Jerry Akuaku's Site)](docs/ee01/audit-of-pair-site.md) | Accessibility audit written for pair covering WCAG A/AA, user impact, and prioritized findings *(Analyse, Understand, Evaluate)* |
-| [Audit Received from Pair (Jeremiah Narteh Akuaku)](docs/peer-accessibility-audit.md) | External peer accessibility audit received from pair evaluating our starter site |
+| [Audit Received from Pair (Jeremiah Narteh Akuaku)](docs/ee01/peer-accessibility-audit.md) | External peer accessibility audit received from pair evaluating our starter site |
 | [Write-up of Fixes & Hand Verification](docs/ee01/fixes.md) | Detailed record of what was changed, why, and how every peer audit issue was verified by hand *(Apply)* |
 | [Additional Improvement — Find Your Repair](docs/ee01/improvement.md) | Problem selector & symptom filter built and justified for customers without technical bicycle vocabulary *(Create)* |
 | [Final Website Audit](docs/ee01/audit.md) | Post-rebuild technical evaluation, semantic HTML, and responsive verification |
@@ -346,7 +376,7 @@ Any note regarding "further testing" in documentation refers specifically to phy
 - **HTML5:** Semantic landmarks, native disclosure widgets, accessible forms
 - **CSS3:** Custom properties (`:root`), Flexbox, CSS Grid, media queries, clamp typography
 - **JavaScript:** Vanilla ECMAScript (navigation drawer, filter auto-scroll, form validation, floating back-to-top)
-- **Git & GitHub:** Version control following Conventional Commits (`docs(ee01):`, `fix(ee01):`)
+- **Git & GitHub:** Version control with Conventional Commits (`feat(ee01):`, `docs(ee01):`, `fix(ee01):`, `chore(ee01):`) applied to all feature development, accessibility fixes, and rebuild milestones; standard PR merge history and deployment workflow commits retained on `main`.
 
 ---
 
@@ -368,7 +398,7 @@ Any note regarding "further testing" in documentation refers specifically to phy
 
 - **Indicative Starting Prices:** Published rates are indicative starting prices; final costs are confirmed by Kwame after bicycle inspection.
 - **Service Discovery vs. Diagnostics:** The problem selector assists in finding everyday services, but mechanical repairs require physical inspection.
-- **Production Form Gateway:** Form submissions generate pre-filled WhatsApp messages to the workshop's direct business line (`0244 000 001`); direct database integration is reserved for backend modules.
+- **Demonstration Contact Data:** The business phone numbers (`0244 000 001` and `0322 000 000`) are sample demonstration data provided in the EE01 project brief for testing WhatsApp click-to-chat and `tel:` call link functionality; Kwame's live verified SIM numbers will replace them prior to commercial production launch.
 
 ---
 

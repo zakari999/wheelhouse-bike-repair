@@ -94,7 +94,7 @@ Tested via manual keyboard navigation without mouse interaction across Chrome, E
 | **10** | Hero request repair button | `.hero-actions .btn-lime` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter jumps to `#booking` |
 | **11** | Hero explore services button | `.hero-actions .btn-ghost` | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter jumps to `#services` |
 | **12–15** | Symptom filter cards | `.problem-card` (01–04) | `outline: 3px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter/Space toggles filter; smooth-scrolls |
-| **16** | Reset filter button | `#reset-services` | `outline: 2px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Enter/Space resets all 6 cards; shifts focus |
+| **16** | Reset filter button | `#reset-services` | `outline: 2px solid var(--forest); outline-offset: 3px;` | **12.86:1** | Activates via Enter/Space: restores all 6 cards; JavaScript explicitly shifts keyboard focus back to 1st symptom card (Stop 12, `.problem-card[data-filter="tyre"]`) |
 | **17–22** | Service card action links | `.service-link` (1–6) | `outline: 2px solid var(--forest); text-decoration: underline;` | **12.86:1** | Enter jumps to `#booking` & pre-selects dropdown |
 | **23** | About section location link | `.about-text .text-link` | `outline: 2px solid var(--forest); text-decoration: underline;` | **12.86:1** | Enter jumps to `#visit` |
 | **24–27** | Repair booking form controls | `input`, `select`, `textarea` | `border-color: var(--forest); box-shadow: 0 0 0 3px rgba(...)` | **12.86:1** | Standard typing; invalid fields get red ring |
@@ -136,17 +136,18 @@ Tested via manual keyboard navigation without mouse interaction across Chrome, E
 
 ---
 
-### Verification Status & Testing Scope Reconciliation
+### Testing Scope (What Was and Wasn't Tested)
 
-- **Checks Directly Verified:**
+- **What Was Tested:**
   - Automated HTML5 syntax validation (100% balanced and closed tags).
-  - Keyboard navigation inspection (Tab order, Enter/Space activation, Escape key dismissal, focus retention).
+  - Keyboard navigation inspection across all 42 interactive tab stops (Tab order, Enter/Space activation, Escape key dismissal, focus retention).
   - Contrast ratios mathematically verified across all text and UI boundaries.
   - Multi-viewport layout verified in Chromium DevTools (320px, 360px, 375px, 412px, 768px, 850px, 1024px, 1150px, 1440px).
-  - Reflow verified at 400% zoom and 320px width without horizontal scrolling.
-  - All findings from the external peer accessibility audit (`docs/peer-accessibility-audit.md`) resolved in code.
-- **Physical Field Scope:**
-  - Real-world usability testing with physical screen-reader users and phone testing under direct outdoor Ghanaian sunlight in Kumasi represent operational field testing, distinct from technical compliance.
+  - Reflow verified at 200% and 400% zoom and 320px width without content clipping.
+  - Resolved both WCAG failures from the peer audit (Finding 1: FAQ focus; Finding 2: colour contrast) and the usability issue (Finding 3: service action affordance).
+- **What Wasn't Tested:**
+  - Non-Chromium/Windows screen readers (JAWS, macOS/iOS VoiceOver, Android TalkBack).
+  - Physical field trials with customers on handheld smartphones in direct outdoor Ghanaian sunlight.
 
 ---
 
@@ -158,7 +159,7 @@ The fluid layout is governed by 5 explicit breakpoints in [`css/styles.css`](../
 - **`850px` (`@media (max-width: 850px)`):** Mobile navigation drawer activates; services grid shifts to 2 columns (`repeat(2, 1fr)`); booking grid shifts to 2 columns.
 - **`650px` (`@media (max-width: 650px)`):** Single-column layout across all grids; sticky bottom action bar (`.mobile-cta`) activates; container padding `calc(100% - 38px)`; floating back-to-top button repositions to `bottom: 84px; right: 18px;`.
 - **`400px` (`@media (max-width: 400px)`):** Compact mobile scaling for `.about-stamp` (`86px × 86px`, `5px` border) to fit iPhone SE without clipping.
-- **`360px` (`@media (max-width: 360px)`):** Ultra-compact breakpoint for smaller devices; hero title scales to `39px`.
+- **`360px` (`@media (max-width: 360px)`):** Ultra-compact breakpoint for smaller devices; hero title scales to `34px`, providing generous horizontal margins and preventing line overflow down to 320px.
 
 ### Responsive Screenshots & Verification
 
@@ -191,7 +192,7 @@ All visual rules are consolidated in [`css/styles.css`](../../css/styles.css) (9
 | `--cream` | `#f7f7f1` | Warm off-white page background canvas |
 | `--paper` | `#ffffff` | Pure white background for content cards |
 | `--muted` | `#3d5044` | Secondary copy and metadata |
-| `--line` | `#e3e9e1` | Subtle divider lines and container borders |
+| `--line` | `#e3e9e1` | Subtle decorative divider lines and container borders (decorative; 1.21:1 on `#ffffff`, exempt under WCAG 1.4.11) |
 | `--shadow` | `0 20px 60px rgba(15, 38, 24, 0.08)` | Tactile soft card shadow |
 
 ---
@@ -209,7 +210,7 @@ All visual rules are consolidated in [`css/styles.css`](../../css/styles.css) (9
 
 - **Indicative Starting Prices:** Published rates are indicative starting prices; final quotes are confirmed by Kwame after bicycle inspection.
 - **Service Discovery vs. Diagnostics:** The problem selector assists in finding everyday services, but mechanical repairs require physical inspection.
-- **Production Form Gateway:** Form submissions generate pre-filled WhatsApp messages to the workshop's direct business line (`0244 000 001`); direct database integration is reserved for backend modules.
+- **Demonstration Contact Data:** The business phone numbers (`0244 000 001` and `0322 000 000`) are sample demonstration data provided in the EE01 project brief for testing WhatsApp click-to-chat and `tel:` call link functionality; Kwame's live verified SIM numbers will replace them prior to commercial production launch.
 
 ---
 

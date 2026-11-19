@@ -47,11 +47,29 @@ Testing did uncover **2 Level A failures** and **2 warnings** that create real f
 
 * **WCAG Rule & Principle:** [2.4.3 Focus Order](https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html) (Level A) — **Operable**
 * **Who it protects:** Keyboard-only users, switch-device users, and screen-magnifier users who rely on a predictable, logical tab sequence.
-* **What we found:** In `<header>`, the `Call` and `WhatsApp` buttons come **before** `<nav>` in the HTML. Tabbing from the top hits: `Skip link` &rarr; `Wheelhouse Bike Repair` &rarr; `Call` &rarr; `WhatsApp` &rarr; `Prices` &rarr; `Questions` &rarr; `About` &rarr; `Contact`.
+* **What we found:** In the pair's actual audited `<header>` markup, the `.header-actions` container (`Call` and `WhatsApp` buttons) was placed physically **before** `<nav>` in the DOM source order:
+  ```html
+  <!-- Observed markup in audited site: .header-actions placed before <nav> -->
+  <header>
+    <a href="index.html">Wheelhouse Bike Repair</a>
+    <div class="header-actions">
+      <a href="tel:+233322000000" class="btn">Call</a>
+      <a href="https://wa.me/233244000001" class="btn">WhatsApp</a>
+    </div>
+    <nav>
+      <a href="#services">Prices</a>
+      <a href="#faq">Questions</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  ```
+  Consequently, tabbing from the top of the page produced the following sequence: `Skip link` &rarr; `Wheelhouse Bike Repair` &rarr; `Call` &rarr; `WhatsApp` &rarr; `Prices` &rarr; `Questions` &rarr; `About` &rarr; `Contact`.
 * **Why it ranks second:** A user exploring the site by keyboard is forced through action buttons before they even discover the primary navigation options, violating natural visual reading and structural order.
-* **Fix:** Place `<nav>` before `.header-actions` in the HTML so keyboard focus reaches the main navigation links first.
+* **Fix:** Reorder the DOM so that `<nav>` precedes `.header-actions`:
 
 ```html
+<!-- Recommended fix: place <nav> before .header-actions -->
 <header>
   <a href="index.html">Wheelhouse Bike Repair</a>
   <nav aria-label="Main navigation">
