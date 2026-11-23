@@ -53,6 +53,13 @@ A full background highlight (`#f2f7ef`) combined with a `3px solid var(--forest)
 3. Confirmed that every `<summary>` illuminates with a crisp green outline and soft background tint when focused.
 4. Pressed `Enter` and `Space` to toggle questions open and closed, confirming focus remains visible in both expanded and collapsed states.
 
+#### Visual Evidence:
+The screenshot below shows the rebuilt FAQ question summary focused via keyboard with a 3px solid forest outline, soft background tint, and an adjacent question expanded:
+
+![Rebuilt FAQ question summary showing high-contrast focus indicator](screenshots/fix-1-faq-focus.png)
+
+*Direct file link:* [fix-1-faq-focus.png](screenshots/fix-1-faq-focus.png)
+
 ---
 
 ### Finding 2: Orange Text on Grey Boxes Falls Short of Contrast Threshold
@@ -76,6 +83,13 @@ Elevating each foreground and background pair well above the 4.5:1 minimum thres
 1. Recalculated relative luminance values mathematically for every paired token.
 2. Re-scanned with WebAIM WAVE and Chrome DevTools Lighthouse Accessibility Audit.
 3. Verified zero contrast errors across all cards, buttons, badges, and footer links.
+
+#### Visual Evidence:
+The screenshot below demonstrates the rebuilt workshop catalogue using high-contrast design tokens exceeding WCAG AAA requirements:
+
+![Rebuilt workshop services catalogue demonstrating high-contrast design tokens](screenshots/fix-2-contrast-palette.png)
+
+*Direct file link:* [fix-2-contrast-palette.png](screenshots/fix-2-contrast-palette.png)
 
 ---
 
@@ -127,6 +141,13 @@ Links now possess distinct interactive affordances (distinct circular button con
 2. Tapped and keyboard-tabbed to each service card link.
 3. Confirmed that clicking any service link smoothly navigates to `#booking` and automatically pre-selects that specific service in the booking dropdown.
 
+#### Visual Evidence:
+The screenshot below shows the rebuilt service cards with circular action buttons and directional arrow SVGs, distinctly separating clickable actions from static starting prices:
+
+![Rebuilt service cards with circular action buttons and custom build accent card](screenshots/fix-3-service-links.png)
+
+*Direct file link:* [fix-3-service-links.png](screenshots/fix-3-service-links.png)
+
 ---
 
 ## 3. Fixes for Advisory Recommendations
@@ -136,18 +157,30 @@ Links now possess distinct interactive affordances (distinct circular button con
 - **Audit Observation:** Footer displayed "©2023", undermining trust and currency for an active business.
 - **What Was Changed:** Replaced the hardcoded year with an unpopulated `<span id="year"></span>`, dynamically set upon page load by `initYear()` in [`js/script.js`](../../js/script.js) using `new Date().getFullYear()`, preventing a stale static fallback.
 - **How Verified:** Inspected rendered DOM across refreshes.
+- **Visual Evidence:**
+  ![Rebuilt site footer showing dynamic current copyright year](screenshots/fix-advisory-1-footer-year.png)
+
+  *Direct file link:* [fix-advisory-1-footer-year.png](screenshots/fix-advisory-1-footer-year.png)
 
 ### Advisory 2: Missing Hero Imagery
 
 - **Audit Observation:** No image at the top showed what the business does at a glance.
 - **What Was Changed:** Integrated a high-resolution workshop photo of Kwame working on a bicycle ([`assets/kwame-workshop.jpg`](../../assets/kwame-workshop.jpg)) with descriptive `alt="Kwame working on a bicycle in the Wheelhouse repair workshop in Kumasi"`, accompanied by an inline SVG fallback.
 - **How Verified:** Inspected responsive scaling across mobile (375px), tablet (768px), and desktop (1440px) viewports.
+- **Visual Evidence:**
+  ![Rebuilt hero section featuring authentic workshop photography of Kwame](screenshots/fix-advisory-2-hero-image.png)
+
+  *Direct file link:* [fix-advisory-2-hero-image.png](screenshots/fix-advisory-2-hero-image.png)
 
 ### Advisory 3: Contact Details Wrapping on Mobile
 
 - **Audit Observation:** "Prefer email?" text wrapped awkwardly beside the email link on phone screens.
 - **What Was Changed:** Restructured the booking and contact sections into responsive single-column stacked cards on viewports below 650px.
 - **How Verified:** Tested in Chrome DevTools device mode at 320px and 375px widths, confirming ample breathing room without overlapping text.
+- **Visual Evidence:**
+  ![Rebuilt booking and contact sections stacked cleanly on mobile viewport](screenshots/fix-advisory-3-mobile-reflow.png)
+
+  *Direct file link:* [fix-advisory-3-mobile-reflow.png](screenshots/fix-advisory-3-mobile-reflow.png)
 
 ---
 

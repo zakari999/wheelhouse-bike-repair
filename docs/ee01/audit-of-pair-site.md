@@ -29,6 +29,11 @@ Testing did uncover **2 Level A failures** and **2 warnings** that create real f
 * **WCAG Rule & Principle:** [2.4.4 Link Purpose (In Context)](https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html) (Level A) — **Operable**
 * **Who it protects:** Screen-reader users and voice-control users (for example, someone using voice dictation with one arm in a cast) who navigate by listing all links on the page.
 * **What we found:** `"Ask on WhatsApp"` appears **7 times** (6 service cards + 1 footer link). Even though each `href` has a different `?text=` message, none of the links have an `aria-label`, so they all sound identical out of context.
+* **Evidence:** The screenshot below shows the six service cards in the catalogue. Each card features an identical "Ask on WhatsApp" button without distinct contextual labels:
+
+  ![Audited pair site service cards showing 6 identical Ask on WhatsApp buttons](screenshots/pair-finding-1-whatsapp-links.png)
+
+  *Direct file link:* [pair-finding-1-whatsapp-links.png](screenshots/pair-finding-1-whatsapp-links.png)
 * **Why it ranks first:** Screen reader users frequently navigate via link lists (rotor). When all 7 links read identically as "Ask on WhatsApp", the user has no way of knowing which link initiates an enquiry for *Tyre Replacement* versus *Full Rebuild*.
 * **Fix:** Give each link a descriptive `aria-label`:
 
@@ -65,6 +70,11 @@ Testing did uncover **2 Level A failures** and **2 warnings** that create real f
   </header>
   ```
   Consequently, tabbing from the top of the page produced the following sequence: `Skip link` &rarr; `Wheelhouse Bike Repair` &rarr; `Call` &rarr; `WhatsApp` &rarr; `Prices` &rarr; `Questions` &rarr; `About` &rarr; `Contact`.
+* **Evidence:** The screenshot below illustrates the observed header layout and tab navigation sequence where Call (Tab Stop 1) and WhatsApp (Tab Stop 2) precede the navigation links (Tab Stops 3–6):
+
+  ![Audited pair site header showing Call and WhatsApp action buttons positioned before main navigation](screenshots/pair-finding-2-header-tab-order.png)
+
+  *Direct file link:* [pair-finding-2-header-tab-order.png](screenshots/pair-finding-2-header-tab-order.png)
 * **Why it ranks second:** A user exploring the site by keyboard is forced through action buttons before they even discover the primary navigation options, violating natural visual reading and structural order.
 * **Fix:** Reorder the DOM so that `<nav>` precedes `.header-actions`:
 
@@ -92,6 +102,11 @@ Testing did uncover **2 Level A failures** and **2 warnings** that create real f
 * **WCAG Rules & Principle:** [3.3.1 Error Identification](https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html) (Level A) & [3.3.3 Error Suggestion](https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion.html) (Level AA) — **Understandable**
 * **Who it protects:** Screen-reader users, users with cognitive impairments, and one-handed mobile users who may tap submit before filling in all required fields.
 * **What we found:** Submitting `form#booking-form` empty shows only the browser's default `"Please fill out this field."` popup on `#name`. These tooltips vanish when focus moves and aren't tied to persistent inline text or screen-reader alert regions.
+* **Evidence:** In the screenshot below, submitting the booking form empty triggers only the browser's default native balloon tooltip on `#name`, with no persistent inline error message or `aria-live` region:
+
+  ![Audited pair site booking form showing native browser validation popup](screenshots/pair-finding-3-form-validation.png)
+
+  *Direct file link:* [pair-finding-3-form-validation.png](screenshots/pair-finding-3-form-validation.png)
 * **Why it ranks third:** The validation stops submission correctly, but fleeting popups create disorientation when using keyboard-only navigation or screen magnification.
 * **Fix:** Add persistent inline error elements linked with `aria-describedby` and `aria-live="polite"`:
 
@@ -108,6 +123,11 @@ Testing did uncover **2 Level A failures** and **2 warnings** that create real f
 * **WCAG Rule & Principle:** [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html) (Level A) — **Perceivable**
 * **Who it protects:** Screen-reader users who jump between page landmarks (`<header>`, `<nav>`, `<main>`, `<footer>`).
 * **What we found:** `<nav>` has no `aria-label` or `aria-labelledby` attribute.
+* **Evidence:** The screenshot below shows the primary navigation element in the header lacking an accessible landmark name (`aria-label`):
+
+  ![Audited pair site header showing unnamed nav landmark without aria-label](screenshots/pair-finding-4-nav-landmark.png)
+
+  *Direct file link:* [pair-finding-4-nav-landmark.png](screenshots/pair-finding-4-nav-landmark.png)
 * **Why it ranks fourth:** While the landmark is correctly detected as `<nav>`, naming it allows users of assistive technology to distinguish primary navigation from future sub-navigation regions.
 * **Fix:** Add `aria-label="Main navigation"` to `<nav>` (shown in the Issue 2 snippet above).
 
