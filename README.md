@@ -108,11 +108,11 @@ Typography is rendered using a modern, legible font pair: **DM Sans** for clear 
 
 | Token / Usage | CSS rem | Pixel Equivalent | Line Height | Implementation Usage |
 | :--- | :--- | :--- | :--- | :--- |
-| Minor Metadata / Kickers | `0.7500rem` | 12px | `1.2` | Kickers (`.section-kicker`, `.eyebrow`), badge labels, service numbers |
-| Footnotes & Form Disclaimers | `0.8125rem` | 13px | `1.4`–`1.6` | Pricing footnote, form help disclaimer, inline error text |
-| UI Navigation & Buttons | `0.8750rem` | 14px | `1.1`–`1.3` | Header navigation links (`.main-nav > a`), button labels (`.btn`) |
-| Card Body & Inputs | `0.8750rem`–`0.9375rem` | 14px–15px | `1.6`–`1.85` | Service card copy, form inputs, textarea values |
-| Subheadings & Form Titles | `0.9375rem` | 15px | `1.3` | Problem card title, FAQ question summary triggers |
+| Minor Metadata / Kickers | `0.78125rem`–`0.8125rem` | 12.5px–13px | `1.2`–`1.4` | Kickers (`.section-kicker`, `.eyebrow`), badge labels, service numbers (`.service-num`) |
+| Footnotes & Form Disclaimers | `0.8125rem` | 13px | `1.4`–`1.6` | Pricing footnote, form help disclaimer, inline error text (`.field-error`) |
+| UI Navigation & Buttons | `0.84375rem`–`0.8750rem` | 13.5px–14px | `1.1`–`1.3` | Header navigation links (`.main-nav > a`), button labels (`.btn`), text links |
+| Card Body & Inputs | `0.8750rem`–`0.9375rem` | 14px–15px | `1.6`–`1.85` | Service card copy, form inputs, textarea values, problem card copy |
+| Subheadings & Form Titles | `0.9375rem`–`1.0000rem` | 15px–16px | `1.3` | Problem card title, FAQ question summary triggers |
 | Base Body Text | `1.0000rem` | 16px | `1.6` | Standard paragraph text (`body`), lead descriptions |
 | Sub-section Titles (`<h3>`) | `1.3750rem` | 22px | `1.1`–`1.3` | Service card names (`h3`), process step headings |
 | Form Card Heading | `1.6875rem` | 27px | `1.2` | Repair request form title (`.form-title h3`) |
@@ -120,7 +120,7 @@ Typography is rendered using a modern, legible font pair: **DM Sans** for clear 
 | Hero Main Title (`<h1>`) | Fluid clamp | 34px–61px (mobile)<br>50px–80px (desktop) | `1.08` | Primary page heading (`#hero-title`) |
 
 > [!NOTE]
-> **Low-Vision Readability Justification:** In response to audit feedback, all primary interactive UI labels (navigation links and action buttons) were raised to a minimum of **14px** (`0.875rem`), and section kickers were elevated to **12px** (`0.75rem`) with high-contrast forest ink (`#285235` / `#182f27`), ensuring comfortable scanning for low-vision users without eye strain.
+> **Low-Vision Readability Justification:** In response to user experience and accessibility audits, all small text elements across the interface were systematically raised above comfortable minimums: primary UI labels (navigation links and action buttons) sit at **13.5px–14px** (`0.875rem`), form labels at **14px**, and section kickers, fine print, and metadata were elevated to **12.5px–13px** with high-contrast forest ink (`#285235` / `#182f27`), ensuring effortless scanning for low-vision users and single-handed mobile readers without eye strain.
 
 #### 3. Concrete Spacing & Layout Metrics
 
