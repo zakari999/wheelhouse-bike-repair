@@ -118,18 +118,41 @@ Testing did uncover **2 Level A failures** and **2 warnings** that create real f
 
 ---
 
-### 4. Navigation Landmark Is Unnamed (Low — Warning)
+### 4. Navigation Landmark Is Unnamed (Low — Warning / Advisory)
 
 * **WCAG Rule & Principle:** [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html) (Level A) — **Perceivable**
-* **Who it protects:** Screen-reader users who jump between page landmarks (`<header>`, `<nav>`, `<main>`, `<footer>`).
-* **What we found:** `<nav>` has no `aria-label` or `aria-labelledby` attribute.
-* **Evidence:** The screenshot below shows the primary navigation element in the header lacking an accessible landmark name (`aria-label`):
+* **Who it protects:** Blind and low-vision users navigating via screen readers (NVDA, JAWS, VoiceOver, TalkBack) who use landmark shortcuts to explore and jump across page sections without reading every element sequentially.
+* **What we found:** The `<nav>` element is defined without an `aria-label` or `aria-labelledby` attribute:
+  ```html
+  <!-- Observed markup in audited site: landmark without an accessible name -->
+  <nav class="main-nav">
+    <a href="#services">Prices</a>
+    <a href="#faq">Questions</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  ```
+* **Real-World Assistive Technology Impact:**
+  - Screen-reader users frequently press landmark quick-keys (such as pressing the **`D`** key in NVDA/JAWS or opening the Landmarks Rotor via **`VO + U`** in VoiceOver) to jump directly to specific areas of a page (`<header>`, `<nav>`, `<main>`, `<footer>`).
+  - When a `<nav>` element lacks an accessible name, the screen reader announces only the generic role: *"navigation"* or *"navigation landmark"*.
+  - If a website has only one navigation region, this is mildly ambiguous; but as soon as secondary navigation is introduced (such as a footer links list, pagination, or category filter), the screen reader announces multiple identical landmarks: *"navigation landmark"* and *"navigation landmark"*. The user has no way of knowing which menu they are entering without tabbing through its internal links first.
+  - Adding `aria-label="Main navigation"` ensures assistive technology announces: *"Main navigation, navigation landmark"*, providing immediate orientation.
+* **Evidence:** The screenshot below shows the primary navigation element in the DOM tree lacking an accessible landmark name (`aria-label`):
 
   ![Audited pair site header showing unnamed nav landmark without aria-label](screenshots/pair-finding-4-nav-landmark.png)
 
   *Direct file link:* [pair-finding-4-nav-landmark.png](screenshots/pair-finding-4-nav-landmark.png)
-* **Why it ranks fourth:** While the landmark is correctly detected as `<nav>`, naming it allows users of assistive technology to distinguish primary navigation from future sub-navigation regions.
-* **Fix:** Add `aria-label="Main navigation"` to `<nav>` (shown in the Issue 2 snippet above).
+
+* **Why it ranks fourth (Evaluate):** While omitting `aria-label` is a technical failure of WCAG 1.3.1, it does not completely trap or block a user from completing a repair booking. Because Jeremiah's audited starter site currently contains only one `<nav>` element on the page, screen-reader users can still deduce that it is the main menu. Therefore, we categorized this as an advisory/low-severity issue, reserving higher severity ranks for the repeated WhatsApp link text (Issue 1) and disrupted DOM tab order (Issue 2).
+* **Fix:** Add a concise, descriptive `aria-label="Main navigation"` to the `<nav>` element:
+  ```html
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="#services">Prices</a>
+    <a href="#faq">Questions</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  ```
 
 ---
 
