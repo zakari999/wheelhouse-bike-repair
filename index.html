@@ -1,852 +1,1186 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#15382b" />
+    <meta
+      name="description"
+      content="Bicycle repairs, tune-ups and full rebuilds in Adum, Kumasi. Visit Wheelhouse Bike Repair for an honest assessment and an upfront quote."
+    />
+    <title>Wheelhouse Bike Repair | Bicycle Repairs in Kumasi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#15382b">
-  <meta name="description"
-    content="Bicycle repairs, tune-ups and full rebuilds in Adum, Kumasi. Visit Wheelhouse Bike Repair for an honest assessment and an upfront quote.">
-  <title>Wheelhouse Bike Repair | Bicycle Repairs in Kumasi</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
+  <body>
+    <!-- Inline SVG Sprite for Performance & Offline Reliability -->
+    <svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14m-6-6 6 6-6 6" />
+      </symbol>
+      <symbol id="i-arrow-up" viewBox="0 0 24 24">
+        <path d="m7 17 10-10M8 7h9v9" />
+      </symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24">
+        <path
+          d="M22 16.9v3a2 2 0 0 1-2.2 2c-9.3-.8-16.5-8-17.3-17.3A2 2 0 0 1 4.5 2h3a2 2 0 0 1 2 1.7l.6 2.7a2 2 0 0 1-.6 1.8L8 9.7a16 16 0 0 0 6.3 6.3l1.5-1.5a2 2 0 0 1 1.8-.6l2.7.6a2 2 0 0 1 1.7 2Z"
+        />
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <path d="M20 10c0 5.3-8 12-8 12S4 15.3 4 10a8 8 0 1 1 16 0Z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6" />
+      </symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24">
+        <path
+          d="M14.7 6.2a5.6 5.6 0 0 0-6.9 7L3 18a2 2 0 1 0 3 3l4.8-4.8a5.6 5.6 0 0 0 7-6.9l-4 3.1-2.6-2.6Z"
+        />
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24">
+        <path d="M12 2 4.5 5v6c0 4.7 2.6 8.4 7.5 11 4.9-2.6 7.5-6.3 7.5-11V5Z" />
+        <path d="m8.5 12 2.4 2.4 4.7-4.8" />
+      </symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24">
+        <path
+          d="M20 11.5a8.3 8.3 0 0 1-8.5 8.1c-1.3 0-2.6-.3-3.8-.8L3 20l1.3-4a7.9 7.9 0 0 1-1-4.5 8.3 8.3 0 0 1 8.5-8.1 8.3 8.3 0 0 1 8.2 8.1Z"
+        />
+        <path d="M8.5 11.5h7" />
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24">
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      </symbol>
+      <symbol id="i-x" viewBox="0 0 24 24">
+        <path d="M5 5 19 19M19 5 5 19" />
+      </symbol>
+      <symbol id="i-wheel" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9.5" />
+        <circle cx="12" cy="12" r="2.2" />
+        <path
+          d="M12 2.5v7.3m0 4.4v7.3M2.5 12h7.3m4.4 0h7.3M5.3 5.3l5.1 5.1m3.2 3.2 5.1 5.1M18.7 5.3l-5.1 5.1m-3.2 3.2-5.1 5.1"
+        />
+      </symbol>
+      <symbol id="i-bike" viewBox="0 0 24 24">
+        <circle cx="5.5" cy="17.5" r="4" />
+        <circle cx="18.5" cy="17.5" r="4" />
+        <path d="m5.5 17.5 4-10 4.8 10-8.8 0 8-9 5 9M8 7.5H6m8.2-2H18" />
+      </symbol>
+    </svg>
 
-<body>
-  <!-- Inline SVG Sprite for Performance & Offline Reliability -->
-  <svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-    <symbol id="i-arrow" viewBox="0 0 24 24">
-      <path d="M5 12h14m-6-6 6 6-6 6" />
-    </symbol>
-    <symbol id="i-arrow-up" viewBox="0 0 24 24">
-      <path d="m7 17 10-10M8 7h9v9" />
-    </symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24">
-      <path
-        d="M22 16.9v3a2 2 0 0 1-2.2 2c-9.3-.8-16.5-8-17.3-17.3A2 2 0 0 1 4.5 2h3a2 2 0 0 1 2 1.7l.6 2.7a2 2 0 0 1-.6 1.8L8 9.7a16 16 0 0 0 6.3 6.3l1.5-1.5a2 2 0 0 1 1.8-.6l2.7.6a2 2 0 0 1 1.7 2Z" />
-    </symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24">
-      <path d="M20 10c0 5.3-8 12-8 12S4 15.3 4 10a8 8 0 1 1 16 0Z" />
-      <circle cx="12" cy="10" r="2.5" />
-    </symbol>
-    <symbol id="i-clock" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 2" />
-    </symbol>
-    <symbol id="i-check" viewBox="0 0 24 24">
-      <path d="m5 12 4 4L19 6" />
-    </symbol>
-    <symbol id="i-wrench" viewBox="0 0 24 24">
-      <path d="M14.7 6.2a5.6 5.6 0 0 0-6.9 7L3 18a2 2 0 1 0 3 3l4.8-4.8a5.6 5.6 0 0 0 7-6.9l-4 3.1-2.6-2.6Z" />
-    </symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24">
-      <path d="M12 2 4.5 5v6c0 4.7 2.6 8.4 7.5 11 4.9-2.6 7.5-6.3 7.5-11V5Z" />
-      <path d="m8.5 12 2.4 2.4 4.7-4.8" />
-    </symbol>
-    <symbol id="i-chat" viewBox="0 0 24 24">
-      <path
-        d="M20 11.5a8.3 8.3 0 0 1-8.5 8.1c-1.3 0-2.6-.3-3.8-.8L3 20l1.3-4a7.9 7.9 0 0 1-1-4.5 8.3 8.3 0 0 1 8.5-8.1 8.3 8.3 0 0 1 8.2 8.1Z" />
-      <path d="M8.5 11.5h7" />
-    </symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24">
-      <path d="M4 7h16M4 12h16M4 17h16" />
-    </symbol>
-    <symbol id="i-x" viewBox="0 0 24 24">
-      <path d="M5 5 19 19M19 5 5 19" />
-    </symbol>
-    <symbol id="i-wheel" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="9.5" />
-      <circle cx="12" cy="12" r="2.2" />
-      <path d="M12 2.5v7.3m0 4.4v7.3M2.5 12h7.3m4.4 0h7.3M5.3 5.3l5.1 5.1m3.2 3.2 5.1 5.1M18.7 5.3l-5.1 5.1m-3.2 3.2-5.1 5.1" />
-    </symbol>
-    <symbol id="i-bike" viewBox="0 0 24 24">
-      <circle cx="5.5" cy="17.5" r="4" />
-      <circle cx="18.5" cy="17.5" r="4" />
-      <path d="m5.5 17.5 4-10 4.8 10-8.8 0 8-9 5 9M8 7.5H6m8.2-2H18" />
-    </symbol>
-  </svg>
+    <!-- Accessibility Skip Link -->
+    <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- Accessibility Skip Link -->
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <!-- Top Notification Bar -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <span><svg class="icon" aria-hidden="true">
-          <use href="#i-pin" />
-        </svg> Shop 4, Adum Commercial Area, Kumasi</span>
-      <span class="topbar-right"><svg class="icon" aria-hidden="true">
-          <use href="#i-clock" />
-        </svg> Mon &ndash; Sat: 8:00 AM &ndash; 5:30 PM <span class="topbar-divider"></span> Walk-ins welcome</span>
-    </div>
-  </div>
-
-  <!-- Main Site Header -->
-  <header class="site-header" id="top">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="Wheelhouse Bike Repair, home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3" />
-            <circle cx="24" cy="24" r="5" stroke="currentColor" stroke-width="3" />
-            <path d="M24 4v15m0 10v15M4 24h15m10 0h15M10 10l10.5 10.5m7 7L38 38M38 10 27.5 20.5m-7 7L10 38"
-              stroke="currentColor" stroke-width="2" />
+    <!-- Top Notification Bar -->
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <span
+          ><svg class="icon" aria-hidden="true">
+            <use href="#i-pin" />
           </svg>
-        </span>
-        <span class="brand-copy"><strong>WHEELHOUSE<span>.</span></strong><small>BIKE REPAIR &middot;
-            KUMASI</small></span>
-      </a>
-
-      <nav class="main-nav" aria-label="Primary navigation" id="main-nav">
-        <a href="#services">Services</a>
-        <a href="#common-repairs">Repairs</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#about">Our story</a>
-        <a href="#faq">FAQs</a>
-        <a href="#visit">Visit us</a>
-        <a class="nav-mobile-action" href="#booking">Request a repair <svg class="icon" aria-hidden="true">
-            <use href="#i-arrow" />
-          </svg></a>
-      </nav>
-
-      <a class="btn btn-dark nav-cta" href="#booking">Book a repair <svg class="icon" aria-hidden="true">
-          <use href="#i-arrow-up" />
-        </svg></a>
-
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav"
-        aria-label="Open navigation menu">
-        <svg class="icon menu-icon" aria-hidden="true">
-          <use href="#i-menu" />
-        </svg>
-        <svg class="icon close-icon" aria-hidden="true">
-          <use href="#i-x" />
-        </svg>
-      </button>
+          Shop 4, Adum Commercial Area, Kumasi</span
+        >
+        <span class="topbar-right"
+          ><svg class="icon" aria-hidden="true">
+            <use href="#i-clock" />
+          </svg>
+          Mon &ndash; Sat: 8:00 AM &ndash; 5:30 PM <span class="topbar-divider"></span> Walk-ins
+          welcome</span
+        >
+      </div>
     </div>
-  </header>
 
-  <!-- Main Content Area -->
-  <main id="main">
+    <!-- Main Site Header -->
+    <header class="site-header" id="top">
+      <div class="container nav-wrap">
+        <a class="brand" href="#top" aria-label="Wheelhouse Bike Repair, home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3" />
+              <circle cx="24" cy="24" r="5" stroke="currentColor" stroke-width="3" />
+              <path
+                d="M24 4v15m0 10v15M4 24h15m10 0h15M10 10l10.5 10.5m7 7L38 38M38 10 27.5 20.5m-7 7L10 38"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+            </svg>
+          </span>
+          <span class="brand-copy"
+            ><strong>WHEELHOUSE<span>.</span></strong
+            ><small>BIKE REPAIR &middot; KUMASI</small></span
+          >
+        </a>
 
-    <!-- Hero Section -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <div class="eyebrow"><span class="status-dot"></span> YOUR LOCAL BIKE WORKSHOP IN KUMASI</div>
-          <h1 id="hero-title">Bike trouble?<br><span>We&rsquo;ll get you</span><br>rolling again<span
-              class="punctuation">.</span></h1>
-          <p class="hero-subtitle">Flat tyre, noisy brakes, or a bike that just doesn&rsquo;t feel right? Bring it to
-            Wheelhouse for expert attention, honest advice, and an upfront quote.</p>
-          <div class="hero-actions">
-            <a href="#booking" class="btn btn-lime">Request a repair <svg class="icon" aria-hidden="true">
-                <use href="#i-arrow-up" />
-              </svg></a>
-            <a href="#services" class="btn btn-outline">Explore services <svg class="icon" aria-hidden="true">
-                <use href="#i-arrow" />
-              </svg></a>
-          </div>
-          <div class="hero-bottom-note">
-            <div class="avatar-circle">
-              <img class="avatar-img" src="assets/kwame-avatar.jpg" alt="Kwame, founder and head mechanic of Wheelhouse Bike Repair">
-            </div>
-            <div>
-              <strong>Personal service from Kwame</strong>
-              <span>Every bike gets a proper inspection first.</span>
-            </div>
-          </div>
-        </div>
+        <nav class="main-nav" aria-label="Primary navigation" id="main-nav">
+          <a href="#services">Services</a>
+          <a href="#common-repairs">Repairs</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#about">Our story</a>
+          <a href="#faq">FAQs</a>
+          <a href="#visit">Visit us</a>
+          <a class="nav-mobile-action" href="#booking"
+            >Request a repair
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-arrow" /></svg
+          ></a>
+        </nav>
 
-        <div class="hero-visual">
-          <img class="hero-photo" src="assets/kwame-workshop.jpg" alt="Kwame servicing a bicycle in the Wheelhouse repair workshop in Kumasi" fetchpriority="high">
-          <img class="hero-fallback" src="assets/hero-illustration.svg" alt="Illustration of a bicycle" aria-hidden="true">
-        </div>
+        <a class="btn btn-dark nav-cta" href="#booking"
+          >Book a repair
+          <svg class="icon" aria-hidden="true">
+            <use href="#i-arrow-up" /></svg
+        ></a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          aria-label="Open navigation menu"
+        >
+          <svg class="icon menu-icon" aria-hidden="true">
+            <use href="#i-menu" />
+          </svg>
+          <svg class="icon close-icon" aria-hidden="true">
+            <use href="#i-x" />
+          </svg>
+        </button>
       </div>
-    </section>
+    </header>
 
-    <!-- Trust Strip -->
-    <section class="trust-strip" aria-label="Reasons to choose Wheelhouse">
-      <div class="container trust-inner">
-        <div><span class="trust-symbol"><svg class="icon" aria-hidden="true">
-              <use href="#i-check" />
-            </svg></span><span>Upfront quotes, no surprises</span></div>
-        <div><span class="trust-symbol"><svg class="icon" aria-hidden="true">
-              <use href="#i-clock" />
-            </svg></span><span>Same-day basic repairs</span></div>
-        <div><span class="trust-symbol"><svg class="icon" aria-hidden="true">
-              <use href="#i-bike" />
-            </svg></span><span>All everyday bike types</span></div>
-        <div><span class="trust-symbol"><svg class="icon" aria-hidden="true">
-              <use href="#i-pin" />
-            </svg></span><span>Right here in Adum, Kumasi</span></div>
-      </div>
-    </section>
-
-    <!-- Problem Selector Section (EE01 Service Filter Feature) -->
-    <section class="section problem-section" id="problems" aria-labelledby="problem-title">
-      <div class="container">
-        <div class="section-head compact">
-          <div>
-            <span class="section-kicker">START HERE</span>
-            <h2 id="problem-title">What&rsquo;s going on<br>with your bike?</h2>
-          </div>
-          <p>You don&rsquo;t need to know the technical name. Just pick what sounds familiar and we&rsquo;ll guide you
-            to the right service.</p>
-        </div>
-
-        <div class="problem-grid" role="group" aria-label="Filter repair services by symptom">
-          <button class="problem-card" type="button" data-filter="tyre" aria-pressed="false"
-            aria-controls="services-grid" aria-label="Flat tyre — Punctures and tubes">
-            <span class="problem-icon">01</span>
-            <span>Flat tyre <small>Punctures &amp; tubes</small></span>
-            <svg class="icon" aria-hidden="true">
-              <use href="#i-arrow-up" />
-            </svg>
-          </button>
-          <button class="problem-card" type="button" data-filter="brakes" aria-pressed="false"
-            aria-controls="services-grid" aria-label="Brake trouble — Squeaking or weak stops">
-            <span class="problem-icon">02</span>
-            <span>Brake trouble <small>Squeaking or weak stops</small></span>
-            <svg class="icon" aria-hidden="true">
-              <use href="#i-arrow-up" />
-            </svg>
-          </button>
-          <button class="problem-card" type="button" data-filter="gears" aria-pressed="false"
-            aria-controls="services-grid" aria-label="Slipping gears — Shifting and drivetrain">
-            <span class="problem-icon">03</span>
-            <span>Slipping gears <small>Shifting &amp; drivetrain</small></span>
-            <svg class="icon" aria-hidden="true">
-              <use href="#i-arrow-up" />
-            </svg>
-          </button>
-          <button class="problem-card" type="button" data-filter="tuneup" aria-pressed="false"
-            aria-controls="services-grid" aria-label="Just needs a tune-up — General maintenance">
-            <span class="problem-icon">04</span>
-            <span>Just needs a tune-up <small>General maintenance</small></span>
-            <svg class="icon" aria-hidden="true">
-              <use href="#i-arrow-up" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="section services-section" id="services" aria-labelledby="services-title">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="section-kicker">WHAT WE DO</span>
-            <h2 id="services-title">Quality repairs.<br><em>Straightforward prices.</em></h2>
-          </div>
-          <div class="services-intro">
-            <p>From quick fixes to complete rebuilds, we&rsquo;ll help you get the most out of your ride. Final prices
-              are confirmed after inspection.</p>
-            <button class="text-button" type="button" id="reset-services">View all services <svg class="icon" aria-hidden="true">
-                <use href="#i-arrow" />
-              </svg></button>
-          </div>
-        </div>
-
-        <p class="filter-note" id="filter-note" hidden role="status" aria-live="polite"></p>
-
-        <div class="services-grid" id="services-grid">
-          <!-- 01 Basic Tune-up -->
-          <article class="service-card" data-category="tuneup">
-            <div class="service-top">
-              <span class="service-num">01 / MAINTENANCE</span>
-              <span class="service-glyph" aria-hidden="true">&#10035;</span>
+    <!-- Main Content Area -->
+    <main id="main">
+      <!-- Hero Section -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <div class="eyebrow">
+              <span class="status-dot"></span> YOUR LOCAL BIKE WORKSHOP IN KUMASI
             </div>
-            <h3>Basic tune-up</h3>
-            <p>Brake and gear adjustments, safety check, chain lubrication, and a little extra care for your everyday
-              ride.</p>
-            <div class="service-bottom">
-              <div>
-                <span class="small-label">STARTING AT</span>
-                <strong>GH&#8373; 80</strong>
-              </div>
-              <a href="#booking" class="service-link" data-service="Basic tune-up"
-                aria-label="Enquire about a basic tune-up">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow-up" />
-                </svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- 02 Tyre & Tube Replacement -->
-          <article class="service-card" data-category="tyre">
-            <div class="service-top">
-              <span class="service-num">02 / WHEELS</span>
-              <span class="service-glyph" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-wheel" /></svg></span>
-            </div>
-            <h3>Tyre &amp; tube replacement</h3>
-            <p>New tubes and tyres, plus a careful check for glass, thorns, and anything else that might cause the next
-              puncture.</p>
-            <div class="service-bottom">
-              <div>
-                <span class="small-label">STARTING AT</span>
-                <strong>GH&#8373; 60</strong>
-              </div>
-              <a href="#booking" class="service-link" data-service="Tyre & tube replacement"
-                aria-label="Enquire about tyre and tube replacement">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow-up" />
-                </svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- 03 Brake Overhaul -->
-          <article class="service-card" data-category="brakes">
-            <div class="service-top">
-              <span class="service-num">03 / SAFETY</span>
-              <span class="service-glyph" aria-hidden="true">&#8853;</span>
-            </div>
-            <h3>Brake overhaul</h3>
-            <p>Brake pad and cable work, lever adjustment, alignment, and hydraulic system servicing where needed.</p>
-            <div class="service-bottom">
-              <div>
-                <span class="small-label">STARTING AT</span>
-                <strong>GH&#8373; 120</strong>
-              </div>
-              <a href="#booking" class="service-link" data-service="Brake overhaul"
-                aria-label="Enquire about a brake overhaul">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow-up" />
-                </svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- 04 Gear System Overhaul -->
-          <article class="service-card" data-category="gears">
-            <div class="service-top">
-              <span class="service-num">04 / DRIVETRAIN</span>
-              <span class="service-glyph" aria-hidden="true">&#9881;</span>
-            </div>
-            <h3>Gear system overhaul</h3>
-            <p>Derailleur setup, cable replacement, indexing, and chain checks to get your shifting feeling smooth
-              again.</p>
-            <div class="service-bottom">
-              <div>
-                <span class="small-label">STARTING AT</span>
-                <strong>GH&#8373; 150</strong>
-              </div>
-              <a href="#booking" class="service-link" data-service="Gear system overhaul"
-                aria-label="Enquire about a gear system overhaul">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow-up" />
-                </svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- 05 Full Bike Rebuild -->
-          <article class="service-card" data-category="rebuild">
-            <div class="service-top">
-              <span class="service-num">05 / RESTORATION</span>
-              <span class="service-glyph" aria-hidden="true">&#8635;</span>
-            </div>
-            <h3>Full bike rebuild</h3>
-            <p>Deep cleaning and a thorough rebuild for bicycles that need more than a quick fix to feel their best.</p>
-            <div class="service-bottom">
-              <div>
-                <span class="small-label">STARTING AT</span>
-                <strong>GH&#8373; 350</strong>
-              </div>
-              <a href="#booking" class="service-link" data-service="Full bike rebuild"
-                aria-label="Enquire about a full bike rebuild">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow-up" />
-                </svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- 06 Custom Builds & Upgrades -->
-          <article class="service-card accent-card" data-category="custom">
-            <div class="service-top">
-              <span class="service-num">06 / MAKE IT YOURS</span>
-              <span class="service-glyph" aria-hidden="true">&nearr;</span>
-            </div>
-            <h3>Custom builds<br>&amp; upgrades</h3>
-            <p>Want a different setup? Talk through compatible components, parts sourcing, and your budget with Kwame.
+            <h1 id="hero-title">
+              Bike trouble?<br /><span>We&rsquo;ll get you</span><br />rolling again<span
+                class="punctuation"
+                >.</span
+              >
+            </h1>
+            <p class="hero-subtitle">
+              Flat tyre, noisy brakes, or a bike that just doesn&rsquo;t feel right? Bring it to
+              Wheelhouse for expert attention, honest advice, and an upfront quote.
             </p>
-            <div class="service-bottom">
-              <div>
-                <span class="small-label">TELL US YOUR IDEA</span>
-                <strong>Let&rsquo;s talk.</strong>
-              </div>
-              <a href="#booking" class="service-link" data-service="Custom builds & upgrades"
-                aria-label="Enquire about custom builds and upgrades">
+            <div class="hero-actions">
+              <a href="#booking" class="btn btn-lime"
+                >Request a repair
                 <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow-up" />
-                </svg>
-              </a>
+                  <use href="#i-arrow-up" /></svg
+              ></a>
+              <a href="#services" class="btn btn-outline"
+                >Explore services
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-arrow" /></svg
+              ></a>
             </div>
-          </article>
+            <div class="hero-bottom-note">
+              <div class="avatar-circle">
+                <img
+                  class="avatar-img"
+                  src="assets/kwame-avatar.jpg"
+                  alt="Kwame, founder and head mechanic of Wheelhouse Bike Repair"
+                />
+              </div>
+              <div>
+                <strong>Personal service from Kwame</strong>
+                <span>Every bike gets a proper inspection first.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <img
+              class="hero-photo"
+              src="assets/kwame-workshop.jpg"
+              alt="Kwame servicing a bicycle in the Wheelhouse repair workshop in Kumasi"
+              fetchpriority="high"
+            />
+            <img
+              class="hero-fallback"
+              src="assets/hero-illustration.svg"
+              alt="Illustration of a bicycle"
+              aria-hidden="true"
+            />
+          </div>
         </div>
+      </section>
 
-        <p class="pricing-footnote">* Published starting prices are indicative. The workshop will confirm your quote
-          before work begins. Parts and additional work may affect the final cost.</p>
-      </div>
-    </section>
-
-    <!-- Common Repairs Guide Section -->
-    <section class="section repairs-guide-section" id="common-repairs" aria-labelledby="repairs-guide-title">
-      <div class="container">
-        <div class="section-head">
+      <!-- Trust Strip -->
+      <section class="trust-strip" aria-label="Reasons to choose Wheelhouse">
+        <div class="container trust-inner">
           <div>
-            <span class="section-kicker">KWAME&rsquo;S WORKSHOP GUIDE</span>
-            <h2 id="repairs-guide-title">Common repairs,<br><em>explained clearly.</em></h2>
+            <span class="trust-symbol"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-check" /></svg></span
+            ><span>Upfront quotes, no surprises</span>
           </div>
-          <p>Not sure what goes into fixing a daily issue? Here is what Kwame checks and how long most walk-in jobs take.</p>
-        </div>
-
-        <div class="repairs-guide-grid">
-          <article class="repair-guide-card">
-            <div class="repair-guide-media">
-              <img class="repair-guide-img" src="assets/repair-punctures.jpg" alt="Kwame inspecting bicycle tyre tread wear and checking for puncture damage" loading="lazy" decoding="async">
-            </div>
-            <div class="repair-guide-body">
-              <div class="repair-guide-meta">
-                <span>01 / PUNCTURES</span>
-                <span class="repair-turnaround">20&ndash;30 mins</span>
-              </div>
-              <h3>Puncture &amp; tyre wear</h3>
-              <p>Soft tyres or mid-ride flats. Kwame checks inside the casing for thorns or glass, inspects the rim strip, and fits a fresh tube.</p>
-              <p class="repair-tip"><strong>Tip:</strong> Keep tyres inflated near sidewall pressure to stop pinch flats.</p>
-              <a class="text-link" href="#booking">Book tyre repair <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow" />
-                </svg></a>
-            </div>
-          </article>
-
-          <article class="repair-guide-card">
-            <div class="repair-guide-media">
-              <img class="repair-guide-img" src="assets/repair-brakes.jpg" alt="Kwame adjusting a bicycle disc brake caliper with a hex key" loading="lazy" decoding="async">
-            </div>
-            <div class="repair-guide-body">
-              <div class="repair-guide-meta">
-                <span>02 / BRAKES</span>
-                <span class="repair-turnaround">1&ndash;2 hrs</span>
-              </div>
-              <h3>Noisy or weak brakes</h3>
-              <p>Squealing pads, spongy levers, or rubbing blocks. Covers rim cleaning, fresh pads and inner cables, caliper centering, and bleed checks.</p>
-              <p class="repair-tip"><strong>Tip:</strong> Swap worn pads early before metal backing plates score the rim.</p>
-              <a class="text-link" href="#booking">Book brake check <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow" />
-                </svg></a>
-            </div>
-          </article>
-
-          <article class="repair-guide-card">
-            <div class="repair-guide-media">
-              <img class="repair-guide-img" src="assets/repair-gears.jpg" alt="Kwame tuning a rear bicycle derailleur and cassette gears" loading="lazy" decoding="async">
-            </div>
-            <div class="repair-guide-body">
-              <div class="repair-guide-meta">
-                <span>03 / GEARS</span>
-                <span class="repair-turnaround">Same day</span>
-              </div>
-              <h3>Skipping chains &amp; gears</h3>
-              <p>Chains jumping under load or stiff shifters. We straighten derailleur hangers, flush cable grit, index stops, and road-test shifting.</p>
-              <p class="repair-tip"><strong>Tip:</strong> Wiping road dust off the chain weekly doubles drivetrain life.</p>
-              <a class="text-link" href="#booking">Book gear repair <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow" />
-                </svg></a>
-            </div>
-          </article>
-
-          <article class="repair-guide-card">
-            <div class="repair-guide-media">
-              <img class="repair-guide-img" src="assets/repair-wheels.jpg" alt="Kwame truing a bicycle wheel rim on the workshop truing stand" loading="lazy" decoding="async">
-            </div>
-            <div class="repair-guide-body">
-              <div class="repair-guide-meta">
-                <span>04 / WHEELS</span>
-                <span class="repair-turnaround">Half day</span>
-              </div>
-              <h3>Wobbly wheels &amp; creaks</h3>
-              <p>Buckled rims rubbing pads or clicking cranks. We balance spoke tension on the truing stand and repack hub or bottom bracket bearings.</p>
-              <p class="repair-tip"><strong>Tip:</strong> Fix loose spokes promptly before pothole hits bend the alloy rim.</p>
-              <a class="text-link" href="#booking">Book wheel truing <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow" />
-                </svg></a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="section process-section" id="how-it-works" aria-labelledby="process-title">
-      <div class="container">
-        <div class="section-head process-head">
           <div>
-            <span class="section-kicker light">OUR PROCESS</span>
-            <h2 id="process-title">Simple from<br><em>start to finish.</em></h2>
+            <span class="trust-symbol"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-clock" /></svg></span
+            ><span>Same-day basic repairs</span>
           </div>
-          <p>No confusing process. No surprise repairs. Just straightforward bicycle care.</p>
-        </div>
-
-        <div class="steps-grid">
-          <div class="step">
-            <span class="step-number">01</span>
-            <div class="step-rule"></div>
-            <h3>Tell us the problem</h3>
-            <p>Send an enquiry, give us a call, or simply bring your bike to our shop in Adum.</p>
+          <div>
+            <span class="trust-symbol"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-bike" /></svg></span
+            ><span>All everyday bike types</span>
           </div>
-          <div class="step">
-            <span class="step-number">02</span>
-            <div class="step-rule"></div>
-            <h3>Get a clear quote</h3>
-            <p>Kwame inspects the bike, explains what it needs, and confirms the cost before starting.</p>
-          </div>
-          <div class="step">
-            <span class="step-number">03</span>
-            <div class="step-rule"></div>
-            <h3>Get rolling again</h3>
-            <p>We complete the agreed work and let you know when your bike is ready for collection.</p>
+          <div>
+            <span class="trust-symbol"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-pin" /></svg></span
+            ><span>Right here in Adum, Kumasi</span>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- About Section -->
-    <section class="section about-section" id="about" aria-labelledby="about-title">
-      <div class="container about-grid">
-        <div class="about-visual">
-          <div class="about-illustration">
-            <div class="quote-graphic" aria-hidden="true">&ldquo;</div>
-            <p>Good bike care starts with knowing what actually needs fixing.</p>
-            <div class="quote-by">&mdash; THE WHEELHOUSE APPROACH</div>
-          </div>
-          <div class="about-stamp">
-            <span>EST.</span>
-            <strong>2019</strong>
-            <span>ADUM, KUMASI</span>
-          </div>
-        </div>
-
-        <div class="about-copy">
-          <span class="section-kicker">MORE THAN JUST A REPAIR SHOP</span>
-          <h2 id="about-title">A local workshop<br>that <em>gets it.</em></h2>
-          <p>Wheelhouse started with Kwame fixing bicycles for friends and neighbours. Today, the workshop takes care of
-            road bikes, mountain bikes, hybrids, BMXs, and kids&rsquo; bikes&mdash;all with the same down-to-earth
-            approach.</p>
-          <p>You talk to a real mechanic, get a proper assessment, and approve the work before anything happens.
-            That&rsquo;s how we believe bike repairs should be.</p>
-          <div class="about-points">
-            <div><span><svg class="icon" aria-hidden="true">
-                  <use href="#i-check" />
-                </svg></span> Repairs by Kwame or under his supervision</div>
-            <div><span><svg class="icon" aria-hidden="true">
-                  <use href="#i-check" />
-                </svg></span> Upfront advice and clear pricing</div>
-            <div><span><svg class="icon" aria-hidden="true">
-                  <use href="#i-check" />
-                </svg></span> Parts, accessories, and custom upgrades</div>
-          </div>
-          <a class="text-link" href="#visit">Come meet us at the workshop <svg class="icon" aria-hidden="true">
-              <use href="#i-arrow" />
-            </svg></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Booking & Contact Section -->
-    <section class="section booking-section" id="booking" aria-labelledby="booking-title">
-      <div class="container booking-grid">
-        <div class="booking-copy">
-          <span class="section-kicker">LET&rsquo;S GET YOUR BIKE SORTED</span>
-          <h2 id="booking-title">Ready for a<br><em>smoother ride?</em></h2>
-          <p>Tell us a little about your bike and what needs attention. We&rsquo;ll prepare a message you can send
-            directly to the workshop.</p>
-
-          <div class="contact-methods">
-            <a class="contact-method" href="tel:+233322000000" aria-label="Call workshop at 0322 000 000">
-              <span class="contact-icon"><svg class="icon" aria-hidden="true">
-                  <use href="#i-phone" />
-                </svg></span>
-              <span><small>PREFER TO TALK?</small><strong>0322 000 000</strong></span>
-              <svg class="icon tail" aria-hidden="true">
-                <use href="#i-arrow-up" />
-              </svg>
-            </a>
-            <div class="contact-method no-link">
-              <span class="contact-icon"><svg class="icon" aria-hidden="true">
-                  <use href="#i-clock" />
-                </svg></span>
-              <span><small>WORKSHOP HOURS</small><strong>Mon &ndash; Sat, 8 AM &ndash; 5:30 PM</strong></span>
+      <!-- Problem Selector Section (EE01 Service Filter Feature) -->
+      <section class="section problem-section" id="problems" aria-labelledby="problem-title">
+        <div class="container">
+          <div class="section-head compact">
+            <div>
+              <span class="section-kicker">START HERE</span>
+              <h2 id="problem-title">What&rsquo;s going on<br />with your bike?</h2>
             </div>
+            <p>
+              You don&rsquo;t need to know the technical name. Just pick what sounds familiar and
+              we&rsquo;ll guide you to the right service.
+            </p>
           </div>
 
-          <p class="booking-fineprint">Walk-ins are welcome too. You don&rsquo;t need an appointment for most repairs.
-          </p>
-        </div>
-
-        <div class="form-card">
-          <div class="form-title">
-            <h3>Request a repair</h3>
-            <p>No payment required. We&rsquo;ll confirm the details with you.</p>
-          </div>
-
-          <form id="repair-form" novalidate>
-            <div class="field-row">
-              <label for="customer-name">
-                Your name <span aria-hidden="true">*</span>
-                <input id="customer-name" name="name" required aria-required="true" maxlength="90" autocomplete="name"
-                  placeholder="e.g. Ama Mensah" aria-describedby="name-error">
-                <span class="field-error" id="name-error" role="alert"></span>
-              </label>
-              <label for="customer-phone">
-                Phone number <span aria-hidden="true">*</span>
-                <input id="customer-phone" name="phone" type="tel" required aria-required="true" maxlength="25"
-                  autocomplete="tel" placeholder="e.g. 0244 123 456" aria-describedby="phone-error">
-                <span class="field-error" id="phone-error" role="alert"></span>
-              </label>
-            </div>
-
-            <label for="service-select">
-              What does your bike need? <span aria-hidden="true">*</span>
-              <select id="service-select" name="service" required aria-required="true" aria-describedby="service-error">
-                <option value="" disabled selected>Select a service</option>
-                <option value="Basic tune-up">Basic tune-up</option>
-                <option value="Tyre &amp; tube replacement">Tyre &amp; tube replacement</option>
-                <option value="Brake overhaul">Brake overhaul</option>
-                <option value="Gear system overhaul">Gear system overhaul</option>
-                <option value="Full bike rebuild">Full bike rebuild</option>
-                <option value="Custom builds &amp; upgrades">Custom builds &amp; upgrades</option>
-                <option value="Not sure &mdash; need an inspection">Not sure &mdash; need an inspection</option>
-              </select>
-              <span class="field-error" id="service-error" role="alert"></span>
-            </label>
-
-            <label for="repair-notes">
-              Anything else we should know? <span class="optional">(optional)</span>
-              <textarea id="repair-notes" name="notes" rows="4" maxlength="550"
-                placeholder="Describe the issue, your bike type, or anything unusual..."></textarea>
-            </label>
-
-            <button class="btn btn-dark form-submit" type="submit">
-              Continue to WhatsApp <svg class="icon" aria-hidden="true">
+          <div class="problem-grid" role="group" aria-label="Filter repair services by symptom">
+            <button
+              class="problem-card"
+              type="button"
+              data-filter="tyre"
+              aria-pressed="false"
+              aria-controls="services-grid"
+              aria-label="Flat tyre — Punctures and tubes"
+            >
+              <span class="problem-icon">01</span>
+              <span>Flat tyre <small>Punctures &amp; tubes</small></span>
+              <svg class="icon" aria-hidden="true">
                 <use href="#i-arrow-up" />
               </svg>
             </button>
-
-            <p class="form-disclaimer">
+            <button
+              class="problem-card"
+              type="button"
+              data-filter="brakes"
+              aria-pressed="false"
+              aria-controls="services-grid"
+              aria-label="Brake trouble — Squeaking or weak stops"
+            >
+              <span class="problem-icon">02</span>
+              <span>Brake trouble <small>Squeaking or weak stops</small></span>
               <svg class="icon" aria-hidden="true">
-                <use href="#i-shield" />
+                <use href="#i-arrow-up" />
               </svg>
-              <span>This opens a pre-filled WhatsApp message. Your request is sent only after you choose Send in
-                WhatsApp.</span>
+            </button>
+            <button
+              class="problem-card"
+              type="button"
+              data-filter="gears"
+              aria-pressed="false"
+              aria-controls="services-grid"
+              aria-label="Slipping gears — Shifting and drivetrain"
+            >
+              <span class="problem-icon">03</span>
+              <span>Slipping gears <small>Shifting &amp; drivetrain</small></span>
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-arrow-up" />
+              </svg>
+            </button>
+            <button
+              class="problem-card"
+              type="button"
+              data-filter="tuneup"
+              aria-pressed="false"
+              aria-controls="services-grid"
+              aria-label="Just needs a tune-up — General maintenance"
+            >
+              <span class="problem-icon">04</span>
+              <span>Just needs a tune-up <small>General maintenance</small></span>
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-arrow-up" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section class="section services-section" id="services" aria-labelledby="services-title">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">WHAT WE DO</span>
+              <h2 id="services-title">Quality repairs.<br /><em>Straightforward prices.</em></h2>
+            </div>
+            <div class="services-intro">
+              <p>
+                From quick fixes to complete rebuilds, we&rsquo;ll help you get the most out of your
+                ride. Final prices are confirmed after inspection.
+              </p>
+              <button class="text-button" type="button" id="reset-services">
+                View all services
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <p class="filter-note" id="filter-note" hidden role="status" aria-live="polite"></p>
+
+          <div class="services-grid" id="services-grid">
+            <!-- 01 Basic Tune-up -->
+            <article class="service-card" data-category="tuneup">
+              <div class="service-top">
+                <span class="service-num">01 / MAINTENANCE</span>
+                <span class="service-glyph" aria-hidden="true">&#10035;</span>
+              </div>
+              <h3>Basic tune-up</h3>
+              <p>
+                Brake and gear adjustments, safety check, chain lubrication, and a little extra care
+                for your everyday ride.
+              </p>
+              <div class="service-bottom">
+                <div>
+                  <span class="small-label">STARTING AT</span>
+                  <strong>GH&#8373; 80</strong>
+                </div>
+                <a
+                  href="#booking"
+                  class="service-link"
+                  data-service="Basic tune-up"
+                  aria-label="Enquire about a basic tune-up"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow-up" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- 02 Tyre & Tube Replacement -->
+            <article class="service-card" data-category="tyre">
+              <div class="service-top">
+                <span class="service-num">02 / WHEELS</span>
+                <span class="service-glyph" aria-hidden="true"
+                  ><svg class="icon" aria-hidden="true"><use href="#i-wheel" /></svg
+                ></span>
+              </div>
+              <h3>Tyre &amp; tube replacement</h3>
+              <p>
+                New tubes and tyres, plus a careful check for glass, thorns, and anything else that
+                might cause the next puncture.
+              </p>
+              <div class="service-bottom">
+                <div>
+                  <span class="small-label">STARTING AT</span>
+                  <strong>GH&#8373; 60</strong>
+                </div>
+                <a
+                  href="#booking"
+                  class="service-link"
+                  data-service="Tyre & tube replacement"
+                  aria-label="Enquire about tyre and tube replacement"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow-up" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- 03 Brake Overhaul -->
+            <article class="service-card" data-category="brakes">
+              <div class="service-top">
+                <span class="service-num">03 / SAFETY</span>
+                <span class="service-glyph" aria-hidden="true">&#8853;</span>
+              </div>
+              <h3>Brake overhaul</h3>
+              <p>
+                Brake pad and cable work, lever adjustment, alignment, and hydraulic system
+                servicing where needed.
+              </p>
+              <div class="service-bottom">
+                <div>
+                  <span class="small-label">STARTING AT</span>
+                  <strong>GH&#8373; 120</strong>
+                </div>
+                <a
+                  href="#booking"
+                  class="service-link"
+                  data-service="Brake overhaul"
+                  aria-label="Enquire about a brake overhaul"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow-up" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- 04 Gear System Overhaul -->
+            <article class="service-card" data-category="gears">
+              <div class="service-top">
+                <span class="service-num">04 / DRIVETRAIN</span>
+                <span class="service-glyph" aria-hidden="true">&#9881;</span>
+              </div>
+              <h3>Gear system overhaul</h3>
+              <p>
+                Derailleur setup, cable replacement, indexing, and chain checks to get your shifting
+                feeling smooth again.
+              </p>
+              <div class="service-bottom">
+                <div>
+                  <span class="small-label">STARTING AT</span>
+                  <strong>GH&#8373; 150</strong>
+                </div>
+                <a
+                  href="#booking"
+                  class="service-link"
+                  data-service="Gear system overhaul"
+                  aria-label="Enquire about a gear system overhaul"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow-up" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- 05 Full Bike Rebuild -->
+            <article class="service-card" data-category="rebuild">
+              <div class="service-top">
+                <span class="service-num">05 / RESTORATION</span>
+                <span class="service-glyph" aria-hidden="true">&#8635;</span>
+              </div>
+              <h3>Full bike rebuild</h3>
+              <p>
+                Deep cleaning and a thorough rebuild for bicycles that need more than a quick fix to
+                feel their best.
+              </p>
+              <div class="service-bottom">
+                <div>
+                  <span class="small-label">STARTING AT</span>
+                  <strong>GH&#8373; 350</strong>
+                </div>
+                <a
+                  href="#booking"
+                  class="service-link"
+                  data-service="Full bike rebuild"
+                  aria-label="Enquire about a full bike rebuild"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow-up" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- 06 Custom Builds & Upgrades -->
+            <article class="service-card accent-card" data-category="custom">
+              <div class="service-top">
+                <span class="service-num">06 / MAKE IT YOURS</span>
+                <span class="service-glyph" aria-hidden="true">&nearr;</span>
+              </div>
+              <h3>Custom builds<br />&amp; upgrades</h3>
+              <p>
+                Want a different setup? Talk through compatible components, parts sourcing, and your
+                budget with Kwame.
+              </p>
+              <div class="service-bottom">
+                <div>
+                  <span class="small-label">TELL US YOUR IDEA</span>
+                  <strong>Let&rsquo;s talk.</strong>
+                </div>
+                <a
+                  href="#booking"
+                  class="service-link"
+                  data-service="Custom builds & upgrades"
+                  aria-label="Enquire about custom builds and upgrades"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow-up" />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <p class="pricing-footnote">
+            * Published starting prices are indicative. The workshop will confirm your quote before
+            work begins. Parts and additional work may affect the final cost.
+          </p>
+        </div>
+      </section>
+
+      <!-- Common Repairs Guide Section -->
+      <section
+        class="section repairs-guide-section"
+        id="common-repairs"
+        aria-labelledby="repairs-guide-title"
+      >
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">KWAME&rsquo;S WORKSHOP GUIDE</span>
+              <h2 id="repairs-guide-title">Common repairs,<br /><em>explained clearly.</em></h2>
+            </div>
+            <p>
+              Not sure what goes into fixing a daily issue? Here is what Kwame checks and how long
+              most walk-in jobs take.
+            </p>
+          </div>
+
+          <div class="repairs-guide-grid">
+            <article class="repair-guide-card">
+              <div class="repair-guide-media">
+                <img
+                  class="repair-guide-img"
+                  src="assets/repair-punctures.jpg"
+                  alt="Kwame inspecting bicycle tyre tread wear and checking for puncture damage"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="repair-guide-body">
+                <div class="repair-guide-meta">
+                  <span>01 / PUNCTURES</span>
+                  <span class="repair-turnaround">20&ndash;30 mins</span>
+                </div>
+                <h3>Puncture &amp; tyre wear</h3>
+                <p>
+                  Soft tyres or mid-ride flats. Kwame checks inside the casing for thorns or glass,
+                  inspects the rim strip, and fits a fresh tube.
+                </p>
+                <p class="repair-tip">
+                  <strong>Tip:</strong> Keep tyres inflated near sidewall pressure to stop pinch
+                  flats.
+                </p>
+                <a class="text-link" href="#booking"
+                  >Book tyre repair
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow" /></svg
+                ></a>
+              </div>
+            </article>
+
+            <article class="repair-guide-card">
+              <div class="repair-guide-media">
+                <img
+                  class="repair-guide-img"
+                  src="assets/repair-brakes.jpg"
+                  alt="Kwame adjusting a bicycle disc brake caliper with a hex key"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="repair-guide-body">
+                <div class="repair-guide-meta">
+                  <span>02 / BRAKES</span>
+                  <span class="repair-turnaround">1&ndash;2 hrs</span>
+                </div>
+                <h3>Noisy or weak brakes</h3>
+                <p>
+                  Squealing pads, spongy levers, or rubbing blocks. Covers rim cleaning, fresh pads
+                  and inner cables, caliper centering, and bleed checks.
+                </p>
+                <p class="repair-tip">
+                  <strong>Tip:</strong> Swap worn pads early before metal backing plates score the
+                  rim.
+                </p>
+                <a class="text-link" href="#booking"
+                  >Book brake check
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow" /></svg
+                ></a>
+              </div>
+            </article>
+
+            <article class="repair-guide-card">
+              <div class="repair-guide-media">
+                <img
+                  class="repair-guide-img"
+                  src="assets/repair-gears.jpg"
+                  alt="Kwame tuning a rear bicycle derailleur and cassette gears"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="repair-guide-body">
+                <div class="repair-guide-meta">
+                  <span>03 / GEARS</span>
+                  <span class="repair-turnaround">Same day</span>
+                </div>
+                <h3>Skipping chains &amp; gears</h3>
+                <p>
+                  Chains jumping under load or stiff shifters. We straighten derailleur hangers,
+                  flush cable grit, index stops, and road-test shifting.
+                </p>
+                <p class="repair-tip">
+                  <strong>Tip:</strong> Wiping road dust off the chain weekly doubles drivetrain
+                  life.
+                </p>
+                <a class="text-link" href="#booking"
+                  >Book gear repair
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow" /></svg
+                ></a>
+              </div>
+            </article>
+
+            <article class="repair-guide-card">
+              <div class="repair-guide-media">
+                <img
+                  class="repair-guide-img"
+                  src="assets/repair-wheels.jpg"
+                  alt="Kwame truing a bicycle wheel rim on the workshop truing stand"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="repair-guide-body">
+                <div class="repair-guide-meta">
+                  <span>04 / WHEELS</span>
+                  <span class="repair-turnaround">Half day</span>
+                </div>
+                <h3>Wobbly wheels &amp; creaks</h3>
+                <p>
+                  Buckled rims rubbing pads or clicking cranks. We balance spoke tension on the
+                  truing stand and repack hub or bottom bracket bearings.
+                </p>
+                <p class="repair-tip">
+                  <strong>Tip:</strong> Fix loose spokes promptly before pothole hits bend the alloy
+                  rim.
+                </p>
+                <a class="text-link" href="#booking"
+                  >Book wheel truing
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow" /></svg
+                ></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section class="section process-section" id="how-it-works" aria-labelledby="process-title">
+        <div class="container">
+          <div class="section-head process-head">
+            <div>
+              <span class="section-kicker light">OUR PROCESS</span>
+              <h2 id="process-title">Simple from<br /><em>start to finish.</em></h2>
+            </div>
+            <p>No confusing process. No surprise repairs. Just straightforward bicycle care.</p>
+          </div>
+
+          <div class="steps-grid">
+            <div class="step">
+              <span class="step-number">01</span>
+              <div class="step-rule"></div>
+              <h3>Tell us the problem</h3>
+              <p>Send an enquiry, give us a call, or simply bring your bike to our shop in Adum.</p>
+            </div>
+            <div class="step">
+              <span class="step-number">02</span>
+              <div class="step-rule"></div>
+              <h3>Get a clear quote</h3>
+              <p>
+                Kwame inspects the bike, explains what it needs, and confirms the cost before
+                starting.
+              </p>
+            </div>
+            <div class="step">
+              <span class="step-number">03</span>
+              <div class="step-rule"></div>
+              <h3>Get rolling again</h3>
+              <p>
+                We complete the agreed work and let you know when your bike is ready for collection.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="section about-section" id="about" aria-labelledby="about-title">
+        <div class="container about-grid">
+          <div class="about-visual">
+            <div class="about-illustration">
+              <div class="quote-graphic" aria-hidden="true">&ldquo;</div>
+              <p>Good bike care starts with knowing what actually needs fixing.</p>
+              <div class="quote-by">&mdash; THE WHEELHOUSE APPROACH</div>
+            </div>
+            <div class="about-stamp">
+              <span>EST.</span>
+              <strong>2019</strong>
+              <span>ADUM, KUMASI</span>
+            </div>
+          </div>
+
+          <div class="about-copy">
+            <span class="section-kicker">MORE THAN JUST A REPAIR SHOP</span>
+            <h2 id="about-title">A local workshop<br />that <em>gets it.</em></h2>
+            <p>
+              Wheelhouse started with Kwame fixing bicycles for friends and neighbours. Today, the
+              workshop takes care of road bikes, mountain bikes, hybrids, BMXs, and kids&rsquo;
+              bikes&mdash;all with the same down-to-earth approach.
+            </p>
+            <p>
+              You talk to a real mechanic, get a proper assessment, and approve the work before
+              anything happens. That&rsquo;s how we believe bike repairs should be.
+            </p>
+            <div class="about-points">
+              <div>
+                <span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-check" /></svg
+                ></span>
+                Repairs by Kwame or under his supervision
+              </div>
+              <div>
+                <span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-check" /></svg
+                ></span>
+                Upfront advice and clear pricing
+              </div>
+              <div>
+                <span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-check" /></svg
+                ></span>
+                Parts, accessories, and custom upgrades
+              </div>
+            </div>
+            <a class="text-link" href="#visit"
+              >Come meet us at the workshop
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-arrow" /></svg
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Booking & Contact Section -->
+      <section class="section booking-section" id="booking" aria-labelledby="booking-title">
+        <div class="container booking-grid">
+          <div class="booking-copy">
+            <span class="section-kicker">LET&rsquo;S GET YOUR BIKE SORTED</span>
+            <h2 id="booking-title">Ready for a<br /><em>smoother ride?</em></h2>
+            <p>
+              Tell us a little about your bike and what needs attention. We&rsquo;ll prepare a
+              message you can send directly to the workshop.
             </p>
 
-            <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
-          </form>
-        </div>
-      </div>
-    </section>
+            <div class="contact-methods">
+              <a
+                class="contact-method"
+                href="tel:+233322000000"
+                aria-label="Call workshop at 0322 000 000"
+              >
+                <span class="contact-icon"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-phone" /></svg
+                ></span>
+                <span><small>PREFER TO TALK?</small><strong>0322 000 000</strong></span>
+                <svg class="icon tail" aria-hidden="true">
+                  <use href="#i-arrow-up" />
+                </svg>
+              </a>
+              <div class="contact-method no-link">
+                <span class="contact-icon"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-clock" /></svg
+                ></span>
+                <span
+                  ><small>WORKSHOP HOURS</small
+                  ><strong>Mon &ndash; Sat, 8 AM &ndash; 5:30 PM</strong></span
+                >
+              </div>
+            </div>
 
-    <!-- Preserved Non-Rendered Templates for Future Applied JavaScript Modules -->
-    <template id="original-booking-form-template">
-      <form id="booking-form" class="booking-form">
-        <div class="form-group">
-          <label for="booking-name">Your Name</label>
-          <input type="text" id="booking-name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="booking-phone">Phone Number</label>
-          <input type="tel" id="booking-phone" name="phone" required>
-        </div>
-        <div class="form-group">
-          <label for="booking-service">Service Required</label>
-          <select id="booking-service" name="service" required>
-            <option value="">Select a service</option>
-            <option value="tuneup">Basic Tune-Up</option>
-            <option value="tyre">Tyre &amp; Tube Replacement</option>
-            <option value="brakes">Brake Overhaul</option>
-            <option value="gears">Gear System Overhaul</option>
-            <option value="rebuild">Full Bike Rebuild</option>
-            <option value="custom">Custom Build &amp; Upgrades</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="booking-date">Preferred Date</label>
-          <input type="date" id="booking-date" name="date" required>
-        </div>
-        <div class="form-group">
-          <label for="booking-notes">Additional Notes</label>
-          <textarea id="booking-notes" name="notes" rows="3"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit Booking</button>
-        <ul id="service-request-list" class="request-tracker-list"></ul>
-      </form>
-    </template>
-
-    <template id="original-contact-form-template">
-      <form id="contact-form" class="contact-form">
-        <div class="form-group">
-          <label for="contact-name">Your Name</label>
-          <input type="text" id="contact-name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="contact-email">Email Address</label>
-          <input type="email" id="contact-email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="contact-phone">Phone Number</label>
-          <input type="tel" id="contact-phone" name="phone">
-        </div>
-        <div class="form-group">
-          <label for="contact-message">Your Message</label>
-          <textarea id="contact-message" name="message" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-        <div id="contact-form-status" role="status" aria-live="polite"></div>
-      </form>
-    </template>
-
-    <!-- FAQ Section -->
-    <section class="section faq-section" id="faq" aria-labelledby="faq-title">
-      <div class="container faq-grid">
-        <div>
-          <span class="section-kicker">GOOD TO KNOW</span>
-          <h2 id="faq-title">Frequently asked<br><em>questions.</em></h2>
-          <p>Can&rsquo;t find your answer? Give us a call or send a quick message.</p>
-          <a class="text-link" href="#booking">Ask us about your bike <svg class="icon" aria-hidden="true">
-              <use href="#i-arrow" />
-            </svg></a>
-        </div>
-
-        <div class="faq-list">
-          <details>
-            <summary>Do I need to book ahead? <span aria-hidden="true">+</span></summary>
-            <p>Not for most repairs. Walk-ins are welcome during workshop hours. For major work or an urgent repair,
-              calling ahead is a good idea.</p>
-          </details>
-          <details>
-            <summary>How long does a repair take? <span aria-hidden="true">+</span></summary>
-            <p>Many simple jobs can be finished the same day, often within an hour or two. Full rebuilds and more
-              involved repairs can take longer. We&rsquo;ll give you a realistic estimate after inspecting the bike.</p>
-          </details>
-          <details>
-            <summary>Will I know the price before work starts? <span aria-hidden="true">+</span></summary>
-            <p>Yes. We&rsquo;ll explain what needs doing and confirm the price for your approval before starting the
-              repair.</p>
-          </details>
-          <details>
-            <summary>What kinds of bikes do you work on? <span aria-hidden="true">+</span></summary>
-            <p>We service road, mountain, hybrid, BMX, and children&rsquo;s bikes. For unusual models or parts, check
-              with us first.</p>
-          </details>
-          <details>
-            <summary>What if my bike needs to stay overnight? <span aria-hidden="true">+</span></summary>
-            <p>For major repairs that require overnight storage, the workshop currently lists a GH&#8373; 10 per day
-              storage fee. Please confirm the details when dropping off your bike.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Visit / Workshop Location Section -->
-    <section class="visit-section" id="visit" aria-labelledby="visit-title">
-      <div class="container visit-grid">
-        <div>
-          <span class="section-kicker light">FIND THE WORKSHOP</span>
-          <h2 id="visit-title">Come on by.<br><em>We&rsquo;re in Adum.</em></h2>
-          <p>Shop 4, Adum Commercial Area<br>Kumasi, Ghana</p>
-          <div class="visit-details">
-            <div><svg class="icon" aria-hidden="true">
-                <use href="#i-clock" />
-              </svg><span>Monday &ndash; Saturday &middot; 8:00 AM &ndash; 5:30 PM</span></div>
-            <div><svg class="icon" aria-hidden="true">
-                <use href="#i-phone" />
-              </svg><span>0322 000 000</span></div>
+            <p class="booking-fineprint">
+              Walk-ins are welcome too. You don&rsquo;t need an appointment for most repairs.
+            </p>
           </div>
-          <a class="btn btn-lime"
-            href="https://www.google.com/maps/search/?api=1&amp;query=Shop+4+Adum+Commercial+Area+Kumasi+Ghana"
-            target="_blank" rel="noopener noreferrer">Get directions <svg class="icon" aria-hidden="true">
-              <use href="#i-arrow-up" />
-            </svg></a>
+
+          <div class="form-card">
+            <div class="form-title">
+              <h3>Request a repair</h3>
+              <p>No payment required. We&rsquo;ll confirm the details with you.</p>
+            </div>
+
+            <form id="repair-form" novalidate>
+              <div class="field-row">
+                <label for="customer-name">
+                  Your name <span aria-hidden="true">*</span>
+                  <input
+                    id="customer-name"
+                    name="name"
+                    required
+                    aria-required="true"
+                    maxlength="90"
+                    autocomplete="name"
+                    placeholder="e.g. Ama Mensah"
+                    aria-describedby="name-error"
+                  />
+                  <span class="field-error" id="name-error" role="alert"></span>
+                </label>
+                <label for="customer-phone">
+                  Phone number <span aria-hidden="true">*</span>
+                  <input
+                    id="customer-phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    aria-required="true"
+                    maxlength="25"
+                    autocomplete="tel"
+                    placeholder="e.g. 0244 123 456"
+                    aria-describedby="phone-error"
+                  />
+                  <span class="field-error" id="phone-error" role="alert"></span>
+                </label>
+              </div>
+
+              <label for="service-select">
+                What does your bike need? <span aria-hidden="true">*</span>
+                <select
+                  id="service-select"
+                  name="service"
+                  required
+                  aria-required="true"
+                  aria-describedby="service-error"
+                >
+                  <option value="" disabled selected>Select a service</option>
+                  <option value="Basic tune-up">Basic tune-up</option>
+                  <option value="Tyre &amp; tube replacement">Tyre &amp; tube replacement</option>
+                  <option value="Brake overhaul">Brake overhaul</option>
+                  <option value="Gear system overhaul">Gear system overhaul</option>
+                  <option value="Full bike rebuild">Full bike rebuild</option>
+                  <option value="Custom builds &amp; upgrades">Custom builds &amp; upgrades</option>
+                  <option value="Not sure &mdash; need an inspection">
+                    Not sure &mdash; need an inspection
+                  </option>
+                </select>
+                <span class="field-error" id="service-error" role="alert"></span>
+              </label>
+
+              <label for="repair-notes">
+                Anything else we should know? <span class="optional">(optional)</span>
+                <textarea
+                  id="repair-notes"
+                  name="notes"
+                  rows="4"
+                  maxlength="550"
+                  placeholder="Describe the issue, your bike type, or anything unusual..."
+                ></textarea>
+              </label>
+
+              <button class="btn btn-dark form-submit" type="submit">
+                Continue to WhatsApp
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-arrow-up" />
+                </svg>
+              </button>
+
+              <p class="form-disclaimer">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-shield" />
+                </svg>
+                <span
+                  >This opens a pre-filled WhatsApp message. Your request is sent only after you
+                  choose Send in WhatsApp.</span
+                >
+              </p>
+
+              <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Preserved Non-Rendered Templates for Future Applied JavaScript Modules -->
+      <template id="original-booking-form-template">
+        <form id="booking-form" class="booking-form">
+          <div class="form-group">
+            <label for="booking-name">Your Name</label>
+            <input type="text" id="booking-name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="booking-phone">Phone Number</label>
+            <input type="tel" id="booking-phone" name="phone" required />
+          </div>
+          <div class="form-group">
+            <label for="booking-service">Service Required</label>
+            <select id="booking-service" name="service" required>
+              <option value="">Select a service</option>
+              <option value="tuneup">Basic Tune-Up</option>
+              <option value="tyre">Tyre &amp; Tube Replacement</option>
+              <option value="brakes">Brake Overhaul</option>
+              <option value="gears">Gear System Overhaul</option>
+              <option value="rebuild">Full Bike Rebuild</option>
+              <option value="custom">Custom Build &amp; Upgrades</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="booking-date">Preferred Date</label>
+            <input type="date" id="booking-date" name="date" required />
+          </div>
+          <div class="form-group">
+            <label for="booking-notes">Additional Notes</label>
+            <textarea id="booking-notes" name="notes" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Booking</button>
+          <ul id="service-request-list" class="request-tracker-list"></ul>
+        </form>
+      </template>
+
+      <template id="original-contact-form-template">
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <label for="contact-name">Your Name</label>
+            <input type="text" id="contact-name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-phone">Phone Number</label>
+            <input type="tel" id="contact-phone" name="phone" />
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Your Message</label>
+            <textarea id="contact-message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <div id="contact-form-status" role="status" aria-live="polite"></div>
+        </form>
+      </template>
+
+      <!-- FAQ Section -->
+      <section class="section faq-section" id="faq" aria-labelledby="faq-title">
+        <div class="container faq-grid">
+          <div>
+            <span class="section-kicker">GOOD TO KNOW</span>
+            <h2 id="faq-title">Frequently asked<br /><em>questions.</em></h2>
+            <p>Can&rsquo;t find your answer? Give us a call or send a quick message.</p>
+            <a class="text-link" href="#booking"
+              >Ask us about your bike
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-arrow" /></svg
+            ></a>
+          </div>
+
+          <div class="faq-list">
+            <details>
+              <summary>Do I need to book ahead? <span aria-hidden="true">+</span></summary>
+              <p>
+                Not for most repairs. Walk-ins are welcome during workshop hours. For major work or
+                an urgent repair, calling ahead is a good idea.
+              </p>
+            </details>
+            <details>
+              <summary>How long does a repair take? <span aria-hidden="true">+</span></summary>
+              <p>
+                Many simple jobs can be finished the same day, often within an hour or two. Full
+                rebuilds and more involved repairs can take longer. We&rsquo;ll give you a realistic
+                estimate after inspecting the bike.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Will I know the price before work starts? <span aria-hidden="true">+</span>
+              </summary>
+              <p>
+                Yes. We&rsquo;ll explain what needs doing and confirm the price for your approval
+                before starting the repair.
+              </p>
+            </details>
+            <details>
+              <summary>
+                What kinds of bikes do you work on? <span aria-hidden="true">+</span>
+              </summary>
+              <p>
+                We service road, mountain, hybrid, BMX, and children&rsquo;s bikes. For unusual
+                models or parts, check with us first.
+              </p>
+            </details>
+            <details>
+              <summary>
+                What if my bike needs to stay overnight? <span aria-hidden="true">+</span>
+              </summary>
+              <p>
+                For major repairs that require overnight storage, the workshop currently lists a
+                GH&#8373; 10 per day storage fee. Please confirm the details when dropping off your
+                bike.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Visit / Workshop Location Section -->
+      <section class="visit-section" id="visit" aria-labelledby="visit-title">
+        <div class="container visit-grid">
+          <div>
+            <span class="section-kicker light">FIND THE WORKSHOP</span>
+            <h2 id="visit-title">Come on by.<br /><em>We&rsquo;re in Adum.</em></h2>
+            <p>Shop 4, Adum Commercial Area<br />Kumasi, Ghana</p>
+            <div class="visit-details">
+              <div>
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-clock" /></svg
+                ><span>Monday &ndash; Saturday &middot; 8:00 AM &ndash; 5:30 PM</span>
+              </div>
+              <div>
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-phone" /></svg
+                ><span>0322 000 000</span>
+              </div>
+            </div>
+            <a
+              class="btn btn-lime"
+              href="https://www.google.com/maps/search/?api=1&amp;query=Shop+4+Adum+Commercial+Area+Kumasi+Ghana"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Get directions
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-arrow-up" /></svg
+            ></a>
+          </div>
+
+          <div class="location-art">
+            <img
+              class="location-map-img"
+              src="assets/adum-map.jpg"
+              alt="Illustrated street map of Adum Commercial Area in Kumasi highlighting Wheelhouse Bike Repair workshop location"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-main">
+          <div>
+            <a
+              class="brand footer-brand"
+              href="#top"
+              aria-label="Wheelhouse Bike Repair, back to top"
+            >
+              <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                  <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3" />
+                  <circle cx="24" cy="24" r="5" stroke="currentColor" stroke-width="3" />
+                  <path
+                    d="M24 4v15m0 10v15M4 24h15m10 0h15M10 10l10.5 10.5m7 7L38 38M38 10 27.5 20.5m-7 7L10 38"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
+              </span>
+              <span class="brand-copy"
+                ><strong>WHEELHOUSE<span>.</span></strong
+                ><small>BIKE REPAIR &middot; KUMASI</small></span
+              >
+            </a>
+            <p>
+              Good people. Honest work. Better rides.<br />Bicycle repairs and care, right here in
+              Kumasi.
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <strong>Explore</strong>
+            <a href="#services">Services &amp; pricing</a>
+            <a href="#how-it-works">Our process</a>
+            <a href="#about">About Wheelhouse</a>
+            <a href="#faq">FAQs</a>
+          </div>
+
+          <div class="footer-links">
+            <strong>Contact</strong>
+            <a href="tel:+233322000000">0322 000 000</a>
+            <a href="mailto:wheelhouse@email.com">wheelhouse@email.com</a>
+            <a href="#visit">Shop 4, Adum, Kumasi</a>
+          </div>
         </div>
 
-        <div class="location-art">
-          <img class="location-map-img" src="assets/adum-map.jpg" alt="Illustrated street map of Adum Commercial Area in Kumasi highlighting Wheelhouse Bike Repair workshop location" loading="lazy">
+        <div class="footer-bottom">
+          <span>&copy; <span id="year"></span> Wheelhouse Bike Repair. All rights reserved.</span>
+          <span>Built for better rides.</span>
         </div>
       </div>
-    </section>
+    </footer>
 
-  </main>
-
-  <!-- Site Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-main">
-        <div>
-          <a class="brand footer-brand" href="#top" aria-label="Wheelhouse Bike Repair, back to top">
-            <span class="brand-mark" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3" />
-                <circle cx="24" cy="24" r="5" stroke="currentColor" stroke-width="3" />
-                <path d="M24 4v15m0 10v15M4 24h15m10 0h15M10 10l10.5 10.5m7 7L38 38M38 10 27.5 20.5m-7 7L10 38"
-                  stroke="currentColor" stroke-width="2" />
-              </svg>
-            </span>
-            <span class="brand-copy"><strong>WHEELHOUSE<span>.</span></strong><small>BIKE REPAIR &middot;
-                KUMASI</small></span>
-          </a>
-          <p>Good people. Honest work. Better rides.<br>Bicycle repairs and care, right here in Kumasi.</p>
-        </div>
-
-        <div class="footer-links">
-          <strong>Explore</strong>
-          <a href="#services">Services &amp; pricing</a>
-          <a href="#how-it-works">Our process</a>
-          <a href="#about">About Wheelhouse</a>
-          <a href="#faq">FAQs</a>
-        </div>
-
-        <div class="footer-links">
-          <strong>Contact</strong>
-          <a href="tel:+233322000000">0322 000 000</a>
-          <a href="mailto:wheelhouse@email.com">wheelhouse@email.com</a>
-          <a href="#visit">Shop 4, Adum, Kumasi</a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>&copy; <span id="year"></span> Wheelhouse Bike Repair. All rights reserved.</span>
-        <span>Built for better rides.</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating Back to Top Button -->
-  <a href="#top" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
-    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m18 15-6-6-6 6" />
-    </svg>
-  </a>
-
-  <!-- Mobile Sticky Call-to-Action Bar -->
-  <div class="mobile-cta">
-    <a href="#booking" class="btn btn-lime">Request a repair <svg class="icon" aria-hidden="true">
-        <use href="#i-arrow-up" />
-      </svg></a>
-    <a href="tel:+233322000000" class="mobile-call" aria-label="Call the workshop at 0322 000 000">
-      <svg class="icon" aria-hidden="true">
-        <use href="#i-phone" />
+    <!-- Floating Back to Top Button -->
+    <a
+      href="#top"
+      id="back-to-top"
+      class="back-to-top"
+      aria-label="Back to top"
+      title="Back to top"
+    >
+      <svg
+        class="icon"
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m18 15-6-6-6 6" />
       </svg>
     </a>
-  </div>
 
-  <script src="js/script.js" defer></script>
-</body>
+    <!-- Mobile Sticky Call-to-Action Bar -->
+    <div class="mobile-cta">
+      <a href="#booking" class="btn btn-lime"
+        >Request a repair
+        <svg class="icon" aria-hidden="true">
+          <use href="#i-arrow-up" /></svg
+      ></a>
+      <a
+        href="tel:+233322000000"
+        class="mobile-call"
+        aria-label="Call the workshop at 0322 000 000"
+      >
+        <svg class="icon" aria-hidden="true">
+          <use href="#i-phone" />
+        </svg>
+      </a>
+    </div>
 
+    <script src="js/script.js" defer></script>
+  </body>
 </html>
