@@ -1,0 +1,9 @@
+{
+  "name": "wheelhouse-bike-repair",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "Wheelhouse Bike Repair responsive website",
+  "scripts": {}
+}

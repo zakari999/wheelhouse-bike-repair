@@ -1,3 +1,16 @@
+# Dependencies & build output
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.local
+
+# Tool caches & environment files
+.eslintcache
+.stylelintcache
+.env
+.env.*
+
 # OS generated files
 .DS_Store
 .DS_Store?
