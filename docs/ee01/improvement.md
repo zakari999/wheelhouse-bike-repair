@@ -259,14 +259,33 @@ function initServiceFilter() {
       filterNote.textContent = `Showing 1 matching service for ${label}. Select “View all services” to see every option.`;
     }
 
-    // Smoothly scroll down to results section so user sees the matching service immediately
+    // Scroll smoothly so both the filter status and full matching service card stay comfortably framed
     const servicesSection = document.querySelector('#services');
     if (servicesSection) {
       const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       setTimeout(() => {
-        servicesSection.scrollIntoView({
-          behavior: isReduced ? 'auto' : 'smooth',
-          block: 'start'
+        const header = document.querySelector('.site-header');
+        const mobileCta = document.querySelector('.mobile-cta');
+        const sectionHead = servicesSection.querySelector('.section-head');
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const ctaVisible = mobileCta && window.getComputedStyle(mobileCta).display !== 'none';
+        const ctaHeight = ctaVisible ? mobileCta.getBoundingClientRect().height : 0;
+
+        const minTop = headerHeight + 20;
+        const usableBottom = window.innerHeight - ctaHeight - 24;
+        const headTop = (sectionHead || servicesSection).getBoundingClientRect().top + window.scrollY;
+        const anchorEl = (filterNote && !filterNote.hidden) ? filterNote : (matchedCard || servicesSection);
+        const anchorTop = anchorEl.getBoundingClientRect().top + window.scrollY;
+        const resultBottom = (matchedCard || anchorEl).getBoundingClientRect().bottom + window.scrollY;
+
+        const idealScrollY = headTop - minTop;
+        const fitCardScrollY = resultBottom - usableBottom;
+        const maxFilterScrollY = anchorTop - minTop;
+        const targetScrollY = Math.max(0, Math.min(maxFilterScrollY, Math.max(idealScrollY, fitCardScrollY)));
+
+        window.scrollTo({
+          top: targetScrollY,
+          behavior: isReduced ? 'auto' : 'smooth'
         });
 
         if (matchedCard && !isReduced) {

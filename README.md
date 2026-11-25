@@ -108,11 +108,11 @@ Typography is rendered using a modern, legible font pair: **DM Sans** for clear 
 
 | Token / Usage | CSS rem | Pixel Equivalent | Line Height | Implementation Usage |
 | :--- | :--- | :--- | :--- | :--- |
-| Minor Metadata / Kickers | `0.78125rem`–`0.8125rem` | 12.5px–13px | `1.2`–`1.4` | Kickers (`.section-kicker`, `.eyebrow`), badge labels, service numbers (`.service-num`) |
-| Footnotes & Form Disclaimers | `0.8125rem` | 13px | `1.4`–`1.6` | Pricing footnote, form help disclaimer, inline error text (`.field-error`) |
-| UI Navigation & Buttons | `0.84375rem`–`0.8750rem` | 13.5px–14px | `1.1`–`1.3` | Header navigation links (`.main-nav > a`), button labels (`.btn`), text links |
-| Card Body & Inputs | `0.8750rem`–`0.9375rem` | 14px–15px | `1.6`–`1.85` | Service card copy, form inputs, textarea values, problem card copy |
-| Subheadings & Form Titles | `0.9375rem`–`1.0000rem` | 15px–16px | `1.3` | Problem card title, FAQ question summary triggers |
+| Minor Metadata & Kickers | `0.8750rem` | 14px | `1.15`–`1.45` | Kickers (`.section-kicker`, `.eyebrow`), stamp spans, service numbers (`.service-num`), `STARTING AT` labels |
+| Footnotes, Disclaimers & Status | `0.8750rem` | 14px | `1.4`–`1.85` | Pricing footnote, form help disclaimer, inline errors (`.field-error`), footer links/copyright |
+| UI Navigation, Buttons & Labels | `0.8750rem` | 14px | `1.1`–`1.3` | Header navigation links (`.main-nav > a`), button labels (`.btn`), form `<label>` prompts |
+| Card Body, Inputs & FAQ Copy | `0.8750rem`–`0.9375rem` | 14px–15px | `1.6`–`1.9` | Service card copy, form inputs, textarea values, problem card subtitles, FAQ answers |
+| Subheadings & FAQ Triggers | `0.9375rem`–`1.0000rem` | 15px–16px | `1.3` | Problem card title, FAQ question summary triggers, contact method values |
 | Base Body Text | `1.0000rem` | 16px | `1.6` | Standard paragraph text (`body`), lead descriptions |
 | Sub-section Titles (`<h3>`) | `1.3750rem` | 22px | `1.1`–`1.3` | Service card names (`h3`), process step headings |
 | Form Card Heading | `1.6875rem` | 27px | `1.2` | Repair request form title (`.form-title h3`) |
@@ -120,7 +120,7 @@ Typography is rendered using a modern, legible font pair: **DM Sans** for clear 
 | Hero Main Title (`<h1>`) | Fluid clamp | 34px–61px (mobile)<br>50px–80px (desktop) | `1.08` | Primary page heading (`#hero-title`) |
 
 > [!NOTE]
-> **Low-Vision Readability Justification:** In response to user experience and accessibility audits, all small text elements across the interface were systematically raised above comfortable minimums: primary UI labels (navigation links and action buttons) sit at **13.5px–14px** (`0.875rem`), form labels at **14px**, and section kickers, fine print, and metadata were elevated to **12.5px–13px** with high-contrast forest ink (`#285235` / `#182f27`), ensuring effortless scanning for low-vision users and single-handed mobile readers without eye strain.
+> **Low-Vision Readability Justification:** In response to user experience and accessibility audits, the minimum font size across the entire interface was raised to **14px** (`0.875rem`): every label, kicker, navigation link, button, form input, footnote, and footer link renders at `14px` or larger with high-contrast forest ink (`#285235` / `#182f27`), ensuring effortless scanning for low-vision users and single-handed mobile readers without eye strain.
 
 #### 3. Concrete Spacing & Layout Metrics
 
@@ -147,7 +147,7 @@ Layout adjustments are driven by 5 explicit CSS media query breakpoints:
 1. **`1150px` (`@media (max-width: 1150px)`):** Laptop adaptation — container width capped at `min(100% - 52px, 1256px)`; hero height scaled to `590px`; navigation gap reduced to `20px`.
 2. **`850px` (`@media (max-width: 850px)`):** Tablet adaptation — topbar secondary details hide; header menu switches to accessible hamburger toggle (`.menu-toggle`) with expandable sliding drawer (`.main-nav.is-open`); services grid shifts to 2 columns (`repeat(2, 1fr)`); booking section shifts to 2 columns.
 3. **`650px` (`@media (max-width: 650px)`):** Primary mobile breakpoint — all multi-column grids collapse to a single fluid column (`1fr`); sticky bottom action bar (`.mobile-cta`) activates with direct "Request a repair" and phone dialer buttons; container padding set to `calc(100% - 38px)`; floating "Back to top" button repositions to `bottom: 84px; right: 18px;` above the mobile CTA.
-4. **`400px` (`@media (max-width: 400px)`):** Compact mobile breakpoint — `.about-stamp` scales to `96px × 96px` with `5px` border to fit iPhone SE and compact Android devices without clipping or horizontal overflow.
+4. **`400px` (`@media (max-width: 400px)`):** Compact mobile breakpoint — `.about-stamp` scales to `132px × 132px` with `5px` border so the 14px badge copy wraps cleanly inside compact Android and iPhone SE viewports without clipping or horizontal overflow.
 5. **`360px` (`@media (max-width: 360px)`):** Ultra-compact breakpoint — hero `<h1>` font size scales to `34px`, providing comfortable margins and preventing line-wrapping overflow down to 320px; problem cards adapt to `min-height: 157px`.
 
 ---
