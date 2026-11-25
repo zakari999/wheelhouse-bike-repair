@@ -158,7 +158,7 @@ The fluid layout is governed by 5 explicit breakpoints in [`css/styles.css`](../
 - **`1150px` (`@media (max-width: 1150px)`):** Container capped at `min(100% - 52px, 1256px)`; hero height scaled to `590px`.
 - **`850px` (`@media (max-width: 850px)`):** Mobile navigation drawer activates; services grid shifts to 2 columns (`repeat(2, 1fr)`); booking grid shifts to 2 columns.
 - **`650px` (`@media (max-width: 650px)`):** Single-column layout across all grids; sticky bottom action bar (`.mobile-cta`) activates; container padding `calc(100% - 38px)`; floating back-to-top button repositions to `bottom: 84px; right: 18px;`.
-- **`400px` (`@media (max-width: 400px)`):** Compact mobile scaling for `.about-stamp` (`86px × 86px`, `5px` border) to fit iPhone SE without clipping.
+- **`400px` (`@media (max-width: 400px)`):** Compact mobile scaling for `.about-stamp` (`96px × 96px`, `5px` border) to fit iPhone SE without clipping.
 - **`360px` (`@media (max-width: 360px)`):** Ultra-compact breakpoint for smaller devices; hero title scales to `34px`, providing generous horizontal margins and preventing line overflow down to 320px.
 
 ### Responsive Screenshots & Verification

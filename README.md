@@ -147,7 +147,7 @@ Layout adjustments are driven by 5 explicit CSS media query breakpoints:
 1. **`1150px` (`@media (max-width: 1150px)`):** Laptop adaptation — container width capped at `min(100% - 52px, 1256px)`; hero height scaled to `590px`; navigation gap reduced to `20px`.
 2. **`850px` (`@media (max-width: 850px)`):** Tablet adaptation — topbar secondary details hide; header menu switches to accessible hamburger toggle (`.menu-toggle`) with expandable sliding drawer (`.main-nav.is-open`); services grid shifts to 2 columns (`repeat(2, 1fr)`); booking section shifts to 2 columns.
 3. **`650px` (`@media (max-width: 650px)`):** Primary mobile breakpoint — all multi-column grids collapse to a single fluid column (`1fr`); sticky bottom action bar (`.mobile-cta`) activates with direct "Request a repair" and phone dialer buttons; container padding set to `calc(100% - 38px)`; floating "Back to top" button repositions to `bottom: 84px; right: 18px;` above the mobile CTA.
-4. **`400px` (`@media (max-width: 400px)`):** Compact mobile breakpoint — `.about-stamp` scales to `86px × 86px` with `5px` border to fit iPhone SE and compact Android devices without clipping or horizontal overflow.
+4. **`400px` (`@media (max-width: 400px)`):** Compact mobile breakpoint — `.about-stamp` scales to `96px × 96px` with `5px` border to fit iPhone SE and compact Android devices without clipping or horizontal overflow.
 5. **`360px` (`@media (max-width: 360px)`):** Ultra-compact breakpoint — hero `<h1>` font size scales to `34px`, providing comfortable margins and preventing line-wrapping overflow down to 320px; problem cards adapt to `min-height: 157px`.
 
 ---
