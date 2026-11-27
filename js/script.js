@@ -97,9 +97,7 @@ function initServiceFilter() {
       return;
     }
 
-    // Filter to selected category. Several services can share a category
-    // (e.g. "tyre" covers Tyre & tube replacement and Puncture repair),
-    // so collect every match rather than remembering only one.
+    // Filter to selected category
     const matchedCards = [];
     serviceCards.forEach((card) => {
       const isMatch = card.dataset.category === category;
@@ -108,10 +106,6 @@ function initServiceFilter() {
       if (isMatch) matchedCards.push(card);
     });
     const matchCount = matchedCards.length;
-
-    // The scroll below fits the results between the filter note (kept at the
-    // top) and the bottom of the screen, so it measures to the LAST match:
-    // that brings every matching card into view, not just the first.
     const lastMatchedCard = matchedCards[matchCount - 1] || null;
 
     problemButtons.forEach((btn) => {
@@ -160,9 +154,6 @@ function initServiceFilter() {
           behavior: isReduced ? 'auto' : 'smooth'
         });
 
-        // Pulse every matching card. Removing the class and reading
-        // offsetWidth forces a reflow, so the animation restarts even if
-        // the same filter is clicked twice. Skipped for reduced motion.
         if (!isReduced) {
           matchedCards.forEach((card) => {
             card.classList.remove('filter-highlight');

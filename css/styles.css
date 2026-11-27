@@ -640,7 +640,7 @@ textarea:focus-visible {
   min-height: 346px;
   display: flex;
   flex-direction: column;
-  position: relative; /* anchor for the absolutely positioned .service-badge */
+  position: relative;
   border-radius: 6px;
   transition:
     transform 0.2s,
@@ -752,10 +752,7 @@ textarea:focus-visible {
   transform: scale(1.05);
 }
 
-/* "New" badge on recently added services.
-   Pinned as a tab on the card's top edge rather than sitting next to the
-   label, so it takes no space in the layout and can't wrap on narrow cards
-   (at ~1160px, "07 / DRIVETRAIN" plus an inline badge didn't fit). */
+/* New Service Badge */
 .service-badge {
   position: absolute;
   top: -12px;
