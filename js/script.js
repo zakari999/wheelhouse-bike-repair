@@ -22,10 +22,7 @@ function initNavigation() {
   function setMenuState(open) {
     mainNav.classList.toggle('is-open', open);
     menuToggle.setAttribute('aria-expanded', String(open));
-    menuToggle.setAttribute(
-      'aria-label',
-      open ? 'Close navigation menu' : 'Open navigation menu'
-    );
+    menuToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
   }
 
   menuToggle.addEventListener('click', () => {
@@ -34,7 +31,7 @@ function initNavigation() {
   });
 
   // Close when selecting any nav link
-  mainNav.querySelectorAll('a').forEach(link => {
+  mainNav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => setMenuState(false));
   });
 
@@ -48,11 +45,7 @@ function initNavigation() {
 
   // Close on outside click
   document.addEventListener('click', (e) => {
-    if (
-      mainNav.classList.contains('is-open') &&
-      header &&
-      !header.contains(e.target)
-    ) {
+    if (mainNav.classList.contains('is-open') && header && !header.contains(e.target)) {
       setMenuState(false);
     }
   });
@@ -77,16 +70,17 @@ function initServiceFilter() {
   };
 
   function applyFilter(category, clickedButton) {
-    const isCurrentlyActive = clickedButton && clickedButton.getAttribute('aria-pressed') === 'true';
+    const isCurrentlyActive =
+      clickedButton && clickedButton.getAttribute('aria-pressed') === 'true';
 
     // Toggle off if clicking the already active button
     if (isCurrentlyActive || category === 'all') {
-      serviceCards.forEach(card => {
+      serviceCards.forEach((card) => {
         card.hidden = false;
         card.classList.remove('filter-highlight');
       });
 
-      problemButtons.forEach(btn => {
+      problemButtons.forEach((btn) => {
         btn.setAttribute('aria-pressed', 'false');
       });
 
@@ -106,7 +100,7 @@ function initServiceFilter() {
     // Filter to selected category
     let matchedCard = null;
     let matchCount = 0;
-    serviceCards.forEach(card => {
+    serviceCards.forEach((card) => {
       const isMatch = card.dataset.category === category;
       card.hidden = !isMatch;
       card.classList.remove('filter-highlight');
@@ -116,7 +110,7 @@ function initServiceFilter() {
       }
     });
 
-    problemButtons.forEach(btn => {
+    problemButtons.forEach((btn) => {
       btn.setAttribute('aria-pressed', btn === clickedButton ? 'true' : 'false');
     });
 
@@ -141,15 +135,21 @@ function initServiceFilter() {
 
         const minTop = headerHeight + 20;
         const usableBottom = window.innerHeight - ctaHeight - 24;
-        const headTop = (sectionHead || servicesSection).getBoundingClientRect().top + window.scrollY;
-        const anchorEl = (filterNote && !filterNote.hidden) ? filterNote : (matchedCard || servicesSection);
+        const headTop =
+          (sectionHead || servicesSection).getBoundingClientRect().top + window.scrollY;
+        const anchorEl =
+          filterNote && !filterNote.hidden ? filterNote : matchedCard || servicesSection;
         const anchorTop = anchorEl.getBoundingClientRect().top + window.scrollY;
-        const resultBottom = (matchedCard || anchorEl).getBoundingClientRect().bottom + window.scrollY;
+        const resultBottom =
+          (matchedCard || anchorEl).getBoundingClientRect().bottom + window.scrollY;
 
         const idealScrollY = headTop - minTop;
         const fitCardScrollY = resultBottom - usableBottom;
         const maxFilterScrollY = anchorTop - minTop;
-        const targetScrollY = Math.max(0, Math.min(maxFilterScrollY, Math.max(idealScrollY, fitCardScrollY)));
+        const targetScrollY = Math.max(
+          0,
+          Math.min(maxFilterScrollY, Math.max(idealScrollY, fitCardScrollY))
+        );
 
         window.scrollTo({
           top: targetScrollY,
@@ -165,7 +165,7 @@ function initServiceFilter() {
     }
   }
 
-  problemButtons.forEach(button => {
+  problemButtons.forEach((button) => {
     button.addEventListener('click', () => {
       applyFilter(button.dataset.filter, button);
     });
@@ -190,7 +190,7 @@ function initServicePreselection() {
 
   if (!serviceSelect || !serviceLinks.length) return;
 
-  serviceLinks.forEach(link => {
+  serviceLinks.forEach((link) => {
     link.addEventListener('click', () => {
       const targetService = link.dataset.service;
       if (targetService) {
@@ -320,7 +320,8 @@ function initRepairForm() {
     // All fields are valid
     if (formStatus) {
       formStatus.className = 'form-status success';
-      formStatus.textContent = 'Your message is ready in WhatsApp. Please tap Send there to contact the workshop.';
+      formStatus.textContent =
+        'Your message is ready in WhatsApp. Please tap Send there to contact the workshop.';
     }
 
     const messageLines = [
