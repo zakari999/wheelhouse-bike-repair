@@ -63,10 +63,10 @@ function initServiceFilter() {
   if (!problemButtons.length || !serviceCards.length) return;
 
   const categoryNames = {
-    tyre: 'Flat tyre (Tyre & tube replacement)',
-    brakes: 'Brake trouble (Brake overhaul)',
-    gears: 'Slipping gears (Gear system overhaul)',
-    tuneup: 'General maintenance (Basic tune-up)'
+    tyre: 'Flat tyre',
+    brakes: 'Brake trouble',
+    gears: 'Slipping gears',
+    tuneup: 'General maintenance'
   };
 
   function applyFilter(category, clickedButton) {
@@ -86,7 +86,7 @@ function initServiceFilter() {
 
       if (filterNote) {
         filterNote.hidden = false;
-        filterNote.textContent = 'Showing all 6 services.';
+        filterNote.textContent = `Showing all ${serviceCards.length} services.`;
         // Hide after short duration or keep clear
         setTimeout(() => {
           if (!document.querySelector('.problem-card[aria-pressed="true"]')) {
@@ -98,15 +98,15 @@ function initServiceFilter() {
     }
 
     // Filter to selected category
-    let matchedCard = null;
+    const matchedCards = [];
     serviceCards.forEach((card) => {
       const isMatch = card.dataset.category === category;
       card.hidden = !isMatch;
       card.classList.remove('filter-highlight');
-      if (isMatch) {
-        matchedCard = card;
-      }
+      if (isMatch) matchedCards.push(card);
     });
+    const matchCount = matchedCards.length;
+    const lastMatchedCard = matchedCards[matchCount - 1] || null;
 
     problemButtons.forEach((btn) => {
       btn.setAttribute('aria-pressed', btn === clickedButton ? 'true' : 'false');
@@ -115,7 +115,8 @@ function initServiceFilter() {
     if (filterNote) {
       filterNote.hidden = false;
       const label = categoryNames[category] || category;
-      filterNote.textContent = `Showing 1 matching service for ${label}. Select “View all services” to see every option.`;
+      const noun = matchCount === 1 ? 'service' : 'services';
+      filterNote.textContent = `Showing ${matchCount} matching ${noun} for ${label}. Select “View all services” to see every option.`;
     }
 
     // Scroll smoothly so both the filter status and full matching service card stay comfortably framed
@@ -135,10 +136,10 @@ function initServiceFilter() {
         const headTop =
           (sectionHead || servicesSection).getBoundingClientRect().top + window.scrollY;
         const anchorEl =
-          filterNote && !filterNote.hidden ? filterNote : matchedCard || servicesSection;
+          filterNote && !filterNote.hidden ? filterNote : matchedCards[0] || servicesSection;
         const anchorTop = anchorEl.getBoundingClientRect().top + window.scrollY;
         const resultBottom =
-          (matchedCard || anchorEl).getBoundingClientRect().bottom + window.scrollY;
+          (lastMatchedCard || anchorEl).getBoundingClientRect().bottom + window.scrollY;
 
         const idealScrollY = headTop - minTop;
         const fitCardScrollY = resultBottom - usableBottom;
@@ -153,10 +154,12 @@ function initServiceFilter() {
           behavior: isReduced ? 'auto' : 'smooth'
         });
 
-        if (matchedCard && !isReduced) {
-          matchedCard.classList.remove('filter-highlight');
-          void matchedCard.offsetWidth;
-          matchedCard.classList.add('filter-highlight');
+        if (!isReduced) {
+          matchedCards.forEach((card) => {
+            card.classList.remove('filter-highlight');
+            void card.offsetWidth;
+            card.classList.add('filter-highlight');
+          });
         }
       }, 60);
     }

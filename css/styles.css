@@ -261,6 +261,7 @@ textarea:focus-visible {
   font-weight: 700;
   color: var(--ink-2);
   font-size: 14px;
+  white-space: nowrap;
   transition: color 0.2s ease;
 }
 .main-nav > a:hover,
@@ -629,7 +630,7 @@ textarea:focus-visible {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
 .service-card {
@@ -639,6 +640,7 @@ textarea:focus-visible {
   min-height: 346px;
   display: flex;
   flex-direction: column;
+  position: relative;
   border-radius: 6px;
   transition:
     transform 0.2s,
@@ -748,6 +750,19 @@ textarea:focus-visible {
   background: #cde98c;
   color: #102b21;
   transform: scale(1.05);
+}
+
+/* New Service Badge */
+.service-badge {
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #15382b;
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 0.4px;
 }
 
 /* Custom Builds Accent Card */
@@ -1520,6 +1535,7 @@ textarea.has-error:focus {
   .trust-inner > div {
     font-size: 14px;
   }
+  .services-grid,
   .repairs-guide-grid {
     grid-template-columns: repeat(2, 1fr);
   }
