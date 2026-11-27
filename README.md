@@ -390,7 +390,14 @@ if (topTarget) {
    ```bash
    cd wheelhouse-bike-repair
    ```
-3. Open `index.html` in VS Code using Live Server or open the file directly in any modern browser. No build process, dependencies, or compilers are required.
+3. Install the dev tools (Node.js 22.22.2+ required) and start the dev server:
+   ```bash
+   npm install
+   npm run dev
+   ```
+   Open the URL it prints. Don't open `index.html` straight from disk: `js/script.js` loads as an ES module, and browsers block modules on `file://` pages, so the menu, service filter and form won't work.
+
+To build the production bundle that GitHub Pages serves, run `npm run build` (output in `dist/`) and `npm run preview` to check it. See [SETUP.md](SETUP.md) for linting and CI, and [CONTRIBUTING.md](CONTRIBUTING.md) for the build, pre-commit hook and pull request workflow.
 
 ---
 
