@@ -110,7 +110,7 @@ Use `npm run dev` for local development with live reload, `npm run build` to bun
 
 ## 7. GitHub Actions CI & GitHub Pages Deploy (Workflow Improvement)
 
-Defined in [.github/workflows/ci.yml](https://www.google.com/search?q=.github/workflows/ci.yml).
+Defined in [.github/workflows/ci.yml](.github/workflows/ci.yml).
 
 ### Why This Workflow Improvement Exists
 
