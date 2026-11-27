@@ -1,12 +1,54 @@
 # Development Setup & CI Workflow
 
-This guide documents local setup, code quality tooling, branch conventions, and GitHub Actions CI/deployment for **Wheelhouse Bike Repair**.
+This guide documents the chosen base site, repository structure, local setup, code quality tooling, branch conventions, and GitHub Actions CI/deployment for **Wheelhouse Bike Repair**.
 
-For the website architecture, design system, accessibility evidence, and EE01 deliverables, see [README.md](README.md).
+For the full website architecture, design system tokens, accessibility evidence, and EE01 deliverables, see [README.md](README.md).
 
 ---
 
-## 1. Prerequisites & Local Setup
+## 1. Base Site Decision
+
+The team selected this Wheelhouse Bike Repair site (`index.html`, `css/styles.css`, `js/script.js`, `assets/`, `docs/ee01/`) as the shared codebase baseline for collaborative development.
+
+### Why This Version Was Kept
+
+- **Semantic HTML5 Structure:** Built with proper landmark regions (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`), an unbroken `<h1>` → `<h2>` → `<h3>` heading hierarchy, and native `<details>`/`<summary>` FAQ controls.
+- **Verified WCAG 2.2 Level AA Accessibility:** Includes audited high-contrast palette tokens, visible `:focus-visible` focus rings across light and dark surfaces, `aria-live` filter/form status announcements, persistent validation error states, full keyboard navigation, and a minimum `14px` font scale.
+- **Clean, Modular CSS Architecture:** Uses `:root` custom properties, fluid CSS Grid/Flexbox layouts, zero horizontal overflow down to `320px`, and structured responsive breakpoints, making new sections (`#common-repairs`) and shared tooling clean to layer on without rework.
+
+---
+
+## 2. Project Structure
+
+```text
+wheelhouse-bike-repair/
+├── .github/
+│   └── workflows/
+│       └── ci.yml           # GitHub Actions CI checks and GitHub Pages deploy
+├── assets/                  # Workshop photos, Common Repairs cards, map & hero SVG
+├── css/
+│   └── styles.css           # Design tokens (:root), base styles, components, media queries
+├── docs/
+│   └── ee01/                # Audits, diagnosis, fixes, screenshots, and wireframe sketches
+├── js/
+│   └── script.js            # Navigation drawer, symptom filter, preselection, form & utilities
+├── .editorconfig            # UTF-8, LF line endings, and 2-space indentation rules
+├── .gitignore               # Ignores node_modules/, dist/, caches, .env*, OS/IDE files
+├── .htmlhintrc              # HTMLHint configuration (whitelists SVG viewBox casing)
+├── .prettierignore          # Excludes dependencies, build output, assets, docs, and README.md
+├── .prettierrc              # Prettier code style configuration
+├── .stylelintrc.json        # Stylelint rules extending stylelint-config-standard
+├── eslint.config.js         # ESLint v10 flat config (browser script + Prettier compatibility)
+├── index.html               # Single-page semantic HTML document
+├── package.json             # DevDependencies and lint/format npm scripts
+├── package-lock.json        # Locked dependency versions for reproducible npm ci installs
+├── README.md                # Website rebuild documentation, design system, and EE01 evidence
+└── SETUP.md                 # Base-site rationale, folder structure, setup, and CI workflow
+```
+
+---
+
+## 3. Prerequisites & Local Setup
 
 - **Node.js `22`** (matches CI runner version; works on Node LTS) and **npm**
 
@@ -22,7 +64,7 @@ To preview the site locally during development, serve the project root with VS C
 
 ---
 
-## 2. NPM Scripts (`package.json`)
+## 4. NPM Scripts (`package.json`)
 
 | Script                 | Command                                                 | Purpose                                                               |
 | :--------------------- | :------------------------------------------------------ | :-------------------------------------------------------------------- |
@@ -35,7 +77,7 @@ To preview the site locally during development, serve the project root with VS C
 
 ---
 
-## 3. Tooling Configuration Files
+## 5. Tooling Configuration Files
 
 | File                | Role                                                                                                                                         |
 | :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -49,7 +91,7 @@ To preview the site locally during development, serve the project root with VS C
 
 ---
 
-## 4. Branch & Pull Request Workflow
+## 6. Branch & Pull Request Workflow
 
 1. Keep `develop` synced with `main` before starting new work:
    ```bash
@@ -69,7 +111,7 @@ To preview the site locally during development, serve the project root with VS C
 
 ---
 
-## 5. GitHub Actions CI & GitHub Pages Deploy
+## 7. GitHub Actions CI & GitHub Pages Deploy
 
 Defined in [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 
