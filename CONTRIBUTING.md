@@ -50,7 +50,7 @@ Requires Node.js 22 (the same version CI uses).
    |---|---|---|
    | `*.html` | `htmlhint`, then `prettier --write` | Duplicate `id`s (which break `aria-labelledby` and nav anchors), unclosed tags, missing `alt` text |
    | `css/**/*.css` | `stylelint --fix`, then `prettier --write` | Invalid properties, duplicate selectors, typos like `colr:` |
-   | `js/**/*.js` | `eslint --fix`, then `prettier --write` | Undefined variables, `==` instead of `===`, unused code |
+   | `*.js` (any folder, including root config files like `vite.config.js`) | `eslint --fix`, then `prettier --write` | Undefined variables, `==` instead of `===`, unused code, and syntax errors in build config that would otherwise only surface in CI |
 
    Fixable problems (formatting, simple lint rules) are fixed and re-staged automatically. Anything that can't be fixed automatically **aborts the commit** with the error, so it never enters the history.
 

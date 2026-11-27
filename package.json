@@ -20,7 +20,7 @@
       "stylelint --fix",
       "prettier --write"
     ],
-    "js/**/*.js": [
+    "*.js": [
       "eslint --fix",
       "prettier --write"
     ]
