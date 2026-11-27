@@ -37,12 +37,7 @@ jobs:
         run: npm run format:check
 
       - name: Build production bundle
-        run: |
-          if node -e "const fs = require('node:fs'); const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8')); process.exit(pkg.scripts && pkg.scripts.build ? 0 : 1)"; then
-            npm run build
-          else
-            echo "No build script defined in package.json yet; skipping Vite build."
-          fi
+        run: npm run build
 
   deploy:
     name: Deploy to GitHub Pages
@@ -60,39 +55,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check whether Vite build script is configured
-        id: build_check
-        run: |
-          if node -e "const fs = require('node:fs'); const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8')); process.exit(pkg.scripts && pkg.scripts.build ? 0 : 1)"; then
-            echo "enabled=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "enabled=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Setup Node.js
-        if: steps.build_check.outputs.enabled == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies and build Vite bundle
-        if: steps.build_check.outputs.enabled == 'true'
         run: |
           npm ci
           npm run build
 
-      - name: Stage static files before Vite is merged
-        if: steps.build_check.outputs.enabled != 'true'
-        run: |
-          mkdir -p _site
-          cp index.html _site/
-          cp -r css js assets _site/
-
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ steps.build_check.outputs.enabled == 'true' && 'dist' || '_site' }}
+          path: dist
 
       - name: Deploy to GitHub Pages
         id: deployment
