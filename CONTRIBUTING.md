@@ -11,7 +11,7 @@ npm run build      # production bundle in dist/
 npm run preview    # serve dist/ exactly as GitHub Pages will
 ```
 
-Requires Node.js 22 (the same version CI uses).
+Requires **Node.js 22.22.2 or newer** (or 24.15+ / 26+). The exact range is in the `engines` field of `package.json`. It comes from the strictest tool: Stylelint needs `^22.22.2`, and lint-staged needs `>=22.22.1`. Check with `node -v`. On an older version, `npm install` prints an `EBADENGINE` warning and the linters may crash. CI uses the latest Node 22, which satisfies this.
 
 ---
 
