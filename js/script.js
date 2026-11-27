@@ -97,18 +97,22 @@ function initServiceFilter() {
       return;
     }
 
-    // Filter to selected category
-    let matchedCard = null;
-    let matchCount = 0;
+    // Filter to selected category. Several services can share a category
+    // (e.g. "tyre" covers Tyre & tube replacement and Puncture repair),
+    // so collect every match rather than remembering only one.
+    const matchedCards = [];
     serviceCards.forEach((card) => {
       const isMatch = card.dataset.category === category;
       card.hidden = !isMatch;
       card.classList.remove('filter-highlight');
-      if (isMatch) {
-        matchedCard = card;
-        matchCount += 1;
-      }
+      if (isMatch) matchedCards.push(card);
     });
+    const matchCount = matchedCards.length;
+
+    // The scroll below fits the results between the filter note (kept at the
+    // top) and the bottom of the screen, so it measures to the LAST match:
+    // that brings every matching card into view, not just the first.
+    const lastMatchedCard = matchedCards[matchCount - 1] || null;
 
     problemButtons.forEach((btn) => {
       btn.setAttribute('aria-pressed', btn === clickedButton ? 'true' : 'false');
@@ -138,10 +142,10 @@ function initServiceFilter() {
         const headTop =
           (sectionHead || servicesSection).getBoundingClientRect().top + window.scrollY;
         const anchorEl =
-          filterNote && !filterNote.hidden ? filterNote : matchedCard || servicesSection;
+          filterNote && !filterNote.hidden ? filterNote : matchedCards[0] || servicesSection;
         const anchorTop = anchorEl.getBoundingClientRect().top + window.scrollY;
         const resultBottom =
-          (matchedCard || anchorEl).getBoundingClientRect().bottom + window.scrollY;
+          (lastMatchedCard || anchorEl).getBoundingClientRect().bottom + window.scrollY;
 
         const idealScrollY = headTop - minTop;
         const fitCardScrollY = resultBottom - usableBottom;
@@ -156,10 +160,15 @@ function initServiceFilter() {
           behavior: isReduced ? 'auto' : 'smooth'
         });
 
-        if (matchedCard && !isReduced) {
-          matchedCard.classList.remove('filter-highlight');
-          void matchedCard.offsetWidth;
-          matchedCard.classList.add('filter-highlight');
+        // Pulse every matching card. Removing the class and reading
+        // offsetWidth forces a reflow, so the animation restarts even if
+        // the same filter is clicked twice. Skipped for reduced motion.
+        if (!isReduced) {
+          matchedCards.forEach((card) => {
+            card.classList.remove('filter-highlight');
+            void card.offsetWidth;
+            card.classList.add('filter-highlight');
+          });
         }
       }, 60);
     }
