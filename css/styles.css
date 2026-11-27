@@ -640,6 +640,7 @@ textarea:focus-visible {
   min-height: 346px;
   display: flex;
   flex-direction: column;
+  position: relative; /* anchor for the absolutely positioned .service-badge */
   border-radius: 6px;
   transition:
     transform 0.2s,
@@ -751,17 +752,20 @@ textarea:focus-visible {
   transform: scale(1.05);
 }
 
-/* "New" badge on recently added services */
+/* "New" badge on recently added services.
+   Pinned as a tab on the card's top edge rather than sitting next to the
+   label, so it takes no space in the layout and can't wrap on narrow cards
+   (at ~1160px, "07 / DRIVETRAIN" plus an inline badge didn't fit). */
 .service-badge {
-  display: inline-block;
-  margin-left: 8px;
-  padding: 2px 8px;
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  padding: 2px 10px;
   border-radius: 999px;
   background: #15382b;
   color: #ffffff;
   font-size: 14px;
   letter-spacing: 0.4px;
-  vertical-align: middle;
 }
 
 /* Custom Builds Accent Card */
