@@ -62,9 +62,9 @@ Requires **Node.js 22.22.2 or newer** (or 24.15+ / 26+). The exact range is in t
 - **The reviewer:** the PR diff contains only real changes, so review time goes on behaviour.
 - **Kwame and his customers:** a broken `id` or a JS error is caught on a laptop, not on the live site.
 
-**Escape hatch.** `git commit --no-verify` skips the hook. Don't use it. CI runs the same checks on the pull request anyway, so skipping the hook only moves the failure somewhere more public.
+**Why it belongs permanently.** It costs about two seconds per commit and needs no upkeep: `npm install` switches it on for every new clone, so it never depends on someone remembering to set it up. Its value also grows with the project. Each new service card, repair guide or developer adds more chances for a stray typo or a different editor's formatting, and the hook catches those before they reach the shared history. Removing it would put that work back on reviewers and CI, where fixes are slower and more public.
 
-> **Dependency note.** The linters and their configs (`.htmlhintrc`, `.stylelintrc.json`, `eslint.config.js`, `.prettierrc`) arrive with the `feature/common-repairs-and-ci` branch. The hook is installed by this branch and starts linting HTML, CSS and JS once both branches are merged into `develop`. Until then, lint-staged reports "no staged files match" for non-code files, as it did for this branch's own commits.
+**Escape hatch.** `git commit --no-verify` skips the hook. Don't use it. CI runs the same checks on the pull request anyway, so skipping the hook only moves the failure somewhere more public.
 
 ---
 
@@ -79,6 +79,8 @@ Requires **Node.js 22.22.2 or newer** (or 24.15+ / 26+). The exact range is in t
 - **What / Why / How to test:** the reviewer can reproduce the change in a few minutes instead of reverse-engineering it from the diff.
 - **Author checklist:** branch naming, AmaliTech commit rules, "the hook ran", and two project-specific checks. One is that each `data-service` value matches a booking-form `<option>`: a mismatch silently breaks the "click a service and the form is pre-filled" feature, which no linter can detect.
 - **Blocking vs Optional:** reviewers must label every comment and explain the practical consequence. Authors then know what has to be fixed before merging and what is a suggestion, so PRs don't stall on preferences or merge with real problems.
+
+**Why it belongs permanently.** Each new contributor sees the expected standard the first time they open a pull request, without needing a walkthrough. The checklist also keeps a record of the project's non-obvious rules, like the `data-service` match, long after the people who learned them have moved on.
 
 ---
 
